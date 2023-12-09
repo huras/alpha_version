@@ -5828,7 +5828,11 @@ var AppProvider = function AppProvider(_ref) {
         background: [],
         // Example structure
         characters_on_scene: [],
-        dialog: {}
+        dialog: {
+          speaker: false,
+          text: false,
+          show: false
+        }
       }]
     }]),
     _useState2 = _slicedToArray(_useState, 2),
