@@ -1,0 +1,31 @@
+#event-list{
+    z-index: 100;
+    width: 98vw;
+
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.event-item-list img{
+    width: 100%;
+    height: 100%;
+}
+
+.character-pivot{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+
+.character-pivot img{
+    max-width: 32%;
+}
+
+/* ------------------------ */
+
+
+#vn-tool-bar{
+    opacity: 0.9;
+}
