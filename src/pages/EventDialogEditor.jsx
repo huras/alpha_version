@@ -27,7 +27,7 @@ const EventDialogEditor = () => {
                         if (j === currentEvent) {
                             return {
                                 ...e,
-                                dialog: [{ ...e.dialog, text: editedText }]
+                                dialog: { ...e.dialog, text: editedText }
                             };
                         }
                         return e;

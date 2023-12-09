@@ -7,6 +7,7 @@ export const AppProvider = ({ children }) => {
     {
       event_id: 1,
       events: [
+
         {
           "background": [
             {
@@ -18,11 +19,37 @@ export const AppProvider = ({ children }) => {
           "characters_on_scene": [
             {
               "id": 1,
-              "image": "img/char/00133-1521237494.png"
+              "char_id": 1,
+              "image": "img/char/00339-2189841899.png"
+            },
+          ],
+          "audio_events": [
+          ],
+          "dialog": 
+            {
+              "speaker": false,
+              "text": "Você parece perdido."
+            }
+          
+        },
+        {
+          "background": [
+            {
+              "id": 1,
+              "name": "Some Forest",
+              "image": "img/bg/00041-2534950232.png"
+            }
+          ],
+          "characters_on_scene": [
+            {
+              "id": 1,
+              "char_id": 1,
+              "image": "img/char/00339-2189841899.png"
             },
             {
               "id": 2,
-              "image": "img/char/00136-1521237497.png"
+              "char_id": 2,
+              "image": "img/char/00321-3919347207.png"
             },
           ],
           "audio_events": [
@@ -32,47 +59,24 @@ export const AppProvider = ({ children }) => {
           ],
           "dialog": 
             {
+              "mugshot": false,
               "speaker": false,
-              "text": "Hello World!\nI'm Kazuma, the main character of this story.\nAnd this is a very long text to test the dialog window."
+              "text": "Parece mesmo capitã."
             }
         },
-        {
-          "background": [
-            {
-              "id": 1,
-              "name": "Some Forest",
-              "image": "img/bg/00041-2534950232.png"
-            }
-          ],
-          "characters_on_scene": [
-            {
-              "id": 1,
-              "image": "img/char/00133-1521237494.png"
-            },
-          ],
-          "audio_events": [
-          ],
-          "dialog": 
-            {
-              "speaker": "Kazuma",
-              "text": "The king is dead! Long live the king!"
-            }
-          
-        },
-        {
-          // Define the structure of your new event here
-          background: [], // Example structure
-          characters_on_scene: [],
-          dialog: { speaker: false, text: false, show: false },
-        }
       ]
     }
   ]);
   const [characters, setCharacters] = useState([
     {
       "id": 1,
-      "mugshot": "img/char/00133-1521237494.png",
-      "image": "img/00133-1521237494.png",
+      "mugshot": {
+        "image": "img/char/00339-2189841899.png",
+        "scale": 0.56,
+        "x": 0.54,
+        "y": 0.14
+      },
+      "image": "img/char/00339-2189841899.png",
       "alignment": "Chaotic Good",
       "fullname": "Lyra Flamehair",
       "family": "Flamehair",
@@ -118,8 +122,13 @@ export const AppProvider = ({ children }) => {
     },
     {
       "id": 2,
-      "mugshot": "00136-1521237497.png",
-      "image": "img/char/00136-1521237497.png",
+      "mugshot": {
+        "image": "img/char/00321-3919347207.png",
+        "scale": 0.56,
+        "x": 0.54,
+        "y": 0.14
+      },
+      "image": "img/char/00321-3919347207.png",
       // "id": "azure_sentinel_01",
       "alignment": "Lawful Good",
       "fullname": "Cassandra Starshield",
@@ -166,8 +175,13 @@ export const AppProvider = ({ children }) => {
     },
     {
       'id': 3,
-      'mugshot': '00137-1521237498.png',
-      'image': 'img/char/00137-1521237498.png',
+      "mugshot": {
+        "image": 'img/char/00358-421244272.png',
+        "scale": 0.56,
+        "x": 0.54,
+        "y": 0.14
+      },
+      'image': 'img/char/00358-421244272.png',
       'protagonist': true,
     }
   ]);
@@ -176,6 +190,16 @@ export const AppProvider = ({ children }) => {
       "id": 1,
       "name": "Some Forest",
       "image": "img/bg/00041-2534950232.png"
+    },
+    {
+      "id": 2,
+      "name": "Some Forest 2",
+      "image": "img/bg/bg_00009.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Some garden",
+      "image": "img/bg/00242-1899305028.png"
     },
   ]);
 

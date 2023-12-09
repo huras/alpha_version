@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { Navbar, Container, Button } from 'react-bootstrap';
-import { List, ListUl, Images, PeopleFill, CaretLeftSquare, CaretRightSquare, ChatFill } from 'react-bootstrap-icons';
+import { List, ListUl, Images, PeopleFill, CaretLeftSquare, CaretRightSquare, ChatFill, MusicNoteBeamed } from 'react-bootstrap-icons';
 import AppContext from '../context/AppContext'; // Update the path as per your project structure
 
-const SceneEditorNavbar = ({ toggleEventListDrawer, toggleBackgroundDrawer }) => {
+const SceneEditorNavbar = ({ toggleEventListDrawer, toggleBackgroundDrawer, toggleEventCharactersDrawer }) => {
 
   const { scenes, setScenes, currentScene ,currentEvent ,setCurrentEvent,hasValidCurrentEvent } = useContext(AppContext);
 
@@ -44,11 +44,14 @@ const SceneEditorNavbar = ({ toggleEventListDrawer, toggleBackgroundDrawer }) =>
               <Button variant="outline-secondary" className="mx-1" onClick={toggleBackgroundDrawer}>
                 <Images color="white" />
               </Button>
-              <Button variant="outline-secondary" className="mx-1">
+              <Button variant="outline-secondary" className="mx-1" onClick={toggleEventCharactersDrawer}>
                 <PeopleFill color="white" />
               </Button>
               <Button variant="outline-secondary" className="mx-1" onClick={toggleDialog}>
                 <ChatFill color="white" />
+              </Button>
+              <Button variant="outline-secondary" className="mx-1">
+                <MusicNoteBeamed color="white" />
               </Button>
             </div>
           }
