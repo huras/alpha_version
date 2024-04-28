@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Offcanvas, ListGroup, Button, Badge, Modal } from 'react-bootstrap';
 import { Trash, Plus, Pencil, ArrowUp, ArrowDown } from 'react-bootstrap-icons';
-import AppContext from '../context/AppContext'; // Update the path as per your project structure
+import AppContext from '../../../context/AppContext'; // Update the path as per your project structure
 
 const EventCharactersDrawer = ({ show, handleClose }) => {
     const { scenes, setScenes, currentScene, currentEvent, characters } = useContext(AppContext);

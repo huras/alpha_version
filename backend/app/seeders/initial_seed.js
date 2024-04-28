@@ -137,9 +137,13 @@ module.exports = {
     }
     ], {});
 
+    await queryInterface.bulkInsert('Projects', [
+      { id: 1, title: "My first IA-VN", createdAt: new Date(), updatedAt: new Date() },
+    ], {});
+
     await queryInterface.bulkInsert('Scenes', [
-      { id: 1, order: 1, title: "Início", createdAt: new Date(), updatedAt: new Date() },
-      { id: 2, order: 2, title: "Guerra na floresta", createdAt: new Date(), updatedAt: new Date() }
+      { id: 1, order: 1, title: "Prólogo", parentProjectId: 1, createdAt: new Date(), updatedAt: new Date() },
+      { id: 2, order: 2, title: "Guerra na floresta", parentProjectId: 1, createdAt: new Date(), updatedAt: new Date() }
     ], {});
 
     await queryInterface.bulkInsert('Events', [

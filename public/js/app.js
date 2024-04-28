@@ -6439,10 +6439,36 @@ var RouteHandler = function RouteHandler(_ref) {
 
 /***/ }),
 
-/***/ "./pages/BackgroudDrawer.jsx":
-/*!***********************************!*\
-  !*** ./pages/BackgroudDrawer.jsx ***!
-  \***********************************/
+/***/ "./pages/Dashboard.jsx":
+/*!*****************************!*\
+  !*** ./pages/Dashboard.jsx ***!
+  \*****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Scene_SceneList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Scene/SceneList */ "./pages/Scene/SceneList.jsx");
+// Dashbaord empty component
+
+
+var Dashboard = function Dashboard() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Dashboard"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Scenes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Scene_SceneList__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Dashboard);
+
+/***/ }),
+
+/***/ "./pages/Event/Editor/BackgroudDrawer.jsx":
+/*!************************************************!*\
+  !*** ./pages/Event/Editor/BackgroudDrawer.jsx ***!
+  \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6460,7 +6486,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/pencil.js");
 /* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/trash.js");
 /* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/plus.js");
-/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/AppContext */ "./context/AppContext.jsx");
+/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../context/AppContext */ "./context/AppContext.jsx");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6637,10 +6663,10 @@ var BackgroundDrawer = function BackgroundDrawer(_ref) {
 
 /***/ }),
 
-/***/ "./pages/Dashboard.jsx":
-/*!*****************************!*\
-  !*** ./pages/Dashboard.jsx ***!
-  \*****************************/
+/***/ "./pages/Event/Editor/DialogMugshotEditor.jsx":
+/*!****************************************************!*\
+  !*** ./pages/Event/Editor/DialogMugshotEditor.jsx ***!
+  \****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6650,34 +6676,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Scene_SceneList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Scene/SceneList */ "./pages/Scene/SceneList.jsx");
-// Dashbaord empty component
-
-
-var Dashboard = function Dashboard() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Dashboard"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", null, "Scenes"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Scene_SceneList__WEBPACK_IMPORTED_MODULE_1__["default"], null));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Dashboard);
-
-/***/ }),
-
-/***/ "./pages/DialogMugshotEditor.jsx":
-/*!***************************************!*\
-  !*** ./pages/DialogMugshotEditor.jsx ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/AppContext */ "./context/AppContext.jsx");
-/* harmony import */ var _MugshotSelector__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MugshotSelector */ "./pages/MugshotSelector.jsx");
+/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../context/AppContext */ "./context/AppContext.jsx");
+/* harmony import */ var _MugshotSelector__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MugshotSelector */ "./pages/Event/Editor/MugshotSelector.jsx");
 
 
 
@@ -6693,10 +6693,10 @@ var DialogMugshotEditor = function DialogMugshotEditor() {
 
 /***/ }),
 
-/***/ "./pages/EventCharactersDrawer.jsx":
-/*!*****************************************!*\
-  !*** ./pages/EventCharactersDrawer.jsx ***!
-  \*****************************************/
+/***/ "./pages/Event/Editor/EventCharactersDrawer.jsx":
+/*!******************************************************!*\
+  !*** ./pages/Event/Editor/EventCharactersDrawer.jsx ***!
+  \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6716,7 +6716,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/arrow-up.js");
 /* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/arrow-down.js");
 /* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/plus.js");
-/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/AppContext */ "./context/AppContext.jsx");
+/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../context/AppContext */ "./context/AppContext.jsx");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
@@ -6930,10 +6930,10 @@ var EventCharactersDrawer = function EventCharactersDrawer(_ref) {
 
 /***/ }),
 
-/***/ "./pages/EventDialogEditor.jsx":
-/*!*************************************!*\
-  !*** ./pages/EventDialogEditor.jsx ***!
-  \*************************************/
+/***/ "./pages/Event/Editor/EventDialogEditor.jsx":
+/*!**************************************************!*\
+  !*** ./pages/Event/Editor/EventDialogEditor.jsx ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -6943,7 +6943,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/AppContext */ "./context/AppContext.jsx");
+/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../context/AppContext */ "./context/AppContext.jsx");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
 /* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/person-video2.js");
 /* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/save-fill.js");
@@ -7041,10 +7041,10 @@ var EventDialogEditor = function EventDialogEditor() {
 
 /***/ }),
 
-/***/ "./pages/EventListDrawer.jsx":
-/*!***********************************!*\
-  !*** ./pages/EventListDrawer.jsx ***!
-  \***********************************/
+/***/ "./pages/Event/Editor/EventListDrawer.jsx":
+/*!************************************************!*\
+  !*** ./pages/Event/Editor/EventListDrawer.jsx ***!
+  \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7058,20 +7058,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/ListGroup.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
 /* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/plus.js");
-/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/AppContext */ "./context/AppContext.jsx");
-/* harmony import */ var _Event_EventItemContent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Event/EventItemContent */ "./pages/Event/EventItemContent.jsx");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../context/AppContext */ "./context/AppContext.jsx");
+/* harmony import */ var _EventItemContent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../EventItemContent */ "./pages/Event/EventItemContent.jsx");
 
 
 
@@ -7079,59 +7067,46 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 
 var EventListDrawer = function EventListDrawer(_ref) {
   var show = _ref.show,
-    handleClose = _ref.handleClose;
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_AppContext__WEBPACK_IMPORTED_MODULE_1__["default"]),
-    scenes = _useContext.scenes,
-    setScenes = _useContext.setScenes,
-    currentSceneID = _useContext.currentSceneID,
-    setCurrentEventID = _useContext.setCurrentEventID,
-    events = _useContext.events;
+    handleClose = _ref.handleClose,
+    events = _ref.events;
   var handleDelete = function handleDelete(eventId) {
-    var updatedEvents = events.filter(function (event) {
-      return event.id !== eventId;
-    });
-    setScenes(scenes.map(function (scene) {
-      if (scene.id === currentSceneID) {
-        return _objectSpread(_objectSpread({}, scene), {}, {
-          events: updatedEvents
-        });
-      }
-      return scene;
-    }));
+    // const updatedEvents = events.filter(event => event.id !== eventId);
+    // setScenes(scenes.map(scene => {
+    //   if (scene.id === currentSceneID) {
+    //     return { ...scene, events: updatedEvents };
+    //   }
+    //   return scene;
+    // }));
 
-    // Check if the current event is the one being deleted
-    if (eventId === setCurrentEventID) {
-      setCurrentEventID(null);
-    }
+    // // Check if the current event is the one being deleted
+    // if (eventId === setCurrentEventID) {
+    //   setCurrentEventID(null);
+    // }
   };
   var handleEdit = function handleEdit(eventId) {
-    setCurrentEventID(eventId);
-    handleClose();
+    // setCurrentEventID(eventId);
+    // handleClose();
   };
   var handleAddEvent = function handleAddEvent() {
     // Logic to add a new event
-    var newEvent = {
-      // Define the structure of your new event here
-      // Example structure
-      id: Math.max.apply(Math, _toConsumableArray(events.map(function (e) {
-        return e.id;
-      }))) + 1,
-      // Assuming numeric IDs
-      background: [],
-      Characters: [],
-      dialog: {},
-      ChildEvents: [],
-      ParentEvents: [],
-      parentEvent: null
-    };
-    setScenes(scenes.map(function (scene) {
-      if (scene.id === currentSceneID) {
-        return _objectSpread(_objectSpread({}, scene), {}, {
-          events: [].concat(_toConsumableArray(scene.events), [newEvent])
-        });
-      }
-      return scene;
-    }));
+    // var newEvent = {
+    //   // Define the structure of your new event here
+    //   // Example structure
+    //   id: Math.max(...events.map(e => e.id)) + 1, // Assuming numeric IDs
+    //   background: [],
+    //   Characters: [],
+    //   dialog: {},
+    //   ChildEvents: [],
+    //   ParentEvents: [],
+    //   parentEvent: null
+    // };
+
+    // setScenes(scenes.map(scene => {
+    //   if (scene.id === currentSceneID) {
+    //     return { ...scene, events: [...scene.events, newEvent] };
+    //   }
+    //   return scene;
+    // }));
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
     show: show,
@@ -7141,7 +7116,7 @@ var EventListDrawer = function EventListDrawer(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Header, {
     closeButton: true
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Title, null, "Event List")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], null, events.map(function (event, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Event_EventItemContent__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_EventItemContent__WEBPACK_IMPORTED_MODULE_2__["default"], {
       key: event.id,
       event: event,
       onEdit: handleEdit,
@@ -7158,10 +7133,10 @@ var EventListDrawer = function EventListDrawer(_ref) {
 
 /***/ }),
 
-/***/ "./pages/Event/EventItemContent.jsx":
-/*!******************************************!*\
-  !*** ./pages/Event/EventItemContent.jsx ***!
-  \******************************************/
+/***/ "./pages/Event/Editor/MugshotSelector.jsx":
+/*!************************************************!*\
+  !*** ./pages/Event/Editor/MugshotSelector.jsx ***!
+  \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7171,88 +7146,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/ListGroup.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Badge.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
-/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/trash.js");
-/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/pencil.js");
-
-
-
-var EventListItem = function EventListItem(_ref) {
-  var event = _ref.event,
-    onEdit = _ref.onEdit,
-    onDelete = _ref.onDelete;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Item, {
-    key: event.id,
-    className: "d-flex"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "d-flex flex-column justify-content-start align-items-center mx-2"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    bg: "secondary",
-    className: "mb-1"
-  }, "#", event.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    variant: "danger",
-    size: "sm",
-    className: "mt-1",
-    onClick: function onClick() {
-      return onDelete(event.id);
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    size: 16
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    variant: "primary",
-    size: "sm",
-    className: "mt-1",
-    onClick: function onClick() {
-      return onEdit(event.id);
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    size: 16
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    style: {
-      backgroundImage: "url('".concat(event.Backgrounds.length === 0 ? '' : event.Backgrounds[0].image, "')"),
-      width: 'calc(960px * 0.28)',
-      height: 'calc(536px * 0.28)',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat'
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "character-pivot"
-  }, event.Characters.map(function (character) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-      key: character.id,
-      src: character.image,
-      alt: "Character",
-      style: {
-        maxWidth: '100px'
-      }
-    });
-  }))), event.dialogText && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "d-flex flex-column justify-content-start align-items-start ms-2"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("pre", {
-    className: "text vn-window"
-  }, event.dialogText)));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EventListItem);
-
-/***/ }),
-
-/***/ "./pages/MugshotSelector.jsx":
-/*!***********************************!*\
-  !*** ./pages/MugshotSelector.jsx ***!
-  \***********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/AppContext */ "./context/AppContext.jsx");
+/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../context/AppContext */ "./context/AppContext.jsx");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Modal.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/ListGroup.js");
@@ -7458,85 +7352,251 @@ var MugshotSelector = function MugshotSelector() {
 
 /***/ }),
 
-/***/ "./pages/SceneEditor.jsx":
-/*!*******************************!*\
-  !*** ./pages/SceneEditor.jsx ***!
-  \*******************************/
+/***/ "./pages/Event/Editor/SingleEventEditor.jsx":
+/*!**************************************************!*\
+  !*** ./pages/Event/Editor/SingleEventEditor.jsx ***!
+  \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   SceneEditor: () => (/* binding */ SceneEditor)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _SceneEditorNavbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SceneEditorNavbar */ "./pages/SceneEditorNavbar.jsx");
-/* harmony import */ var _EventListDrawer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EventListDrawer */ "./pages/EventListDrawer.jsx");
-/* harmony import */ var _SingleEventEditor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SingleEventEditor */ "./pages/SingleEventEditor.jsx");
-/* harmony import */ var _BackgroudDrawer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./BackgroudDrawer */ "./pages/BackgroudDrawer.jsx");
-/* harmony import */ var _EventCharactersDrawer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./EventCharactersDrawer */ "./pages/EventCharactersDrawer.jsx");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../context/AppContext */ "./context/AppContext.jsx");
+/* harmony import */ var _EventDialogEditor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EventDialogEditor */ "./pages/Event/Editor/EventDialogEditor.jsx");
+/* harmony import */ var _DialogMugshotEditor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DialogMugshotEditor */ "./pages/Event/Editor/DialogMugshotEditor.jsx");
+/* harmony import */ var _SceneParts_SceneCharacter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../SceneParts/SceneCharacter */ "./pages/SceneParts/SceneCharacter.jsx");
+
+ // Update the path as per your project structure
 
 
 
+// import './ScreenSection.css'; // Assuming you will place the CSS in this file
 
+var SingleEventEditor = function SingleEventEditor() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_AppContext__WEBPACK_IMPORTED_MODULE_1__["default"]),
+    events = _useContext.events,
+    currentEventID = _useContext.currentEventID,
+    currentSceneID = _useContext.currentSceneID,
+    scenes = _useContext.scenes;
 
+  // Find the current event based on currentEventID
+  var currentEvent = events.find(function (event) {
+    return event.id === currentEventID;
+  });
 
-var SceneEditor = function SceneEditor() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    showEventListDrawer = _useState2[0],
-    setShowEventListDrawer = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState4 = _slicedToArray(_useState3, 2),
-    showBackgroundDrawer = _useState4[0],
-    setShowBackgroundDrawer = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState6 = _slicedToArray(_useState5, 2),
-    showEventCharactersDrawer = _useState6[0],
-    setShowEventCharactersDrawer = _useState6[1];
-  var handleEventListDrawer = function handleEventListDrawer(status) {
-    setShowEventListDrawer(status);
-  };
-  var handleBackgroundDrawer = function handleBackgroundDrawer(status) {
-    setShowBackgroundDrawer(status);
-  };
-  var handleEventCharactersDrawer = function handleEventCharactersDrawer(status) {
-    setShowEventCharactersDrawer(status);
-  };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SceneEditorNavbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    toggleEventListDrawer: function toggleEventListDrawer() {
-      return handleEventListDrawer(true);
-    },
-    toggleBackgroundDrawer: function toggleBackgroundDrawer() {
-      return handleBackgroundDrawer(true);
-    },
-    toggleEventCharactersDrawer: function toggleEventCharactersDrawer() {
-      return handleEventCharactersDrawer(true);
-    }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_EventListDrawer__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    show: showEventListDrawer,
-    handleClose: function handleClose() {
-      return handleEventListDrawer(false);
-    }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_BackgroudDrawer__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    show: showBackgroundDrawer,
-    handleClose: function handleClose() {
-      return handleBackgroundDrawer(false);
-    }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_EventCharactersDrawer__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    show: showEventCharactersDrawer,
-    handleClose: function handleClose() {
-      return handleEventCharactersDrawer(false);
-    }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SingleEventEditor__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+  // Checking if there is a valid event to render
+  if (!currentEvent) {
+    return null;
+  }
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    id: "screen"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "background"
+  }, currentEvent.Backgrounds.map(function (background) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      key: background.id,
+      src: background.image,
+      alt: background.name
+    });
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "characters"
+  }, currentEvent.Characters.map(function (character) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SceneParts_SceneCharacter__WEBPACK_IMPORTED_MODULE_4__["default"], {
+      key: character.id,
+      character: character
+    });
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "dialog-window"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_DialogMugshotEditor__WEBPACK_IMPORTED_MODULE_3__["default"], null), currentEvent.dialogText && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_EventDialogEditor__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    dialog: currentEvent.dialogText
+  })));
 };
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SingleEventEditor);
+
+/***/ }),
+
+/***/ "./pages/Event/EventItemContent.jsx":
+/*!******************************************!*\
+  !*** ./pages/Event/EventItemContent.jsx ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/ListGroup.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Badge.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/image-alt.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/people-fill.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/chat-fill.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/trash.js");
+
+
+
+var EventListItem = function EventListItem(_ref) {
+  var event = _ref.event,
+    onEdit = _ref.onEdit,
+    onDelete = _ref.onDelete;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Item, {
+    key: event.id,
+    className: "d-flex py-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "d-flex flex-column justify-content-start align-items-center mx-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    bg: "dark",
+    className: "mb-1"
+  }, "#", event.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    variant: "primary",
+    size: "sm",
+    className: "mt-3",
+    onClick: function onClick() {}
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    size: 16
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    variant: "primary",
+    size: "sm",
+    className: "mt-1",
+    onClick: function onClick() {}
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    size: 16
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    variant: "primary",
+    size: "sm",
+    className: "mt-1",
+    onClick: function onClick() {}
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    size: 16
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    style: {
+      backgroundImage: "url('".concat(event.event_backgrounds.length === 0 ? '' : event.event_backgrounds[0].image, "')"),
+      width: 'calc(960px * 0.35)',
+      height: 'calc(536px * 0.35)',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      backgroundRepeat: 'no-repeat'
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "character-pivot"
+  }, event.event_characters.map(function (character) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+      key: character.id,
+      src: character.image,
+      alt: "Character",
+      style: {
+        maxWidth: '100px'
+      }
+    });
+  }))), event.dialogText && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "d-flex flex-column justify-content-start align-items-start ms-2 px-2",
+    style: {
+      flex: 1
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("pre", {
+    className: "text vn-window w-100"
+  }, event.dialogText)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "d-flex flex-column justify-content-start align-items-center mx-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    variant: "danger",
+    size: "sm",
+    onClick: function onClick() {
+      return onDelete(event.id);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    size: 16
+  }))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EventListItem);
+
+/***/ }),
+
+/***/ "./pages/Event/EventList.jsx":
+/*!***********************************!*\
+  !*** ./pages/Event/EventList.jsx ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/ListGroup.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/plus.js");
+/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/AppContext */ "./context/AppContext.jsx");
+/* harmony import */ var _EventItemContent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EventItemContent */ "./pages/Event/EventItemContent.jsx");
+
+
+
+ // Update the path as per your project structure
+
+var EventList = function EventList(_ref) {
+  var events = _ref.events;
+  var handleDelete = function handleDelete(eventId) {
+    // const updatedEvents = events.filter(event => event.id !== eventId);
+    // setScenes(scenes.map(scene => {
+    //   if (scene.id === currentSceneID) {
+    //     return { ...scene, events: updatedEvents };
+    //   }
+    //   return scene;
+    // }));
+
+    // // Check if the current event is the one being deleted
+    // if (eventId === setCurrentEventID) {
+    //   setCurrentEventID(null);
+    // }
+  };
+  var handleEdit = function handleEdit(eventId) {
+    // setCurrentEventID(eventId);
+    // handleClose();
+  };
+  var handleAddEvent = function handleAddEvent() {
+    // Logic to add a new event
+    // var newEvent = {
+    //   // Define the structure of your new event here
+    //   // Example structure
+    //   id: Math.max(...events.map(e => e.id)) + 1, // Assuming numeric IDs
+    //   background: [],
+    //   Characters: [],
+    //   dialog: {},
+    //   ChildEvents: [],
+    //   ParentEvents: [],
+    //   parentEvent: null
+    // };
+
+    // setScenes(scenes.map(scene => {
+    //   if (scene.id === currentSceneID) {
+    //     return { ...scene, events: [...scene.events, newEvent] };
+    //   }
+    //   return scene;
+    // }));
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], null, events.map(function (event, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_EventItemContent__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      key: event.id,
+      event: event,
+      onEdit: handleEdit,
+      onDelete: handleDelete
+    });
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    onClick: handleAddEvent,
+    className: "my-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    size: 16
+  }), " Add New Event"));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EventList);
 
 /***/ }),
 
@@ -7845,6 +7905,88 @@ var SceneCharacter = function SceneCharacter(_ref) {
 
 /***/ }),
 
+/***/ "./pages/Scene/SceneEditor.jsx":
+/*!*************************************!*\
+  !*** ./pages/Scene/SceneEditor.jsx ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   SceneEditor: () => (/* binding */ SceneEditor)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _SceneEditorNavbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../SceneEditorNavbar */ "./pages/SceneEditorNavbar.jsx");
+/* harmony import */ var _Event_Editor_EventListDrawer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Event/Editor/EventListDrawer */ "./pages/Event/Editor/EventListDrawer.jsx");
+/* harmony import */ var _Event_Editor_SingleEventEditor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Event/Editor/SingleEventEditor */ "./pages/Event/Editor/SingleEventEditor.jsx");
+/* harmony import */ var _Event_Editor_BackgroudDrawer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Event/Editor/BackgroudDrawer */ "./pages/Event/Editor/BackgroudDrawer.jsx");
+/* harmony import */ var _Event_Editor_EventCharactersDrawer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Event/Editor/EventCharactersDrawer */ "./pages/Event/Editor/EventCharactersDrawer.jsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+var SceneEditor = function SceneEditor() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    showEventListDrawer = _useState2[0],
+    setShowEventListDrawer = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    showBackgroundDrawer = _useState4[0],
+    setShowBackgroundDrawer = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState6 = _slicedToArray(_useState5, 2),
+    showEventCharactersDrawer = _useState6[0],
+    setShowEventCharactersDrawer = _useState6[1];
+  var handleEventListDrawer = function handleEventListDrawer(status) {
+    setShowEventListDrawer(status);
+  };
+  var handleBackgroundDrawer = function handleBackgroundDrawer(status) {
+    setShowBackgroundDrawer(status);
+  };
+  var handleEventCharactersDrawer = function handleEventCharactersDrawer(status) {
+    setShowEventCharactersDrawer(status);
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SceneEditorNavbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    toggleEventListDrawer: function toggleEventListDrawer() {
+      return handleEventListDrawer(true);
+    },
+    toggleBackgroundDrawer: function toggleBackgroundDrawer() {
+      return handleBackgroundDrawer(true);
+    },
+    toggleEventCharactersDrawer: function toggleEventCharactersDrawer() {
+      return handleEventCharactersDrawer(true);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Event_Editor_EventListDrawer__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    show: showEventListDrawer,
+    handleClose: function handleClose() {
+      return handleEventListDrawer(false);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Event_Editor_BackgroudDrawer__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    show: showBackgroundDrawer,
+    handleClose: function handleClose() {
+      return handleBackgroundDrawer(false);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Event_Editor_EventCharactersDrawer__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    show: showEventCharactersDrawer,
+    handleClose: function handleClose() {
+      return handleEventCharactersDrawer(false);
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Event_Editor_SingleEventEditor__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+};
+
+/***/ }),
+
 /***/ "./pages/Scene/SceneList.jsx":
 /*!***********************************!*\
   !*** ./pages/Scene/SceneList.jsx ***!
@@ -7933,11 +8075,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/AppContext */ "./context/AppContext.jsx");
-/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/chevron-left.js");
-/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/chevron-right.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/chevron-left.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/chevron-right.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/play-fill.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/justify-left.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/pencil-fill.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var _Event_Editor_EventListDrawer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Event/Editor/EventListDrawer */ "./pages/Event/Editor/EventListDrawer.jsx");
+/* harmony import */ var _Event_EventList__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Event/EventList */ "./pages/Event/EventList.jsx");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
@@ -7955,32 +8103,557 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
  // Adjust the path as needed
 
 
+
+
+
 function ScenePage() {
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_2__.useNavigate)();
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_4__.useNavigate)();
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState2 = _slicedToArray(_useState, 2),
     scene = _useState2[0],
     setScene = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState4 = _slicedToArray(_useState3, 2),
-    events = _useState4[0],
-    setEvents = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    currentEventID = _useState4[0],
+    setCurrentEventID = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
     _useState6 = _slicedToArray(_useState5, 2),
-    currentEventID = _useState6[0],
-    setCurrentEventID = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    branchSelection = _useState6[0],
+    setBranchSelection = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState8 = _slicedToArray(_useState7, 2),
-    branchSelection = _useState8[0],
-    setBranchSelection = _useState8[1];
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    isLoading = _useState8[0],
+    setIsLoading = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState10 = _slicedToArray(_useState9, 2),
-    isLoading = _useState10[0],
-    setIsLoading = _useState10[1];
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    error = _useState10[0],
+    setError = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState12 = _slicedToArray(_useState11, 2),
-    error = _useState12[0],
-    setError = _useState12[1];
+    showEventsDrawer = _useState12[0],
+    setShowEventsDrawer = _useState12[1];
+
+  /*
+      Scene response example:
+      ```
+      {
+          "id": 1,
+          "title": "Início",
+          "order": 1,
+          "createdAt": "2024-04-28T02:17:57.087Z",
+          "updatedAt": "2024-04-28T02:17:57.087Z",
+          "childEvents": [
+              {
+                  "id": 1,
+                  "parentEvent": null,
+                  "speakerId": 1,
+                  "mugshotId": 1,
+                  "dialogText": "You look lost asdasdasd!",
+                  "createdAt": "2024-04-28T02:17:57.094Z",
+                  "updatedAt": "2024-04-28T02:17:57.094Z",
+                  "parentSceneId": 1,
+                  "event_backgrounds": [
+                      {
+                          "id": 1,
+                          "name": "Some Forest",
+                          "image": "http://isekai.hurast.com/wp-content/uploads/visual_novel_backgrounds/bg_00009.jpg",
+                          "createdAt": "2024-04-28T02:17:57.069Z",
+                          "updatedAt": "2024-04-28T02:17:57.069Z",
+                          "EventBackgrounds": {
+                              "createdAt": "2024-04-28T02:17:57.113Z",
+                              "updatedAt": "2024-04-28T02:17:57.113Z",
+                              "EventId": 1,
+                              "BackgroundId": 1
+                          }
+                      }
+                  ],
+                  "event_characters": [
+                      {
+                          "id": 1,
+                          "mugshot": "{\"scale\":0.56,\"x\":0.54,\"y\":0.14}",
+                          "image": "http://isekai.hurast.com/wp-content/uploads/visual_novel_characters/00339-2189841899.png",
+                          "alignment": "Chaotic Good",
+                          "fullname": "Lyra Flamehair",
+                          "family": "Flamehair",
+                          "race": "Human",
+                          "neutral_traits": "[\"Charismatic\",\"Brave\",\"Impulsive\"]",
+                          "negative_traits": "[\"Reckless\",\"Short-tempered\"]",
+                          "known_characters": "[\"cassandra_starshield\",\"elder_mage_veloran\"]",
+                          "skills": "[\"Dual Wielding Lv 4\",\"Alchemy Lv 2\",\"Unarmed Combat Lv 3\",\"Fire Magic Lv 4\"]",
+                          "short_backstory": "Lyra was born into a family of famed pyromancers. She left home to explore the world and find her own path, using her fiery talents to protect the innocent.",
+                          "age": 23,
+                          "core_memories": "{\"sad\":\"[\\\"destruction of her childhood home\\\",\\\"loss of her familiar\\\"]\",\"joy\":\"[\\\"discovering a new spell\\\",\\\"her first adventure\\\"]\",\"fear\":\"[\\\"water\\\",\\\"confinement\\\"]\",\"disgust\":\"[\\\"necromancy\\\",\\\"betrayal\\\"]\",\"anger\":\"[\\\"injustice\\\",\\\"slavery\\\"]\"}",
+                          "long_term_goals": "[\"Master the elemental magics\",\"Find the Phoenix Stone\",\"Open a school for adventurers\"]",
+                          "physical_appearance": "{\"hair_color\":\"fiery red\",\"eye_color\":\"hazel\",\"height\":\"5 feet 6 inches\",\"build\":\"fit\"}",
+                          "personality_traits": "[\"adventurous\",\"independent\"]",
+                          "beliefs_values": "{\"justice\":\"believes in taking action to right wrongs\",\"honor\":\"personal freedom and choice are paramount\",\"family\":\"family is chosen through bonds of friendship and loyalty\"}",
+                          "relationships": "{\"friends\":\"[\\\"sir_baldric_the_bold\\\"]\",\"enemies\":\"[\\\"the_cold_empress\\\"]\",\"romantic_interests\":\"[\\\"gavriel_the_wanderer\\\"]\"}",
+                          "fears_vulnerabilities": "{\"fears\":\"[\\\"the loss of her magical abilities\\\"]\",\"vulnerabilities\":\"[\\\"prone to overextending in battle\\\"]\"}",
+                          "unique_abilities_powers": "[\"Phoenix Rebirth (can recover quickly from near-defeat)\"]",
+                          "hobbies_interests": "[\"experimenting with potion recipes\",\"exploring ancient ruins\"]",
+                          "quirks_habits": "[\"always carries a vial of fire salt\",\"draws tiny flames on parchment when bored\"]",
+                          "createdAt": "2024-04-28T02:17:57.078Z",
+                          "updatedAt": "2024-04-28T02:17:57.078Z",
+                          "EventCharacters": {
+                              "createdAt": "2024-04-28T02:17:57.120Z",
+                              "updatedAt": "2024-04-28T02:17:57.120Z",
+                              "EventId": 1,
+                              "CharacterId": 1
+                          }
+                      },
+                      {
+                          "id": 2,
+                          "mugshot": "{\"scale\":0.55,\"x\":0.55,\"y\":0.14}",
+                          "image": "http://isekai.hurast.com/wp-content/uploads/visual_novel_characters/00358-421244272.png",
+                          "alignment": "Lawful Good",
+                          "fullname": "Cassandra Starshield",
+                          "family": "Starshield",
+                          "race": "Human",
+                          "neutral_traits": "[\"Tactical\",\"Observant\",\"Disciplined\"]",
+                          "negative_traits": "[\"Stubborn\",\"Inflexible\"]",
+                          "known_characters": "[\"elder_mage_veloran\",\"rogue_thief_kir\"]",
+                          "skills": "[\"Swordsmanship Lv 4\",\"Light Magic Lv 3\",\"Tactics Lv 5\",\"Archery Lv 2\"]",
+                          "short_backstory": "Cassandra grew up in the militaristic city of Elyndor, where discipline and skill in combat are valued above all. She rose quickly through the ranks due to her dedication and strategic mind.",
+                          "age": 125,
+                          "core_memories": "{\"sad\":\"[\\\"fall of Elyndor's eastern bastion\\\",\\\"death of mentor\\\"]\",\"joy\":\"[\\\"first successful command\\\",\\\"mastering the sword dance\\\"]\",\"fear\":\"[\\\"losing her troops\\\",\\\"dishonor\\\"]\",\"disgust\":\"[\\\"cowardice\\\",\\\"treachery\\\"]\",\"anger\":\"[\\\"corruption in the high council\\\",\\\"unfair accusations against her family\\\"]\"}",
+                          "long_term_goals": "[\"Restore her family's honor\",\"Become head of the city guard\",\"Reform the high council\"]",
+                          "physical_appearance": "{\"hair_color\":\"blue-black\",\"eye_color\":\"emerald green\",\"height\":\"5 feet 9 inches\",\"build\":\"slender yet muscular\"}",
+                          "personality_traits": "[\"leader\",\"loyal\"]",
+                          "beliefs_values": "{\"justice\":\"believes in the rule of law and order\",\"honor\":\"upholds the knightly virtues of chivalry and respect\",\"family\":\"dedicated to her family's legacy\"}",
+                          "relationships": "{\"friends\":\"[\\\"thorin_the_blacksmith\\\"]\",\"enemies\":\"[\\\"zara_the_sorceress\\\"]\",\"romantic_interests\":\"[\\\"damien_the_scout\\\"]\"}",
+                          "fears_vulnerabilities": "{\"fears\":\"[\\\"the dark magic rising in the south\\\"]\",\"vulnerabilities\":\"[\\\"her family's disgraced name\\\"]\"}",
+                          "unique_abilities_powers": "[\"Aura of Valor (inspires allies)\"]",
+                          "hobbies_interests": "[\"studying ancient tactics\",\"falconry\"]",
+                          "quirks_habits": "[\"meticulously sharpens her sword every night\",\"always checks the wind direction\"]",
+                          "createdAt": "2024-04-28T02:17:57.078Z",
+                          "updatedAt": "2024-04-28T02:17:57.078Z",
+                          "EventCharacters": {
+                              "createdAt": "2024-04-28T02:17:57.120Z",
+                              "updatedAt": "2024-04-28T02:17:57.120Z",
+                              "EventId": 1,
+                              "CharacterId": 2
+                          }
+                      }
+                  ],
+                  "childEvents": [],
+                  "parentEvents": [],
+                  "speaker": {
+                      "id": 1,
+                      "mugshot": "{\"scale\":0.56,\"x\":0.54,\"y\":0.14}",
+                      "image": "http://isekai.hurast.com/wp-content/uploads/visual_novel_characters/00339-2189841899.png",
+                      "alignment": "Chaotic Good",
+                      "fullname": "Lyra Flamehair",
+                      "family": "Flamehair",
+                      "race": "Human",
+                      "neutral_traits": "[\"Charismatic\",\"Brave\",\"Impulsive\"]",
+                      "negative_traits": "[\"Reckless\",\"Short-tempered\"]",
+                      "known_characters": "[\"cassandra_starshield\",\"elder_mage_veloran\"]",
+                      "skills": "[\"Dual Wielding Lv 4\",\"Alchemy Lv 2\",\"Unarmed Combat Lv 3\",\"Fire Magic Lv 4\"]",
+                      "short_backstory": "Lyra was born into a family of famed pyromancers. She left home to explore the world and find her own path, using her fiery talents to protect the innocent.",
+                      "age": 23,
+                      "core_memories": "{\"sad\":\"[\\\"destruction of her childhood home\\\",\\\"loss of her familiar\\\"]\",\"joy\":\"[\\\"discovering a new spell\\\",\\\"her first adventure\\\"]\",\"fear\":\"[\\\"water\\\",\\\"confinement\\\"]\",\"disgust\":\"[\\\"necromancy\\\",\\\"betrayal\\\"]\",\"anger\":\"[\\\"injustice\\\",\\\"slavery\\\"]\"}",
+                      "long_term_goals": "[\"Master the elemental magics\",\"Find the Phoenix Stone\",\"Open a school for adventurers\"]",
+                      "physical_appearance": "{\"hair_color\":\"fiery red\",\"eye_color\":\"hazel\",\"height\":\"5 feet 6 inches\",\"build\":\"fit\"}",
+                      "personality_traits": "[\"adventurous\",\"independent\"]",
+                      "beliefs_values": "{\"justice\":\"believes in taking action to right wrongs\",\"honor\":\"personal freedom and choice are paramount\",\"family\":\"family is chosen through bonds of friendship and loyalty\"}",
+                      "relationships": "{\"friends\":\"[\\\"sir_baldric_the_bold\\\"]\",\"enemies\":\"[\\\"the_cold_empress\\\"]\",\"romantic_interests\":\"[\\\"gavriel_the_wanderer\\\"]\"}",
+                      "fears_vulnerabilities": "{\"fears\":\"[\\\"the loss of her magical abilities\\\"]\",\"vulnerabilities\":\"[\\\"prone to overextending in battle\\\"]\"}",
+                      "unique_abilities_powers": "[\"Phoenix Rebirth (can recover quickly from near-defeat)\"]",
+                      "hobbies_interests": "[\"experimenting with potion recipes\",\"exploring ancient ruins\"]",
+                      "quirks_habits": "[\"always carries a vial of fire salt\",\"draws tiny flames on parchment when bored\"]",
+                      "createdAt": "2024-04-28T02:17:57.078Z",
+                      "updatedAt": "2024-04-28T02:17:57.078Z"
+                  },
+                  "mugshot": {
+                      "id": 1,
+                      "mugshot": "{\"scale\":0.56,\"x\":0.54,\"y\":0.14}",
+                      "image": "http://isekai.hurast.com/wp-content/uploads/visual_novel_characters/00339-2189841899.png",
+                      "alignment": "Chaotic Good",
+                      "fullname": "Lyra Flamehair",
+                      "family": "Flamehair",
+                      "race": "Human",
+                      "neutral_traits": "[\"Charismatic\",\"Brave\",\"Impulsive\"]",
+                      "negative_traits": "[\"Reckless\",\"Short-tempered\"]",
+                      "known_characters": "[\"cassandra_starshield\",\"elder_mage_veloran\"]",
+                      "skills": "[\"Dual Wielding Lv 4\",\"Alchemy Lv 2\",\"Unarmed Combat Lv 3\",\"Fire Magic Lv 4\"]",
+                      "short_backstory": "Lyra was born into a family of famed pyromancers. She left home to explore the world and find her own path, using her fiery talents to protect the innocent.",
+                      "age": 23,
+                      "core_memories": "{\"sad\":\"[\\\"destruction of her childhood home\\\",\\\"loss of her familiar\\\"]\",\"joy\":\"[\\\"discovering a new spell\\\",\\\"her first adventure\\\"]\",\"fear\":\"[\\\"water\\\",\\\"confinement\\\"]\",\"disgust\":\"[\\\"necromancy\\\",\\\"betrayal\\\"]\",\"anger\":\"[\\\"injustice\\\",\\\"slavery\\\"]\"}",
+                      "long_term_goals": "[\"Master the elemental magics\",\"Find the Phoenix Stone\",\"Open a school for adventurers\"]",
+                      "physical_appearance": "{\"hair_color\":\"fiery red\",\"eye_color\":\"hazel\",\"height\":\"5 feet 6 inches\",\"build\":\"fit\"}",
+                      "personality_traits": "[\"adventurous\",\"independent\"]",
+                      "beliefs_values": "{\"justice\":\"believes in taking action to right wrongs\",\"honor\":\"personal freedom and choice are paramount\",\"family\":\"family is chosen through bonds of friendship and loyalty\"}",
+                      "relationships": "{\"friends\":\"[\\\"sir_baldric_the_bold\\\"]\",\"enemies\":\"[\\\"the_cold_empress\\\"]\",\"romantic_interests\":\"[\\\"gavriel_the_wanderer\\\"]\"}",
+                      "fears_vulnerabilities": "{\"fears\":\"[\\\"the loss of her magical abilities\\\"]\",\"vulnerabilities\":\"[\\\"prone to overextending in battle\\\"]\"}",
+                      "unique_abilities_powers": "[\"Phoenix Rebirth (can recover quickly from near-defeat)\"]",
+                      "hobbies_interests": "[\"experimenting with potion recipes\",\"exploring ancient ruins\"]",
+                      "quirks_habits": "[\"always carries a vial of fire salt\",\"draws tiny flames on parchment when bored\"]",
+                      "createdAt": "2024-04-28T02:17:57.078Z",
+                      "updatedAt": "2024-04-28T02:17:57.078Z"
+                  }
+              },
+              {
+                  "id": 2,
+                  "parentEvent": 1,
+                  "speakerId": null,
+                  "mugshotId": 2,
+                  "dialogText": "Yes. Who are you?",
+                  "createdAt": "2024-04-28T02:17:57.094Z",
+                  "updatedAt": "2024-04-28T02:17:57.094Z",
+                  "parentSceneId": 1,
+                  "event_backgrounds": [
+                      {
+                          "id": 1,
+                          "name": "Some Forest",
+                          "image": "http://isekai.hurast.com/wp-content/uploads/visual_novel_backgrounds/bg_00009.jpg",
+                          "createdAt": "2024-04-28T02:17:57.069Z",
+                          "updatedAt": "2024-04-28T02:17:57.069Z",
+                          "EventBackgrounds": {
+                              "createdAt": "2024-04-28T02:17:57.113Z",
+                              "updatedAt": "2024-04-28T02:17:57.113Z",
+                              "EventId": 2,
+                              "BackgroundId": 1
+                          }
+                      }
+                  ],
+                  "event_characters": [
+                      {
+                          "id": 1,
+                          "mugshot": "{\"scale\":0.56,\"x\":0.54,\"y\":0.14}",
+                          "image": "http://isekai.hurast.com/wp-content/uploads/visual_novel_characters/00339-2189841899.png",
+                          "alignment": "Chaotic Good",
+                          "fullname": "Lyra Flamehair",
+                          "family": "Flamehair",
+                          "race": "Human",
+                          "neutral_traits": "[\"Charismatic\",\"Brave\",\"Impulsive\"]",
+                          "negative_traits": "[\"Reckless\",\"Short-tempered\"]",
+                          "known_characters": "[\"cassandra_starshield\",\"elder_mage_veloran\"]",
+                          "skills": "[\"Dual Wielding Lv 4\",\"Alchemy Lv 2\",\"Unarmed Combat Lv 3\",\"Fire Magic Lv 4\"]",
+                          "short_backstory": "Lyra was born into a family of famed pyromancers. She left home to explore the world and find her own path, using her fiery talents to protect the innocent.",
+                          "age": 23,
+                          "core_memories": "{\"sad\":\"[\\\"destruction of her childhood home\\\",\\\"loss of her familiar\\\"]\",\"joy\":\"[\\\"discovering a new spell\\\",\\\"her first adventure\\\"]\",\"fear\":\"[\\\"water\\\",\\\"confinement\\\"]\",\"disgust\":\"[\\\"necromancy\\\",\\\"betrayal\\\"]\",\"anger\":\"[\\\"injustice\\\",\\\"slavery\\\"]\"}",
+                          "long_term_goals": "[\"Master the elemental magics\",\"Find the Phoenix Stone\",\"Open a school for adventurers\"]",
+                          "physical_appearance": "{\"hair_color\":\"fiery red\",\"eye_color\":\"hazel\",\"height\":\"5 feet 6 inches\",\"build\":\"fit\"}",
+                          "personality_traits": "[\"adventurous\",\"independent\"]",
+                          "beliefs_values": "{\"justice\":\"believes in taking action to right wrongs\",\"honor\":\"personal freedom and choice are paramount\",\"family\":\"family is chosen through bonds of friendship and loyalty\"}",
+                          "relationships": "{\"friends\":\"[\\\"sir_baldric_the_bold\\\"]\",\"enemies\":\"[\\\"the_cold_empress\\\"]\",\"romantic_interests\":\"[\\\"gavriel_the_wanderer\\\"]\"}",
+                          "fears_vulnerabilities": "{\"fears\":\"[\\\"the loss of her magical abilities\\\"]\",\"vulnerabilities\":\"[\\\"prone to overextending in battle\\\"]\"}",
+                          "unique_abilities_powers": "[\"Phoenix Rebirth (can recover quickly from near-defeat)\"]",
+                          "hobbies_interests": "[\"experimenting with potion recipes\",\"exploring ancient ruins\"]",
+                          "quirks_habits": "[\"always carries a vial of fire salt\",\"draws tiny flames on parchment when bored\"]",
+                          "createdAt": "2024-04-28T02:17:57.078Z",
+                          "updatedAt": "2024-04-28T02:17:57.078Z",
+                          "EventCharacters": {
+                              "createdAt": "2024-04-28T02:17:57.120Z",
+                              "updatedAt": "2024-04-28T02:17:57.120Z",
+                              "EventId": 2,
+                              "CharacterId": 1
+                          }
+                      }
+                  ],
+                  "childEvents": [
+                      {
+                          "id": 2,
+                          "choice": "Lie",
+                          "createdAt": "2024-04-28T02:17:57.104Z",
+                          "updatedAt": "2024-04-28T02:17:57.104Z",
+                          "EventId": 2,
+                          "RelatedEventId": 4
+                      },
+                      {
+                          "id": 1,
+                          "choice": "Tell the truth",
+                          "createdAt": "2024-04-28T02:17:57.104Z",
+                          "updatedAt": "2024-04-28T02:17:57.104Z",
+                          "EventId": 2,
+                          "RelatedEventId": 3
+                      }
+                  ],
+                  "parentEvents": [],
+                  "speaker": null,
+                  "mugshot": {
+                      "id": 2,
+                      "mugshot": "{\"scale\":0.55,\"x\":0.55,\"y\":0.14}",
+                      "image": "http://isekai.hurast.com/wp-content/uploads/visual_novel_characters/00358-421244272.png",
+                      "alignment": "Lawful Good",
+                      "fullname": "Cassandra Starshield",
+                      "family": "Starshield",
+                      "race": "Human",
+                      "neutral_traits": "[\"Tactical\",\"Observant\",\"Disciplined\"]",
+                      "negative_traits": "[\"Stubborn\",\"Inflexible\"]",
+                      "known_characters": "[\"elder_mage_veloran\",\"rogue_thief_kir\"]",
+                      "skills": "[\"Swordsmanship Lv 4\",\"Light Magic Lv 3\",\"Tactics Lv 5\",\"Archery Lv 2\"]",
+                      "short_backstory": "Cassandra grew up in the militaristic city of Elyndor, where discipline and skill in combat are valued above all. She rose quickly through the ranks due to her dedication and strategic mind.",
+                      "age": 125,
+                      "core_memories": "{\"sad\":\"[\\\"fall of Elyndor's eastern bastion\\\",\\\"death of mentor\\\"]\",\"joy\":\"[\\\"first successful command\\\",\\\"mastering the sword dance\\\"]\",\"fear\":\"[\\\"losing her troops\\\",\\\"dishonor\\\"]\",\"disgust\":\"[\\\"cowardice\\\",\\\"treachery\\\"]\",\"anger\":\"[\\\"corruption in the high council\\\",\\\"unfair accusations against her family\\\"]\"}",
+                      "long_term_goals": "[\"Restore her family's honor\",\"Become head of the city guard\",\"Reform the high council\"]",
+                      "physical_appearance": "{\"hair_color\":\"blue-black\",\"eye_color\":\"emerald green\",\"height\":\"5 feet 9 inches\",\"build\":\"slender yet muscular\"}",
+                      "personality_traits": "[\"leader\",\"loyal\"]",
+                      "beliefs_values": "{\"justice\":\"believes in the rule of law and order\",\"honor\":\"upholds the knightly virtues of chivalry and respect\",\"family\":\"dedicated to her family's legacy\"}",
+                      "relationships": "{\"friends\":\"[\\\"thorin_the_blacksmith\\\"]\",\"enemies\":\"[\\\"zara_the_sorceress\\\"]\",\"romantic_interests\":\"[\\\"damien_the_scout\\\"]\"}",
+                      "fears_vulnerabilities": "{\"fears\":\"[\\\"the dark magic rising in the south\\\"]\",\"vulnerabilities\":\"[\\\"her family's disgraced name\\\"]\"}",
+                      "unique_abilities_powers": "[\"Aura of Valor (inspires allies)\"]",
+                      "hobbies_interests": "[\"studying ancient tactics\",\"falconry\"]",
+                      "quirks_habits": "[\"meticulously sharpens her sword every night\",\"always checks the wind direction\"]",
+                      "createdAt": "2024-04-28T02:17:57.078Z",
+                      "updatedAt": "2024-04-28T02:17:57.078Z"
+                  }
+              },
+              {
+                  "id": 3,
+                  "parentEvent": null,
+                  "speakerId": 1,
+                  "mugshotId": 1,
+                  "dialogText": "I'm Elara, a pleasure meet you",
+                  "createdAt": "2024-04-28T02:17:57.094Z",
+                  "updatedAt": "2024-04-28T02:17:57.094Z",
+                  "parentSceneId": 1,
+                  "event_backgrounds": [
+                      {
+                          "id": 1,
+                          "name": "Some Forest",
+                          "image": "http://isekai.hurast.com/wp-content/uploads/visual_novel_backgrounds/bg_00009.jpg",
+                          "createdAt": "2024-04-28T02:17:57.069Z",
+                          "updatedAt": "2024-04-28T02:17:57.069Z",
+                          "EventBackgrounds": {
+                              "createdAt": "2024-04-28T02:17:57.113Z",
+                              "updatedAt": "2024-04-28T02:17:57.113Z",
+                              "EventId": 3,
+                              "BackgroundId": 1
+                          }
+                      }
+                  ],
+                  "event_characters": [
+                      {
+                          "id": 1,
+                          "mugshot": "{\"scale\":0.56,\"x\":0.54,\"y\":0.14}",
+                          "image": "http://isekai.hurast.com/wp-content/uploads/visual_novel_characters/00339-2189841899.png",
+                          "alignment": "Chaotic Good",
+                          "fullname": "Lyra Flamehair",
+                          "family": "Flamehair",
+                          "race": "Human",
+                          "neutral_traits": "[\"Charismatic\",\"Brave\",\"Impulsive\"]",
+                          "negative_traits": "[\"Reckless\",\"Short-tempered\"]",
+                          "known_characters": "[\"cassandra_starshield\",\"elder_mage_veloran\"]",
+                          "skills": "[\"Dual Wielding Lv 4\",\"Alchemy Lv 2\",\"Unarmed Combat Lv 3\",\"Fire Magic Lv 4\"]",
+                          "short_backstory": "Lyra was born into a family of famed pyromancers. She left home to explore the world and find her own path, using her fiery talents to protect the innocent.",
+                          "age": 23,
+                          "core_memories": "{\"sad\":\"[\\\"destruction of her childhood home\\\",\\\"loss of her familiar\\\"]\",\"joy\":\"[\\\"discovering a new spell\\\",\\\"her first adventure\\\"]\",\"fear\":\"[\\\"water\\\",\\\"confinement\\\"]\",\"disgust\":\"[\\\"necromancy\\\",\\\"betrayal\\\"]\",\"anger\":\"[\\\"injustice\\\",\\\"slavery\\\"]\"}",
+                          "long_term_goals": "[\"Master the elemental magics\",\"Find the Phoenix Stone\",\"Open a school for adventurers\"]",
+                          "physical_appearance": "{\"hair_color\":\"fiery red\",\"eye_color\":\"hazel\",\"height\":\"5 feet 6 inches\",\"build\":\"fit\"}",
+                          "personality_traits": "[\"adventurous\",\"independent\"]",
+                          "beliefs_values": "{\"justice\":\"believes in taking action to right wrongs\",\"honor\":\"personal freedom and choice are paramount\",\"family\":\"family is chosen through bonds of friendship and loyalty\"}",
+                          "relationships": "{\"friends\":\"[\\\"sir_baldric_the_bold\\\"]\",\"enemies\":\"[\\\"the_cold_empress\\\"]\",\"romantic_interests\":\"[\\\"gavriel_the_wanderer\\\"]\"}",
+                          "fears_vulnerabilities": "{\"fears\":\"[\\\"the loss of her magical abilities\\\"]\",\"vulnerabilities\":\"[\\\"prone to overextending in battle\\\"]\"}",
+                          "unique_abilities_powers": "[\"Phoenix Rebirth (can recover quickly from near-defeat)\"]",
+                          "hobbies_interests": "[\"experimenting with potion recipes\",\"exploring ancient ruins\"]",
+                          "quirks_habits": "[\"always carries a vial of fire salt\",\"draws tiny flames on parchment when bored\"]",
+                          "createdAt": "2024-04-28T02:17:57.078Z",
+                          "updatedAt": "2024-04-28T02:17:57.078Z",
+                          "EventCharacters": {
+                              "createdAt": "2024-04-28T02:17:57.120Z",
+                              "updatedAt": "2024-04-28T02:17:57.120Z",
+                              "EventId": 3,
+                              "CharacterId": 1
+                          }
+                      }
+                  ],
+                  "childEvents": [],
+                  "parentEvents": [
+                      {
+                          "id": 1,
+                          "choice": "Tell the truth",
+                          "createdAt": "2024-04-28T02:17:57.104Z",
+                          "updatedAt": "2024-04-28T02:17:57.104Z",
+                          "EventId": 2,
+                          "RelatedEventId": 3
+                      }
+                  ],
+                  "speaker": {
+                      "id": 1,
+                      "mugshot": "{\"scale\":0.56,\"x\":0.54,\"y\":0.14}",
+                      "image": "http://isekai.hurast.com/wp-content/uploads/visual_novel_characters/00339-2189841899.png",
+                      "alignment": "Chaotic Good",
+                      "fullname": "Lyra Flamehair",
+                      "family": "Flamehair",
+                      "race": "Human",
+                      "neutral_traits": "[\"Charismatic\",\"Brave\",\"Impulsive\"]",
+                      "negative_traits": "[\"Reckless\",\"Short-tempered\"]",
+                      "known_characters": "[\"cassandra_starshield\",\"elder_mage_veloran\"]",
+                      "skills": "[\"Dual Wielding Lv 4\",\"Alchemy Lv 2\",\"Unarmed Combat Lv 3\",\"Fire Magic Lv 4\"]",
+                      "short_backstory": "Lyra was born into a family of famed pyromancers. She left home to explore the world and find her own path, using her fiery talents to protect the innocent.",
+                      "age": 23,
+                      "core_memories": "{\"sad\":\"[\\\"destruction of her childhood home\\\",\\\"loss of her familiar\\\"]\",\"joy\":\"[\\\"discovering a new spell\\\",\\\"her first adventure\\\"]\",\"fear\":\"[\\\"water\\\",\\\"confinement\\\"]\",\"disgust\":\"[\\\"necromancy\\\",\\\"betrayal\\\"]\",\"anger\":\"[\\\"injustice\\\",\\\"slavery\\\"]\"}",
+                      "long_term_goals": "[\"Master the elemental magics\",\"Find the Phoenix Stone\",\"Open a school for adventurers\"]",
+                      "physical_appearance": "{\"hair_color\":\"fiery red\",\"eye_color\":\"hazel\",\"height\":\"5 feet 6 inches\",\"build\":\"fit\"}",
+                      "personality_traits": "[\"adventurous\",\"independent\"]",
+                      "beliefs_values": "{\"justice\":\"believes in taking action to right wrongs\",\"honor\":\"personal freedom and choice are paramount\",\"family\":\"family is chosen through bonds of friendship and loyalty\"}",
+                      "relationships": "{\"friends\":\"[\\\"sir_baldric_the_bold\\\"]\",\"enemies\":\"[\\\"the_cold_empress\\\"]\",\"romantic_interests\":\"[\\\"gavriel_the_wanderer\\\"]\"}",
+                      "fears_vulnerabilities": "{\"fears\":\"[\\\"the loss of her magical abilities\\\"]\",\"vulnerabilities\":\"[\\\"prone to overextending in battle\\\"]\"}",
+                      "unique_abilities_powers": "[\"Phoenix Rebirth (can recover quickly from near-defeat)\"]",
+                      "hobbies_interests": "[\"experimenting with potion recipes\",\"exploring ancient ruins\"]",
+                      "quirks_habits": "[\"always carries a vial of fire salt\",\"draws tiny flames on parchment when bored\"]",
+                      "createdAt": "2024-04-28T02:17:57.078Z",
+                      "updatedAt": "2024-04-28T02:17:57.078Z"
+                  },
+                  "mugshot": {
+                      "id": 1,
+                      "mugshot": "{\"scale\":0.56,\"x\":0.54,\"y\":0.14}",
+                      "image": "http://isekai.hurast.com/wp-content/uploads/visual_novel_characters/00339-2189841899.png",
+                      "alignment": "Chaotic Good",
+                      "fullname": "Lyra Flamehair",
+                      "family": "Flamehair",
+                      "race": "Human",
+                      "neutral_traits": "[\"Charismatic\",\"Brave\",\"Impulsive\"]",
+                      "negative_traits": "[\"Reckless\",\"Short-tempered\"]",
+                      "known_characters": "[\"cassandra_starshield\",\"elder_mage_veloran\"]",
+                      "skills": "[\"Dual Wielding Lv 4\",\"Alchemy Lv 2\",\"Unarmed Combat Lv 3\",\"Fire Magic Lv 4\"]",
+                      "short_backstory": "Lyra was born into a family of famed pyromancers. She left home to explore the world and find her own path, using her fiery talents to protect the innocent.",
+                      "age": 23,
+                      "core_memories": "{\"sad\":\"[\\\"destruction of her childhood home\\\",\\\"loss of her familiar\\\"]\",\"joy\":\"[\\\"discovering a new spell\\\",\\\"her first adventure\\\"]\",\"fear\":\"[\\\"water\\\",\\\"confinement\\\"]\",\"disgust\":\"[\\\"necromancy\\\",\\\"betrayal\\\"]\",\"anger\":\"[\\\"injustice\\\",\\\"slavery\\\"]\"}",
+                      "long_term_goals": "[\"Master the elemental magics\",\"Find the Phoenix Stone\",\"Open a school for adventurers\"]",
+                      "physical_appearance": "{\"hair_color\":\"fiery red\",\"eye_color\":\"hazel\",\"height\":\"5 feet 6 inches\",\"build\":\"fit\"}",
+                      "personality_traits": "[\"adventurous\",\"independent\"]",
+                      "beliefs_values": "{\"justice\":\"believes in taking action to right wrongs\",\"honor\":\"personal freedom and choice are paramount\",\"family\":\"family is chosen through bonds of friendship and loyalty\"}",
+                      "relationships": "{\"friends\":\"[\\\"sir_baldric_the_bold\\\"]\",\"enemies\":\"[\\\"the_cold_empress\\\"]\",\"romantic_interests\":\"[\\\"gavriel_the_wanderer\\\"]\"}",
+                      "fears_vulnerabilities": "{\"fears\":\"[\\\"the loss of her magical abilities\\\"]\",\"vulnerabilities\":\"[\\\"prone to overextending in battle\\\"]\"}",
+                      "unique_abilities_powers": "[\"Phoenix Rebirth (can recover quickly from near-defeat)\"]",
+                      "hobbies_interests": "[\"experimenting with potion recipes\",\"exploring ancient ruins\"]",
+                      "quirks_habits": "[\"always carries a vial of fire salt\",\"draws tiny flames on parchment when bored\"]",
+                      "createdAt": "2024-04-28T02:17:57.078Z",
+                      "updatedAt": "2024-04-28T02:17:57.078Z"
+                  }
+              },
+              {
+                  "id": 4,
+                  "parentEvent": null,
+                  "speakerId": 1,
+                  "mugshotId": 1,
+                  "dialogText": "Why do you lie to me?\nI can read your mind!",
+                  "createdAt": "2024-04-28T02:17:57.094Z",
+                  "updatedAt": "2024-04-28T02:17:57.094Z",
+                  "parentSceneId": 1,
+                  "event_backgrounds": [
+                      {
+                          "id": 1,
+                          "name": "Some Forest",
+                          "image": "http://isekai.hurast.com/wp-content/uploads/visual_novel_backgrounds/bg_00009.jpg",
+                          "createdAt": "2024-04-28T02:17:57.069Z",
+                          "updatedAt": "2024-04-28T02:17:57.069Z",
+                          "EventBackgrounds": {
+                              "createdAt": "2024-04-28T02:17:57.113Z",
+                              "updatedAt": "2024-04-28T02:17:57.113Z",
+                              "EventId": 4,
+                              "BackgroundId": 1
+                          }
+                      }
+                  ],
+                  "event_characters": [
+                      {
+                          "id": 1,
+                          "mugshot": "{\"scale\":0.56,\"x\":0.54,\"y\":0.14}",
+                          "image": "http://isekai.hurast.com/wp-content/uploads/visual_novel_characters/00339-2189841899.png",
+                          "alignment": "Chaotic Good",
+                          "fullname": "Lyra Flamehair",
+                          "family": "Flamehair",
+                          "race": "Human",
+                          "neutral_traits": "[\"Charismatic\",\"Brave\",\"Impulsive\"]",
+                          "negative_traits": "[\"Reckless\",\"Short-tempered\"]",
+                          "known_characters": "[\"cassandra_starshield\",\"elder_mage_veloran\"]",
+                          "skills": "[\"Dual Wielding Lv 4\",\"Alchemy Lv 2\",\"Unarmed Combat Lv 3\",\"Fire Magic Lv 4\"]",
+                          "short_backstory": "Lyra was born into a family of famed pyromancers. She left home to explore the world and find her own path, using her fiery talents to protect the innocent.",
+                          "age": 23,
+                          "core_memories": "{\"sad\":\"[\\\"destruction of her childhood home\\\",\\\"loss of her familiar\\\"]\",\"joy\":\"[\\\"discovering a new spell\\\",\\\"her first adventure\\\"]\",\"fear\":\"[\\\"water\\\",\\\"confinement\\\"]\",\"disgust\":\"[\\\"necromancy\\\",\\\"betrayal\\\"]\",\"anger\":\"[\\\"injustice\\\",\\\"slavery\\\"]\"}",
+                          "long_term_goals": "[\"Master the elemental magics\",\"Find the Phoenix Stone\",\"Open a school for adventurers\"]",
+                          "physical_appearance": "{\"hair_color\":\"fiery red\",\"eye_color\":\"hazel\",\"height\":\"5 feet 6 inches\",\"build\":\"fit\"}",
+                          "personality_traits": "[\"adventurous\",\"independent\"]",
+                          "beliefs_values": "{\"justice\":\"believes in taking action to right wrongs\",\"honor\":\"personal freedom and choice are paramount\",\"family\":\"family is chosen through bonds of friendship and loyalty\"}",
+                          "relationships": "{\"friends\":\"[\\\"sir_baldric_the_bold\\\"]\",\"enemies\":\"[\\\"the_cold_empress\\\"]\",\"romantic_interests\":\"[\\\"gavriel_the_wanderer\\\"]\"}",
+                          "fears_vulnerabilities": "{\"fears\":\"[\\\"the loss of her magical abilities\\\"]\",\"vulnerabilities\":\"[\\\"prone to overextending in battle\\\"]\"}",
+                          "unique_abilities_powers": "[\"Phoenix Rebirth (can recover quickly from near-defeat)\"]",
+                          "hobbies_interests": "[\"experimenting with potion recipes\",\"exploring ancient ruins\"]",
+                          "quirks_habits": "[\"always carries a vial of fire salt\",\"draws tiny flames on parchment when bored\"]",
+                          "createdAt": "2024-04-28T02:17:57.078Z",
+                          "updatedAt": "2024-04-28T02:17:57.078Z",
+                          "EventCharacters": {
+                              "createdAt": "2024-04-28T02:17:57.120Z",
+                              "updatedAt": "2024-04-28T02:17:57.120Z",
+                              "EventId": 4,
+                              "CharacterId": 1
+                          }
+                      }
+                  ],
+                  "childEvents": [],
+                  "parentEvents": [
+                      {
+                          "id": 2,
+                          "choice": "Lie",
+                          "createdAt": "2024-04-28T02:17:57.104Z",
+                          "updatedAt": "2024-04-28T02:17:57.104Z",
+                          "EventId": 2,
+                          "RelatedEventId": 4
+                      }
+                  ],
+                  "speaker": {
+                      "id": 1,
+                      "mugshot": "{\"scale\":0.56,\"x\":0.54,\"y\":0.14}",
+                      "image": "http://isekai.hurast.com/wp-content/uploads/visual_novel_characters/00339-2189841899.png",
+                      "alignment": "Chaotic Good",
+                      "fullname": "Lyra Flamehair",
+                      "family": "Flamehair",
+                      "race": "Human",
+                      "neutral_traits": "[\"Charismatic\",\"Brave\",\"Impulsive\"]",
+                      "negative_traits": "[\"Reckless\",\"Short-tempered\"]",
+                      "known_characters": "[\"cassandra_starshield\",\"elder_mage_veloran\"]",
+                      "skills": "[\"Dual Wielding Lv 4\",\"Alchemy Lv 2\",\"Unarmed Combat Lv 3\",\"Fire Magic Lv 4\"]",
+                      "short_backstory": "Lyra was born into a family of famed pyromancers. She left home to explore the world and find her own path, using her fiery talents to protect the innocent.",
+                      "age": 23,
+                      "core_memories": "{\"sad\":\"[\\\"destruction of her childhood home\\\",\\\"loss of her familiar\\\"]\",\"joy\":\"[\\\"discovering a new spell\\\",\\\"her first adventure\\\"]\",\"fear\":\"[\\\"water\\\",\\\"confinement\\\"]\",\"disgust\":\"[\\\"necromancy\\\",\\\"betrayal\\\"]\",\"anger\":\"[\\\"injustice\\\",\\\"slavery\\\"]\"}",
+                      "long_term_goals": "[\"Master the elemental magics\",\"Find the Phoenix Stone\",\"Open a school for adventurers\"]",
+                      "physical_appearance": "{\"hair_color\":\"fiery red\",\"eye_color\":\"hazel\",\"height\":\"5 feet 6 inches\",\"build\":\"fit\"}",
+                      "personality_traits": "[\"adventurous\",\"independent\"]",
+                      "beliefs_values": "{\"justice\":\"believes in taking action to right wrongs\",\"honor\":\"personal freedom and choice are paramount\",\"family\":\"family is chosen through bonds of friendship and loyalty\"}",
+                      "relationships": "{\"friends\":\"[\\\"sir_baldric_the_bold\\\"]\",\"enemies\":\"[\\\"the_cold_empress\\\"]\",\"romantic_interests\":\"[\\\"gavriel_the_wanderer\\\"]\"}",
+                      "fears_vulnerabilities": "{\"fears\":\"[\\\"the loss of her magical abilities\\\"]\",\"vulnerabilities\":\"[\\\"prone to overextending in battle\\\"]\"}",
+                      "unique_abilities_powers": "[\"Phoenix Rebirth (can recover quickly from near-defeat)\"]",
+                      "hobbies_interests": "[\"experimenting with potion recipes\",\"exploring ancient ruins\"]",
+                      "quirks_habits": "[\"always carries a vial of fire salt\",\"draws tiny flames on parchment when bored\"]",
+                      "createdAt": "2024-04-28T02:17:57.078Z",
+                      "updatedAt": "2024-04-28T02:17:57.078Z"
+                  },
+                  "mugshot": {
+                      "id": 1,
+                      "mugshot": "{\"scale\":0.56,\"x\":0.54,\"y\":0.14}",
+                      "image": "http://isekai.hurast.com/wp-content/uploads/visual_novel_characters/00339-2189841899.png",
+                      "alignment": "Chaotic Good",
+                      "fullname": "Lyra Flamehair",
+                      "family": "Flamehair",
+                      "race": "Human",
+                      "neutral_traits": "[\"Charismatic\",\"Brave\",\"Impulsive\"]",
+                      "negative_traits": "[\"Reckless\",\"Short-tempered\"]",
+                      "known_characters": "[\"cassandra_starshield\",\"elder_mage_veloran\"]",
+                      "skills": "[\"Dual Wielding Lv 4\",\"Alchemy Lv 2\",\"Unarmed Combat Lv 3\",\"Fire Magic Lv 4\"]",
+                      "short_backstory": "Lyra was born into a family of famed pyromancers. She left home to explore the world and find her own path, using her fiery talents to protect the innocent.",
+                      "age": 23,
+                      "core_memories": "{\"sad\":\"[\\\"destruction of her childhood home\\\",\\\"loss of her familiar\\\"]\",\"joy\":\"[\\\"discovering a new spell\\\",\\\"her first adventure\\\"]\",\"fear\":\"[\\\"water\\\",\\\"confinement\\\"]\",\"disgust\":\"[\\\"necromancy\\\",\\\"betrayal\\\"]\",\"anger\":\"[\\\"injustice\\\",\\\"slavery\\\"]\"}",
+                      "long_term_goals": "[\"Master the elemental magics\",\"Find the Phoenix Stone\",\"Open a school for adventurers\"]",
+                      "physical_appearance": "{\"hair_color\":\"fiery red\",\"eye_color\":\"hazel\",\"height\":\"5 feet 6 inches\",\"build\":\"fit\"}",
+                      "personality_traits": "[\"adventurous\",\"independent\"]",
+                      "beliefs_values": "{\"justice\":\"believes in taking action to right wrongs\",\"honor\":\"personal freedom and choice are paramount\",\"family\":\"family is chosen through bonds of friendship and loyalty\"}",
+                      "relationships": "{\"friends\":\"[\\\"sir_baldric_the_bold\\\"]\",\"enemies\":\"[\\\"the_cold_empress\\\"]\",\"romantic_interests\":\"[\\\"gavriel_the_wanderer\\\"]\"}",
+                      "fears_vulnerabilities": "{\"fears\":\"[\\\"the loss of her magical abilities\\\"]\",\"vulnerabilities\":\"[\\\"prone to overextending in battle\\\"]\"}",
+                      "unique_abilities_powers": "[\"Phoenix Rebirth (can recover quickly from near-defeat)\"]",
+                      "hobbies_interests": "[\"experimenting with potion recipes\",\"exploring ancient ruins\"]",
+                      "quirks_habits": "[\"always carries a vial of fire salt\",\"draws tiny flames on parchment when bored\"]",
+                      "createdAt": "2024-04-28T02:17:57.078Z",
+                      "updatedAt": "2024-04-28T02:17:57.078Z"
+                  }
+              }
+          ]
+      }
+      ```
+  */
+
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var idToUse = undefined;
     if (!scene) {
@@ -7991,7 +8664,7 @@ function ScenePage() {
       idToUse = scene.id;
     }
     setIsLoading(true);
-    axios__WEBPACK_IMPORTED_MODULE_3__["default"].get("http://localhost:8080/scene/".concat(idToUse)).then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_5__["default"].get("http://localhost:8080/scene/".concat(idToUse)).then(function (res) {
       setScene(res.data);
     })["catch"](function (err) {
       console.error(err);
@@ -8007,9 +8680,9 @@ function ScenePage() {
   var changeBranchSelection = function changeBranchSelection(eventId, delta) {
     //Check if index is out of bounds
     var currentIndex = branchSelection[eventId] || 0;
-    if (currentIndex + delta >= events.find(function (e) {
+    if (currentIndex + delta >= scene.childEvents.find(function (e) {
       return e.id === eventId;
-    }).ChildEvents.length || currentIndex + delta < 0) {
+    }).childEvents.length || currentIndex + delta < 0) {
       return;
     }
     setBranchSelection(function (prev) {
@@ -8017,25 +8690,25 @@ function ScenePage() {
     });
   };
   var getNextEventId = function getNextEventId(eventId) {
-    var event = events.find(function (e) {
+    var event = scene.childEvents.find(function (e) {
       return e.id === eventId;
     });
     if (!event) return null;
-    if (event.ChildEvents.length > 0) {
-      var _event$ChildEvents$br;
+    if (event.childEvents.length > 0) {
+      var _event$childEvents$br;
       var branchIndex = branchSelection[eventId] || 0;
-      return (_event$ChildEvents$br = event.ChildEvents[branchIndex]) === null || _event$ChildEvents$br === void 0 ? void 0 : _event$ChildEvents$br.RelatedEventId;
+      return (_event$childEvents$br = event.childEvents[branchIndex]) === null || _event$childEvents$br === void 0 ? void 0 : _event$childEvents$br.RelatedEventId;
     } else {
-      var _events$find;
+      var _scene$childEvents$fi;
       // Find the next event in the sequence
-      return (_events$find = events.find(function (e) {
+      return (_scene$childEvents$fi = scene.childEvents.find(function (e) {
         return e.parentEvent === eventId;
-      })) === null || _events$find === void 0 ? void 0 : _events$find.id;
+      })) === null || _scene$childEvents$fi === void 0 ? void 0 : _scene$childEvents$fi.id;
     }
   };
   var renderEvent = function renderEvent(eventId) {
-    var _event$ChildEvents$Nu;
-    var event = events.find(function (e) {
+    var _event$childEvents$Nu;
+    var event = scene.childEvents.find(function (e) {
       return e.id === eventId;
     });
     if (!event) return null;
@@ -8057,7 +8730,7 @@ function ScenePage() {
         return handleEditEvent(eventId);
       },
       className: "btn btn-primary"
-    }, "Edit"))))), event.ChildEvents.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    }, "Edit"))))), event.childEvents.length > 0 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "row mb-3"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "col-12"
@@ -8069,14 +8742,14 @@ function ScenePage() {
       className: "card-title"
     }, "Choice"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
       className: "card-text"
-    }, (_event$ChildEvents$Nu = event.ChildEvents[Number.parseInt(branchSelection[eventId] || 0)]) === null || _event$ChildEvents$Nu === void 0 ? void 0 : _event$ChildEvents$Nu.choice))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    }, (_event$childEvents$Nu = event.childEvents[Number.parseInt(branchSelection[eventId] || 0)]) === null || _event$childEvents$Nu === void 0 ? void 0 : _event$childEvents$Nu.choice))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "col-12 d-flex"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
       className: "btn",
       onClick: function onClick() {
         return changeBranchSelection(eventId, -1);
       }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_4__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_6__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
       type: "number",
       className: "form-control",
       style: {
@@ -8090,7 +8763,7 @@ function ScenePage() {
       onClick: function onClick() {
         return changeBranchSelection(eventId, 1);
       }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_5__["default"], null))))), nextEventId && renderEvent(nextEventId));
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_7__["default"], null))))), nextEventId && renderEvent(nextEventId));
   };
   if (isLoading) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Loading...");
   if (error) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Error loading events: ", error);
@@ -8099,76 +8772,30 @@ function ScenePage() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "col-12"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Scene Page"))), currentEventID && renderEvent(currentEventID));
-}
-
-/***/ }),
-
-/***/ "./pages/SingleEventEditor.jsx":
-/*!*************************************!*\
-  !*** ./pages/SingleEventEditor.jsx ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/AppContext */ "./context/AppContext.jsx");
-/* harmony import */ var _EventDialogEditor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EventDialogEditor */ "./pages/EventDialogEditor.jsx");
-/* harmony import */ var _DialogMugshotEditor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DialogMugshotEditor */ "./pages/DialogMugshotEditor.jsx");
-/* harmony import */ var _SceneParts_SceneCharacter__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SceneParts/SceneCharacter */ "./pages/SceneParts/SceneCharacter.jsx");
-
- // Update the path as per your project structure
-
-
-
-// import './ScreenSection.css'; // Assuming you will place the CSS in this file
-
-var SingleEventEditor = function SingleEventEditor() {
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_AppContext__WEBPACK_IMPORTED_MODULE_1__["default"]),
-    events = _useContext.events,
-    currentEventID = _useContext.currentEventID,
-    currentSceneID = _useContext.currentSceneID,
-    scenes = _useContext.scenes;
-
-  // Find the current event based on currentEventID
-  var currentEvent = events.find(function (event) {
-    return event.id === currentEventID;
-  });
-
-  // Checking if there is a valid event to render
-  if (!currentEvent) {
-    return null;
-  }
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
-    id: "screen"
+    className: "col-12 mb-3 py-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Scene Page"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "background"
-  }, currentEvent.Backgrounds.map(function (background) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-      key: background.id,
-      src: background.image,
-      alt: background.name
-    });
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "characters"
-  }, currentEvent.Characters.map(function (character) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SceneParts_SceneCharacter__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      key: character.id,
-      character: character
-    });
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "dialog-window"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_DialogMugshotEditor__WEBPACK_IMPORTED_MODULE_3__["default"], null), currentEvent.dialogText && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_EventDialogEditor__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    dialog: currentEvent.dialogText
-  })));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SingleEventEditor);
+    className: "col-12 mb-3 py-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    className: "mx-1",
+    variant: "outline-success"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    className: "mx-2"
+  }), " Play Scene"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    className: "mx-1",
+    variant: "outline-dark"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    className: "mx-2"
+  }), " Scene Settings"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    className: "mx-1",
+    variant: "outline-dark"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    className: "mx-2"
+  }), "Open event editor"))), scene && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Event_EventList__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    events: scene.childEvents
+  }), currentEventID && renderEvent(currentEventID));
+}
 
 /***/ }),
 
@@ -10595,6 +11222,62 @@ EyeFill.defaultProps = {
 
 /***/ }),
 
+/***/ "./node_modules/react-bootstrap-icons/dist/icons/image-alt.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/react-bootstrap-icons/dist/icons/image-alt.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+var _excluded = ["color", "size", "title"];
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+var ImageAlt = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(function (_ref, ref) {
+  var color = _ref.color,
+      size = _ref.size,
+      title = _ref.title,
+      rest = _objectWithoutProperties(_ref, _excluded);
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", _extends({
+    ref: ref,
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 16 16",
+    width: size,
+    height: size,
+    fill: color
+  }, rest), title ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("title", null, title) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", {
+    d: "M7 2.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0zm4.225 4.053a.5.5 0 0 0-.577.093l-3.71 4.71-2.66-2.772a.5.5 0 0 0-.63.062L.002 13v2a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4.5l-4.777-3.947z"
+  }));
+});
+ImageAlt.propTypes = {
+  color: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+  size: prop_types__WEBPACK_IMPORTED_MODULE_1___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_1___default().string), (prop_types__WEBPACK_IMPORTED_MODULE_1___default().number)]),
+  title: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string)
+};
+ImageAlt.defaultProps = {
+  color: 'currentColor',
+  size: '1em',
+  title: null
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ImageAlt);
+
+/***/ }),
+
 /***/ "./node_modules/react-bootstrap-icons/dist/icons/images.js":
 /*!*****************************************************************!*\
   !*** ./node_modules/react-bootstrap-icons/dist/icons/images.js ***!
@@ -10650,6 +11333,63 @@ Images.defaultProps = {
   title: null
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Images);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap-icons/dist/icons/justify-left.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/react-bootstrap-icons/dist/icons/justify-left.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+var _excluded = ["color", "size", "title"];
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+var JustifyLeft = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(function (_ref, ref) {
+  var color = _ref.color,
+      size = _ref.size,
+      title = _ref.title,
+      rest = _objectWithoutProperties(_ref, _excluded);
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", _extends({
+    ref: ref,
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 16 16",
+    width: size,
+    height: size,
+    fill: color
+  }, rest), title ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("title", null, title) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", {
+    fillRule: "evenodd",
+    d: "M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"
+  }));
+});
+JustifyLeft.propTypes = {
+  color: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+  size: prop_types__WEBPACK_IMPORTED_MODULE_1___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_1___default().string), (prop_types__WEBPACK_IMPORTED_MODULE_1___default().number)]),
+  title: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string)
+};
+JustifyLeft.defaultProps = {
+  color: 'currentColor',
+  size: '1em',
+  title: null
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (JustifyLeft);
 
 /***/ }),
 
@@ -10768,6 +11508,62 @@ MusicNoteBeamed.defaultProps = {
   title: null
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MusicNoteBeamed);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap-icons/dist/icons/pencil-fill.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/react-bootstrap-icons/dist/icons/pencil-fill.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+var _excluded = ["color", "size", "title"];
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+var PencilFill = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(function (_ref, ref) {
+  var color = _ref.color,
+      size = _ref.size,
+      title = _ref.title,
+      rest = _objectWithoutProperties(_ref, _excluded);
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", _extends({
+    ref: ref,
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 16 16",
+    width: size,
+    height: size,
+    fill: color
+  }, rest), title ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("title", null, title) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", {
+    d: "M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"
+  }));
+});
+PencilFill.propTypes = {
+  color: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+  size: prop_types__WEBPACK_IMPORTED_MODULE_1___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_1___default().string), (prop_types__WEBPACK_IMPORTED_MODULE_1___default().number)]),
+  title: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string)
+};
+PencilFill.defaultProps = {
+  color: 'currentColor',
+  size: '1em',
+  title: null
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PencilFill);
 
 /***/ }),
 
@@ -10938,6 +11734,62 @@ PersonVideo2.defaultProps = {
   title: null
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PersonVideo2);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap-icons/dist/icons/play-fill.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/react-bootstrap-icons/dist/icons/play-fill.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+var _excluded = ["color", "size", "title"];
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+var PlayFill = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(function (_ref, ref) {
+  var color = _ref.color,
+      size = _ref.size,
+      title = _ref.title,
+      rest = _objectWithoutProperties(_ref, _excluded);
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", _extends({
+    ref: ref,
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 16 16",
+    width: size,
+    height: size,
+    fill: color
+  }, rest), title ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("title", null, title) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", {
+    d: "m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"
+  }));
+});
+PlayFill.propTypes = {
+  color: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+  size: prop_types__WEBPACK_IMPORTED_MODULE_1___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_1___default().string), (prop_types__WEBPACK_IMPORTED_MODULE_1___default().number)]),
+  title: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string)
+};
+PlayFill.defaultProps = {
+  color: 'currentColor',
+  size: '1em',
+  title: null
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PlayFill);
 
 /***/ }),
 
@@ -62409,7 +63261,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ "./node_modules/bootstrap/dist/css/bootstrap.min.css");
-/* harmony import */ var _pages_SceneEditor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/SceneEditor */ "./pages/SceneEditor.jsx");
+/* harmony import */ var _pages_Scene_SceneEditor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/Scene/SceneEditor */ "./pages/Scene/SceneEditor.jsx");
 /* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./context/AppContext */ "./context/AppContext.jsx");
 /* harmony import */ var _pages_Dashboard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/Dashboard */ "./pages/Dashboard.jsx");
 /* harmony import */ var _pages_Scene_ScenePage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/Scene/ScenePage */ "./pages/Scene/ScenePage.jsx");
@@ -62432,10 +63284,10 @@ var App = function App() {
     element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_pages_Scene_ScenePage__WEBPACK_IMPORTED_MODULE_6__["default"], null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
     path: "/edit/scene",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_pages_SceneEditor__WEBPACK_IMPORTED_MODULE_3__.SceneEditor, null)
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_pages_Scene_SceneEditor__WEBPACK_IMPORTED_MODULE_3__.SceneEditor, null)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
     path: "/edit/event",
-    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_pages_SceneEditor__WEBPACK_IMPORTED_MODULE_3__.SceneEditor, null)
+    element: /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_pages_Scene_SceneEditor__WEBPACK_IMPORTED_MODULE_3__.SceneEditor, null)
   }))));
 };
 var root = document.getElementById("root");

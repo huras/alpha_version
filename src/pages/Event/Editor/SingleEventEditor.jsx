@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from 'react';
-import AppContext from '../context/AppContext'; // Update the path as per your project structure
+import AppContext from '../../../context/AppContext'; // Update the path as per your project structure
 import EventDialogEditor from './EventDialogEditor';
 import DialogMugshotEditor from './DialogMugshotEditor';
-import SceneCharacter from './SceneParts/SceneCharacter';
+import SceneCharacter from '../../SceneParts/SceneCharacter';
 // import './ScreenSection.css'; // Assuming you will place the CSS in this file
 
 const SingleEventEditor = () => {

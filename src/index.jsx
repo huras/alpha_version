@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { SceneEditor } from "./pages/SceneEditor";
+import { SceneEditor } from "./pages/Scene/SceneEditor";
 import { AppProvider } from "./context/AppContext"; // Import the AppProvider
 import Dashboard from "./pages/Dashboard";
 import ScenePage from "./pages/Scene/ScenePage";

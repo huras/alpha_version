@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import AppContext from '../context/AppContext';
+import AppContext from '../../../context/AppContext';
 import { Button, Form, Modal, ListGroup } from 'react-bootstrap';
 import { Pencil } from 'react-bootstrap-icons';
 
