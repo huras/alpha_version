@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Novel GPT - Alpha</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="event_list.css">
+    <link rel="stylesheet" href="vn_style.css">
+</head>
+
+<body>
+
+    <script>
+
+        const database = {
+            "events": [
+                {
+                    "background": [
+                        {
+                            "id": 1,
+                            "name": "Some Forest",
+                            "image": "img/bg/00041-2534950232.png"
+                        }
+                    ],
+                    "characters_on_scene": [
+                        {
+                            "id": 1,
+                            "image": "img/char/00133-1521237494.png"
+                        },
+                        {
+                            "id": 2,
+                            "image": "img/char/00136-1521237497.png"
+                        },
+                    ],
+                    "audio_events": [
+                        // "start music",
+                        // "stop music",
+                        // "play SFX"
+                    ],
+                    "dialog": [
+                        {
+                            "speaker": "Kazuma",
+                            "text": "Hello World!\nI'm Kazuma, the main character of this story.\nAnd this is a very long text to test the dialog window."
+                        }
+                    ]
+                },
+                {
+                    "background": [
+                        {
+                            "id": 1,
+                            "name": "Some Forest",
+                            "image": "img/bg/00041-2534950232.png"
+                        }
+                    ],
+                    "characters_on_scene": [
+                        {
+                            "id": 1,
+                            "image": "img/char/00133-1521237494.png"
+                        },
+                    ],
+                    "audio_events": [
+                    ],
+                    "dialog": [
+                        {
+                            "speaker": "Kazuma",
+                            "text": "The king is dead! Long live the king!"
+                        }
+                    ]
+                }
+            ],
+            "characters": [
+                {
+                    "id": 1,
+                    "mugshot": "img/char/00133-1521237494.png",
+                    "image": "img/00133-1521237494.png",
+                    "alignment": "Chaotic Good",
+                    "fullname": "Lyra Flamehair",
+                    "family": "Flamehair",
+                    "race": "Human",
+                    "neutral_traits": ["Charismatic", "Brave", "Impulsive"],
+                    "negative_traits": ["Reckless", "Short-tempered"],
+                    "known_characters": ["cassandra_starshield", "elder_mage_veloran"],
+                    "skills": ["Dual Wielding Lv 4", "Alchemy Lv 2", "Unarmed Combat Lv 3", "Fire Magic Lv 4"],
+                    "short_backstory": "Lyra was born into a family of famed pyromancers. She left home to explore the world and find her own path, using her fiery talents to protect the innocent.",
+                    "age": 23,
+                    "core_memories": {
+                        "sad": ["destruction of her childhood home", "loss of her familiar"],
+                        "joy": ["discovering a new spell", "her first adventure"],
+                        "fear": ["water", "confinement"],
+                        "disgust": ["necromancy", "betrayal"],
+                        "anger": ["injustice", "slavery"]
+                    },
+                    "long_term_goals": ["Master the elemental magics", "Find the Phoenix Stone", "Open a school for adventurers"],
+                    "physical_appearance": {
+                        "hair_color": "fiery red",
+                        "eye_color": "hazel",
+                        "height": "5 feet 6 inches",
+                        "build": "fit"
+                    },
+                    "personality_traits": ["adventurous", "independent"],
+                    "beliefs_values": {
+                        "justice": "believes in taking action to right wrongs",
+                        "honor": "personal freedom and choice are paramount",
+                        "family": "family is chosen through bonds of friendship and loyalty"
+                    },
+                    "relationships": {
+                        "friends": ["sir_baldric_the_bold"],
+                        "enemies": ["the_cold_empress"],
+                        "romantic_interests": ["gavriel_the_wanderer"]
+                    },
+                    "fears_vulnerabilities": {
+                        "fears": ["the loss of her magical abilities"],
+                        "vulnerabilities": ["prone to overextending in battle"]
+                    },
+                    "unique_abilities_powers": ["Phoenix Rebirth (can recover quickly from near-defeat)"],
+                    "hobbies_interests": ["experimenting with potion recipes", "exploring ancient ruins"],
+                    "quirks_habits": ["always carries a vial of fire salt", "draws tiny flames on parchment when bored"]
+                },
+                {
+                    "id": 2,
+                    "mugshot": "00136-1521237497.png",
+                    "image": "img/char/00136-1521237497.png",
+                    // "id": "azure_sentinel_01",
+                    "alignment": "Lawful Good",
+                    "fullname": "Cassandra Starshield",
+                    "family": "Starshield",
+                    "race": "Elf",
+                    "neutral_traits": ["Tactical", "Observant", "Disciplined"],
+                    "negative_traits": ["Stubborn", "Inflexible"],
+                    "known_characters": ["elder_mage_veloran", "rogue_thief_kir"],
+                    "skills": ["Swordsmanship Lv 4", "Light Magic Lv 3", "Tactics Lv 5", "Archery Lv 2"],
+                    "short_backstory": "Cassandra grew up in the militaristic city of Elyndor, where discipline and skill in combat are valued above all. She rose quickly through the ranks due to her dedication and strategic mind.",
+                    "age": 125,
+                    "core_memories": {
+                        "sad": ["fall of Elyndor's eastern bastion", "death of mentor"],
+                        "joy": ["first successful command", "mastering the sword dance"],
+                        "fear": ["losing her troops", "dishonor"],
+                        "disgust": ["cowardice", "treachery"],
+                        "anger": ["corruption in the high council", "unfair accusations against her family"]
+                    },
+                    "long_term_goals": ["Restore her family's honor", "Become head of the city guard", "Reform the high council"],
+                    "physical_appearance": {
+                        "hair_color": "blue-black",
+                        "eye_color": "emerald green",
+                        "height": "5 feet 9 inches",
+                        "build": "slender yet muscular"
+                    },
+                    "personality_traits": ["leader", "loyal"],
+                    "beliefs_values": {
+                        "justice": "believes in the rule of law and order",
+                        "honor": "upholds the knightly virtues of chivalry and respect",
+                        "family": "dedicated to her family's legacy"
+                    },
+                    "relationships": {
+                        "friends": ["thorin_the_blacksmith"],
+                        "enemies": ["zara_the_sorceress"],
+                        "romantic_interests": ["damien_the_scout"]
+                    },
+                    "fears_vulnerabilities": {
+                        "fears": ["the dark magic rising in the south"],
+                        "vulnerabilities": ["her family's disgraced name"]
+                    },
+                    "unique_abilities_powers": ["Aura of Valor (inspires allies)"],
+                    "hobbies_interests": ["studying ancient tactics", "falconry"],
+                    "quirks_habits": ["meticulously sharpens her sword every night", "always checks the wind direction"]
+                }
+            ],
+            "backgrounds": [
+                {
+                    "id": 1,
+                    "name": "Some Forest",
+                    "image": "img/bg/00041-2534950232.png"
+                },
+            ],
+        }
+    </script>
+
+    <div id="root"></div>
+
+    <!-- Main Navbar -->
+    <nav class="navbar navbar-expand-lg" id="vn-tool-bar">
+        <div class="container-fluid">
+            <!-- Toggle button for Event List Drawer -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#event-list" 
+                aria-controls="event-list" aria-expanded="false" aria-label="Toggle event list"
+                onclick="navbarEventList.render()">
+                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512"
+                    style="fill: white;">
+                    <path
+                        d="M16 132h416c8.8 0 16-7.2 16-16V76c0-8.8-7.2-16-16-16H16C7.2 60 0 67.2 0 76v40c0 8.8 7.2 16 16 16zm0 160h416c8.8 0 16-7.2 16-16v-40c0-8.8-7.2-16-16-16H16c-8.8 0-16 7.2-16 16v40c0 8.8 7.2 16 16 16zm0 160h416c8.8 0 16-7.2 16-16v-40c0-8.8-7.2-16-16-16H16c-8.8 0-16 7.2-16 16v40c0 8.8 7.2 16 16 16z" />
+                </svg>
+            </button>
+
+            <!-- Navbar content -->
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <div class="navbar-nav ms-auto">
+                    <span class="nav-item nav-link">Page <span class="page-number"></span> of <span
+                            class="total-pages"></span></span>
+                    <!-- Add additional navbar items here if needed -->
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Event List Drawer Section -->
+    <section id="event-list" class="collapse position-absolute top-0 start-0 bg-light overflow-auto">
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <!-- Close button for the drawer -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#event-list"
+                    aria-controls="event-list" aria-expanded="true" aria-label="Close event list">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <a class="navbar-brand" href="#">Event List</a>
+            </div>
+        </nav>
+        <div class="p-4"></div>
+        <div class="p-4">
+            <button class="btn btn-secondary" id="save-event">Save Scene</button>
+        </div>
+        <div class="list-group the-list">
+        </div>
+        <div class="p-4">
+            <button class="btn btn-secondary w-100" id="new-event">
+                Add event
+                <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512">
+                    <path
+                        d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
+                </svg>
+            </button>
+        </div>
+
+        <template id="event-list-item-template">
+            <ul class="list-group list-group-horizontal event-item-list">
+                <li class="list-group-item">
+                    <div
+                        style="background-image: url('img/bg/00041-2534950232.png'); width: calc(960px * 0.28); height: calc(536px * 0.28); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                        <div class="character-pivot">
+
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item d-flex flex-column justify-content-start align-items-center">
+                    <!-- Number of the event -->
+                    <span class="badge bg-secondary event-number">1</span>
+
+                    <!-- delete trash button -->
+                    <button class="btn btn-danger  mt-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-trash2-fill" viewBox="0 0 16 16">
+                            <path d="M5.5 1h5l.5.5h3v1h-12v-1h3l.5-.5zm1 1v1h4V2h-4z" />
+                            <path d="M3.5 4h9l.5.5v9l-.5.5h-9l-.5-.5v-9l.5-.5zm1 1v8h8V5h-8z" />
+                        </svg>
+                    </button>
+
+                    <!-- edit button -->
+                    <button class="btn btn-primary mt-1">
+                        Go
+                    </button>
+
+                </li>
+            </ul>
+        </template>
+        <script>
+            //A class responsible for rendering, sorting, deleting, reading and writing on database.events filling "#event-list .the-list" with template "#event-list-item-template"
+            class NavbarEventList {
+                constructor() {
+                    this.template = document.querySelector("#event-list-item-template");
+                    this.list = document.querySelector("#event-list .the-list");
+                    this.events = database.events;
+                }
+
+                render() {
+                    this.list.innerHTML = "";
+                    this.events.forEach((event, index) => {
+                        let item = this.template.content.cloneNode(true);
+
+                        //set backgrounds
+                        item.querySelector("div").style.backgroundImage = `url('${event.background[0].image}')`;
+                        //insert image to force fdix to right size, but put image with opacity 0    
+                        // const bgImage = document.createElement("img");
+                        // bgImage.src = event.background[0].image;
+                        // item.querySelector("div .background-sizer").appendChild(bgImage);
+
+                        //Insert characters image inside the background_image div
+                        event.characters_on_scene.forEach((character) => {
+
+                            const charImage = document.createElement("img");
+                            charImage.src = character.image;
+                            item.querySelector("div .character-pivot").appendChild(charImage);
+                        });
+
+                        //set event-number
+                        item.querySelector(".event-number").innerText = index + 1;
+
+                        item.querySelector("button").addEventListener("click", () => {
+                            this.delete(index);
+                        });
+
+                        //Go button must make EventEditor draw the event
+                        item.querySelector("button.btn-primary").addEventListener("click", () => {
+                            eventEditorAndViewer.setCurrentEvent(index);
+
+                            //toggle event list
+                            const eventList = document.querySelector("#event-list");
+                            const eventListButton = document.querySelector("#vn-tool-bar button.navbar-toggler");
+                            eventList.classList.toggle("show");
+                            eventListButton.setAttribute("aria-expanded", eventList.classList.contains("show"));
+
+                        });
+                        this.list.appendChild(item);
+                    });
+                }
+
+                delete(index) {
+                    this.events.splice(index, 1);
+                    this.render();
+                }
+            }
+            const navbarEventList = new NavbarEventList();
+            navbarEventList.render();
+        </script>
+    </section>
+
+    <section id="screen">
+
+        <div class="background">
+        </div>
+        <div class="characters">
+        </div>
+        <div class="dialog-window">
+            <div class="speaker vn-window">
+                <div class="mugshot-placeholder">
+                    <div class="mugshot"></div>
+                </div>
+                <div class="name"></div>
+            </div>
+            <div class="text vn-window ">text</div>
+        </div>
+
+        <script>
+            class EventEditorAndViewer {
+                constructor() {
+                }
+
+                setCurrentEvent(index) {
+                    this.currentEvent = index;
+                    this.viewEvent();
+                }
+
+                viewEvent() {
+                    const event = database.events[this.currentEvent];
+                    //set background
+                    document.querySelector("#screen .background").style.backgroundImage = `url('${event.background[0].image}')`;
+                    //add filler image to expand parent div with the right size
+                    const bgImage = document.createElement("img");
+                    bgImage.src = event.background[0].image;
+                    document.querySelector("#screen .background").appendChild(bgImage);
+
+                    //set characters
+                    document.querySelector("#screen .characters").innerHTML = "";
+                    event.characters_on_scene.forEach((character) => {
+                        const charImage = document.createElement("img");
+                        charImage.src = character.image;
+                        document.querySelector("#screen .characters").appendChild(charImage);
+                    });
+                    //set dialog
+                    document.querySelector("#screen .dialog-window .speaker .name").innerText = event.dialog[0].speaker;
+                    document.querySelector("#screen .dialog-window .text").innerText = event.dialog[0].text;
+
+                }
+            }
+            const eventEditorAndViewer = new EventEditorAndViewer();
+            //got to first event
+            eventEditorAndViewer.setCurrentEvent(0);
+        </script>
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+
+    <!-- Include React and ReactDOM from a CDN -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <script>
+        // // Your main React component code
+        // function MainComponent() {
+        //     return React.createElement("div", null, "Hello, React in Root!");
+        // }
+
+        // // Render the main component in the root element
+        // ReactDOM.render(
+        //     React.createElement(MainComponent),
+        //     document.getElementById("root")
+        // );
+    </script>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

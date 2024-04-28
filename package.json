@@ -1,0 +1,23 @@
+{
+  "name": "level-up-gpt",
+  "version": "1.0.0",
+  "description": "A fast, flexible & elegant library for parsing and manipulating HTML and XML.\r https://cheerio.js.org/",
+  "main": "index.js",
+  "scripts": {
+    "server": "php -S localhost:8000",
+    "serve": "php -S localhost:8000",
+    "db": "cd ./backend && yarn && yarn start:dev",
+    "dev": "cd ./src && yarn && yarn start",
+    "watch": "cd ./src && npm run start",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migrate": "cd ./backend && npx sequelize-cli db:migrate"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv-webpack": "^8.1.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}

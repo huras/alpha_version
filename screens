@@ -1,0 +1,51 @@
+GPT VN Maker
+	/dashboard: Show latest worked projects, game latest played.
+	/projects: list and allow to manage projects
+	/project/{project_id}/dashboard: show a preview of characters, places, scenes and scene tree of current project (lie youtube does with own playlists and own videos)
+	/project/{project_id}/play: allows you to play a project
+	/project/{project_id}/places: list and allow to manage places
+	/project/{project_id}/characters: list and allow to manage characters
+	/project/{project_id}/scene/{scene_id}: list and allow to manage events
+	/project/{project_id}/scene/{scene_id}/edit: edit scene into play/edit view
+
+Talk with on screen characters
+	Characters know some stuff that requires you to talk with them for them to tell you
+	A local may reveal the location of a legendary fishing rod if you show interest in what he has to say about blue swordfish for example
+	Rewards people that gets interested in the NPCs
+		We better work hard to make NPCs genuinely interesting with excentricities to naturally reward interested player's conversations
+Move to another place within a point in the map
+	Show other characters on screen, another background
+"Quick travel" to a point on the map
+	Random events will happen.
+	The player don't move instantly, but starts to make a path to reach the
+	
+Guild types
+	Witch guilds
+	Mage guilds
+	Open guilds
+
+
+
+
+Sources of drama for story refreshing
+	Parties may bully other parties in some "third world" guilds
+	Strong adventurers may bully adventurers within other parties or even in their same pary
+	
+	
+	
+	
+----------------------------------------
+
+31/Jan/2024
+	Chats GPTs
+	
+Keep Story Memory
+	Protagonist: Remembers and evolve the protagonist
+	Character List: Identify and store new story characters
+	Places List: 
+	Event History Log
+
+Move Story Forward
+	Event Promoter
+
+https://chat.openai.com/c/4fe1642c-dc98-4a99-a90c-73e534162215

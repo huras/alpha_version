@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flood Fill Image Transparency</title>
+</head>
+<body onload="body_loaded()" style="background-color: #000000;">
+    <button id="undoButton" onclick="undo()">Undo</button>
+    <img id="image" src="/img/char/00045-240897433.png" alt="Character Image" style="display:none;">
+    <canvas id="the_canvas"></canvas>
+
+    <script>
+        var the_canvas;
+        var the_canvas_context;
+        var timeout_id;
+        var savedImageData; // To save the canvas state
+        const max_iterations = 1000;
+
+        function color_matches(target, current, tolerance) {
+            return Math.abs(target.r - current.r) <= tolerance &&
+                   Math.abs(target.g - current.g) <= tolerance &&
+                   Math.abs(target.b - current.b) <= tolerance &&
+                   Math.abs(target.a - current.a) <= tolerance;
+        }
+
+        function flood_fill(x, y, color, original_color, pixels, pixel_stack, tolerance) {
+            tolerance = tolerance || 10; // Default tolerance value
+            original_color = typeof(original_color) === 'undefined' ? null : original_color;
+            pixels = typeof(pixels) === 'undefined' ? null : pixels;
+            pixel_stack = typeof(pixel_stack) === 'undefined' ? null : pixel_stack;
+
+            clearTimeout(timeout_id);
+
+            if (pixels === null) {
+                pixels = the_canvas_context.getImageData(0, 0, the_canvas.width, the_canvas.height);
+            }
+
+            var linear_cords = (y * the_canvas.width + x) * 4;
+
+            if (original_color === null) {
+                original_color = {
+                    r: pixels.data[linear_cords],
+                    g: pixels.data[linear_cords + 1],
+                    b: pixels.data[linear_cords + 2],
+                    a: pixels.data[linear_cords + 3]
+                };
+            }
+
+            if (pixel_stack === null) {
+                pixel_stack = [{x: x, y: y}];
+            }
+
+            var iterations = 0;
+            while (pixel_stack.length > 0) {
+                var new_pixel = pixel_stack.shift();
+                x = new_pixel.x;
+                y = new_pixel.y;
+
+                linear_cords = (y * the_canvas.width + x) * 4;
+                var current_color = {
+                    r: pixels.data[linear_cords],
+                    g: pixels.data[linear_cords + 1],
+                    b: pixels.data[linear_cords + 2],
+                    a: pixels.data[linear_cords + 3]
+                };
+
+                if (!color_matches(original_color, current_color, tolerance)) {
+                    continue;
+                }
+
+                // Coloring the pixels we are on
+                pixels.data[linear_cords] = color.r;
+                pixels.data[linear_cords + 1] = color.g;
+                pixels.data[linear_cords + 2] = color.b;
+                pixels.data[linear_cords + 3] = color.a;
+
+                // Checking adjacent pixels
+                checkAndPushPixel(x - 1, y);
+                checkAndPushPixel(x + 1, y);
+                checkAndPushPixel(x, y - 1);
+                checkAndPushPixel(x, y + 1);
+
+                iterations++;
+                if (iterations >= max_iterations) {
+                    break;
+                }
+            }
+
+            the_canvas_context.putImageData(pixels, 0, 0);
+            if (pixel_stack.length > 0) {
+                var next_pixel = pixel_stack.shift();
+                timeout_id = setTimeout(function() {
+                    flood_fill(next_pixel.x, next_pixel.y, color, original_color, pixels, pixel_stack, tolerance);
+                }, 50);
+            }
+
+            function checkAndPushPixel(x, y) {
+                if (x >= 0 && x < the_canvas.width && y >= 0 && y < the_canvas.height) {
+                    var index = (y * the_canvas.width + x) * 4;
+                    var pixelColor = {
+                        r: pixels.data[index],
+                        g: pixels.data[index + 1],
+                        b: pixels.data[index + 2],
+                        a: pixels.data[index + 3]
+                    };
+
+                    if (color_matches(original_color, pixelColor, tolerance) && !is_in_pixel_stack(x, y, pixel_stack)) {
+                        pixel_stack.push({x: x, y: y});
+                    }
+                }
+            }
+        }
+
+        function is_in_pixel_stack(x, y, pixel_stack) {
+            for (var i = 0; i < pixel_stack.length; i++) {
+                if (pixel_stack[i].x == x && pixel_stack[i].y == y) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function saveCanvasState() {
+            savedImageData = the_canvas_context.getImageData(0, 0, the_canvas.width, the_canvas.height);
+        }
+
+        function undo() {
+            if (savedImageData) {
+                the_canvas_context.putImageData(savedImageData, 0, 0);
+            }
+        }
+
+        function canvasClick(event) {
+            saveCanvasState(); // Save state before flood fill
+            var x = event.offsetX;
+            var y = event.offsetY;
+            var pixels = the_canvas_context.getImageData(0, 0, the_canvas.width, the_canvas.height);
+            var linear_cords = (y * the_canvas.width + x) * 4;
+            var clicked_color = {
+                r: pixels.data[linear_cords],
+                g: pixels.data[linear_cords + 1],
+                b: pixels.data[linear_cords + 2],
+                a: pixels.data[linear_cords + 3]
+            };
+
+            flood_fill(x, y, {r: 0, g: 0, b: 0, a: 0}, clicked_color, undefined, undefined, 40);
+        }
+
+        function body_loaded() {
+            the_canvas = document.getElementById("the_canvas");
+            the_canvas_context = the_canvas.getContext("2d");
+
+            var img = document.getElementById("image");
+            img.onload = function() {
+                the_canvas.width = img.width;
+                the_canvas.height = img.height;
+                the_canvas_context.drawImage(img, 0, 0);
+                the_canvas.addEventListener('click', canvasClick);
+                saveCanvasState(); // Save initial state
+            };
+            img.src = "/img/char/00028-840285043.png"; // Ensure the image is loaded
+        }
+    </script>
+</body>
+</html>

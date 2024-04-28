@@ -1,0 +1,32 @@
+Solve branching of events
+
+How to connect them?
+How to store choices.
+What kind of things branch the story line, so we can define the fields of eventChoice model?
+
+
+Event 1 - 
+    background: ['forest']
+    text: "There is the blacksmith"
+    characters: ['Lanna'],
+    mugshot: {'lanna'}
+    name: "Lanna"
+    next_events: [{event_id: 2, text_choice: 'Say nothing'}, {event_id: 4, text_choice: 'Thank you!'}]
+Event 2 - 
+    background: ['forest']
+    text: ["I'm going now. Bye"]
+    characters: ['Lanna'],
+    mugshot: {'lanna'}
+    name: "Lanna"
+    next_events: [{event_id: 3}]
+Event 3 - 
+    background: ['forest']
+    text: []
+    characters: [],
+    mugshot: {}
+    next_events: [] //deadline
+Event 4 - 
+    background: []
+    text: ["I'm going now. Bye"]
+    mugshot: {}
+    name: "Lanna"
