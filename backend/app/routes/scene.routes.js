@@ -23,8 +23,8 @@ module.exports = app => {
   // router.get("/:id/characters", scene.findAllCharacters);
 
 
-  // // Update a Entrega with id
-  // router.put("/:id", scene.update);
+  // // Update a Scene with id
+  router.put("/:id", scene.update);
 
   // Delete a Scene with id
   // router.delete("/:id", scene.delete);

@@ -4,12 +4,12 @@ import { Button, Form } from 'react-bootstrap';
 import { ChevronDown, ChevronUp } from 'react-bootstrap-icons';
 import MugshotSelector from './MugshotSelector'; // Adjust the path according to your file structure
 
-const DialogMugshotEditor = () => {
+const DialogMugshotEditor = ({event, setEvent, project}) => {
 
     return (
         <>
             <div className="speaker vn-window">
-                <MugshotSelector />
+                <MugshotSelector event={event} setEvent={setEvent} project={project} />
             </div>
         </>
     );

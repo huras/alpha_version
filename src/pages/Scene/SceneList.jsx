@@ -4,18 +4,11 @@ import AppContext from '../../context/AppContext';
 import { EyeFill, PencilFill } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import ProjectContext from '../../context/ProjectContext';
 
 export default function SceneList() {
     // const { currentSceneID, setCurrentSceneID, setCurrentScene, currentEventID } = useContext(AppContext);
-    const [scenes, setScenes] = useState([]);
-    const [ currentScene, setCurrentScene ] = useState(null);
-    const [ currentSceneID, setCurrentSceneID ] = useState(null);
-
-    useEffect(() => {
-        axios.get('http://localhost:8080/scene')
-          .then(res => setScenes(res.data))
-          .catch(err => console.log(err));
-    }, []);
+    const { project, scenes, setScenes } = useContext(ProjectContext);
 
     const handleCheckScene = (sceneID) => {
         setCurrentScene( Number.parseInt(sceneID) );
@@ -24,11 +17,11 @@ export default function SceneList() {
 
     return (
         <div>
-            {scenes.map(scene => (
+            {scenes.length > 0 ? scenes.map(scene => (
                 <Card key={scene.id} className="mb-3">
                     <ListGroup variant="flush">
                         <ListGroup.Item>
-                            <Link to={`/scene?id=${scene.id}`} onClick={() => handleCheckScene(scene.id)}>
+                            <Link to={`/scene?scene=${scene.id}&project=${project.id}`}>
                                 <EyeFill size={16} />
                             </Link>
                         </ListGroup.Item>
@@ -37,7 +30,7 @@ export default function SceneList() {
                         <ListGroup.Item><strong>Updated At:</strong> {new Date(scene.updatedAt).toLocaleString()}</ListGroup.Item>
                     </ListGroup>
                 </Card>
-            ))}
+            )) : <div>No scenes available.</div>}
         </div>
     )
 }

@@ -3,32 +3,10 @@ import AppContext from '../../../context/AppContext';
 import { Button, Form, Modal, ListGroup } from 'react-bootstrap';
 import { Pencil } from 'react-bootstrap-icons';
 
-const MugshotSelector = () => {
-    const { scenes, events, setScenes, characters,  currentEventID } = useContext(AppContext);
-
+const MugshotSelector = ({event, setEvent, project}) => {
     const [showCharacterModal, setShowCharacterModal] = useState(false);
     const [showAdjustmentModal, setShowAdjustmentModal] = useState(false);
-    const [selectedCharacter, setSelectedCharacter] = useState(null);
-    const [mugshotData, setMugshotData] = useState({ scale: 1, x: 0, y: 0 });
     const [editMode, setEditMode] = useState(false);
-
-    useEffect(() => {
-        if (currentEventID !== null) {
-            const currentEvent = events.find(event => event.id === currentEventID);
-            const characterId = currentEvent?.Characters?.[0]?.id;
-
-            if (characterId) {
-                const character = currentEvent.Characters.find(c => c.id === characterId);
-                setSelectedCharacter(character);
-                setMugshotData(JSON.parse(character.mugshot));
-                setEditMode(false);
-            } else {
-                setSelectedCharacter(null);
-                setMugshotData({});
-                setEditMode(false);
-            }
-        }
-    }, [currentEventID, scenes, characters]);
 
     const handleSelectCharacter = (character) => {
         setSelectedCharacter(character);
@@ -36,13 +14,13 @@ const MugshotSelector = () => {
     };
 
     const handleSave = () => {
-        // if (selectedCharacter && currentEventID !== null) {
+        // if (selectedCharacter && eventID !== null) {
         //     const updatedScenes = scenes.map(scene => {
         //         if (scene.id === currentSceneID) {
         //             return {
         //                 ...scene,
         //                 events: scene.events.map(event => {
-        //                     if (event.id === currentEventID) {
+        //                     if (event.id === eventID) {
         //                         return {
         //                             ...event,
         //                             Characters: [{ ...selectedCharacter, mugshot: JSON.stringify(mugshotData) }]
@@ -61,8 +39,12 @@ const MugshotSelector = () => {
     };
 
     const handleChange = (e) => {
-        setMugshotData({ ...mugshotData, [e.target.name]: parseFloat(e.target.value) });
+        // setEvent(prev => ({
+        // }))
     };
+
+    var mugshotData = event?.mugshot?.mugshot;
+    if (mugshotData && typeof mugshotData === 'string') mugshotData = JSON.parse(mugshotData);
 
     // Calculate the size based on the scale
     const maxWidth = 100; // Replace with the actual width of the parent container
@@ -72,7 +54,7 @@ const MugshotSelector = () => {
     // CSS for the mugshot
     
     const mugshotStyle = {
-        backgroundImage: `url('${selectedCharacter?.image}')`,
+        backgroundImage: `url('${event?.mugshot?.image}')`,
         backgroundPosition: `${mugshotData.x * 100}% ${mugshotData.y * 100}%`,
         transform: `scale(${mugshotData.scale})`,
         transformOrigin: '0% 100%',
@@ -82,30 +64,33 @@ const MugshotSelector = () => {
 
     return (
         <>
-            {!editMode &&
+            {/* {!editMode &&
                 <Button variant='link' onClick={() => setEditMode(!editMode)}><Pencil /></Button>
-            }
+            } */}
 
             {editMode && (
                 <>
                     <Button onClick={() => setShowCharacterModal(true)}>Select Mugshot</Button>
-                    {selectedCharacter &&
+                    {mugshotData &&
                         <Button onClick={() => setShowAdjustmentModal(true)}>Adjust Mugshot</Button>}
                     <Button variant="success" onClick={handleSave}>Save Changes</Button>
                 </>
             )}
 
-            <div className="mugshot-placeholder" style={{ display: selectedCharacter ? 'block' : 'none' }}>
-                <div className="mugshot" style={mugshotStyle}></div>
+            <div className="mugshot-placeholder" style={{ display: mugshotData ? 'block' : 'none' }}>
+                <div className="mugshot" onClick={() => {
+                    setEditMode(!editMode)
+                    setShowCharacterModal(true)
+                }} style={mugshotStyle}></div>
             </div>
 
-            <Modal show={showCharacterModal} onHide={() => setShowCharacterModal(false)}>
+            <Modal show={showCharacterModal} onHide={() => {setShowCharacterModal(false)}}>
                 <Modal.Header closeButton>
                     <Modal.Title>Select Character Mugshot</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <ListGroup>
-                        {characters.map((char) => (
+                        {project.characters.map((char) => (
                             <ListGroup.Item key={char.id} onClick={() => handleSelectCharacter(char)} className="d-flex align-items-center">
                                 <img src={char.image} alt={char.fullname} style={{ width: '60px', height: '100px' }} />
                                 <div className="ms-2">{char.fullname || "Unnamed Character"}</div>

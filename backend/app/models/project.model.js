@@ -23,6 +23,8 @@ module.exports = (sequelize, Sequelize) => {
 }, {});  
   Project.associate = function (models) {
     Project.hasMany(models.Scene, { as: 'scenes', foreignKey: 'parentProjectId' });
-  };  
+    Project.belongsToMany(models.Background, { through: 'ProjectBackgrounds', as: 'backgrounds' });
+    Project.belongsToMany(models.Character, { through: 'ProjectCharacters', as: 'characters' });
+  };
   return Project;
 };

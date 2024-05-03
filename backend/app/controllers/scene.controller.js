@@ -1,5 +1,5 @@
 const db = require("../models/sqlite_db");
-const {Scene, Event, Character,EventChoice,Background } = db;
+const {Scene, Event, Character,EventChoice,Background, Project, EventBackground, EventCharacter } = db;
 const { Op } = require("sequelize");
 
 exports.create = (req, res) => {
@@ -67,18 +67,25 @@ exports.findOne = (req, res) => {
   const id = req.params.id;
 
   Scene.findByPk(id, {
-    include: {
-      model: Event,
-      as: 'childEvents',
-      include: [
-        { model: Background, as: 'event_backgrounds'},
-        { model: Character, as: 'event_characters'},
-        { model: EventChoice, as: 'childEvents'},
-        { model: EventChoice, as: 'parentEvents'},
-        { model: Character, as: 'speaker'},
-        { model: Character, as: 'mugshot'},
-      ],
-    }
+    include: [
+      {
+        model: Event,
+        as: 'childEvents',
+        include: [
+          { model: Background, as: 'event_backgrounds'},
+          { model: Character, as: 'event_characters'},
+          { model: EventChoice, as: 'childEvents'},
+          { model: EventChoice, as: 'parentEvents'},
+          { model: Character, as: 'speaker'},
+          { model: Character, as: 'mugshot'},
+          { model: Scene, as: 'parentScene', include: [ { model: Project, as: 'parentProject'}]},
+        ],
+      },
+      { model: Project, as: 'parentProject', include: [ 
+        { model: Background, as: 'backgrounds' },
+        { model: Character, as: 'characters' },
+      ]},
+    ]
   })
     .then(data => {
       res.send(data);
@@ -143,28 +150,62 @@ exports.findAllEvents = (req, res) => {
     });
 };
 
-exports.update = (req, res) => {
-  const id = req.params.id;
+exports.update = async (req, res) => {
+  const { id, title, order, parentProjectId, childEvents } = req.body;
 
-  Scene.update(req.body, {
-      where: { id: id }
-    })
-    .then(num => {
-      if (num == 1) {
-        res.send({
-          message: "Scene was updated successfully."
-        });
-      } else {
-        res.send({
-          message: `Cannot update Scene with id=${id}. Maybe Scene was not found or req.body is empty!`
-        });
+  const t = await db.sequelize.transaction();
+  try {
+
+    // Update Scene
+    const scene = await db.Scene.findByPk(id, { transaction: t });
+    if (!scene) {
+      await t.rollback();
+      return res.status(404).send({ message: "Scene not found" });
+    }
+
+    await scene.update({ title, order, parentProjectId }, { transaction: t });
+
+    // Update each Event
+    for (const event of childEvents) {
+      const { id: eventId, dialogText, speakerId, mugshotId, event_backgrounds, event_characters } = event;
+
+      const eventInstance = await db.Event.findByPk(eventId, { transaction: t });
+      if (eventInstance) {
+        await eventInstance.update({ dialogText, speakerId, mugshotId }, { transaction: t });
+
+        // Update or recreate relationships for Backgrounds
+        if (event_backgrounds && event_backgrounds.length) {
+          await db.EventBackground.destroy({ where: { EventId: eventId }, transaction: t });
+          for (const background of event_backgrounds) {
+            await db.EventBackground.create({
+              EventId: eventId,
+              BackgroundId: background.id
+            }, { transaction: t });
+          }
+        }
+
+        // Update or recreate relationships for Characters
+        if (event_characters && event_characters.length) {
+          await db.EventCharacter.destroy({ where: { EventId: eventId }, transaction: t });
+          for (const character of event_characters) {
+            await db.EventCharacter.create({
+              EventId: eventId,
+              CharacterId: character.id
+            }, { transaction: t });
+          }
+        }
       }
-    })
-    .catch(err => {
-      res.status(500).send({
-        message: "Error updating Scene with id=" + id
-      });
+    }
+
+    await t.commit();
+    res.send({ message: "Scene updated successfully with all related entities!" });
+  } catch (err) {
+    await t.rollback();
+    res.status(500).send({
+      message: "Failed to update Scene and its relationships",
+      error: err.stack,
     });
+  }
 };
 
 exports.delete = (req, res) => {

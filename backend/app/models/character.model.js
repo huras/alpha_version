@@ -44,6 +44,7 @@ module.exports = (sequelize, Sequelize) => {
     // Character.belongsToMany(models.Event, { through: 'EventCharacters' });
     Character.hasMany(models.Event, { foreignKey: 'speakerId' });
     Character.hasMany(models.Event, { foreignKey: 'mugshotId' });
+    Character.belongsToMany(models.Event, { through: 'EventCharacter', as: 'event_characters' });
   };
   return Character;
 };

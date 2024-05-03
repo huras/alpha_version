@@ -17,6 +17,8 @@ db.Scene = require("./scene.model.js")(sequelize, Sequelize);
 db.Event = require("./event.model.js")(sequelize, Sequelize);
 db.EventChoice = require("./eventChoice.model.js")(sequelize, Sequelize);
 db.Background = require("./background.model.js")(sequelize, Sequelize);
+db.EventCharacter  = require("./event_character.model.js")(sequelize, Sequelize);
+db.EventBackground  = require("./event_background.model.js")(sequelize, Sequelize);
 
 // Relaciona models
 Object.keys(db).forEach(function lala (modelName)  {

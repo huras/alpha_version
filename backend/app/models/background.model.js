@@ -20,7 +20,7 @@ module.exports = (sequelize, Sequelize) => {
     // ... add other fields as needed
   }, {});
   Background.associate = function (models) {
-    Background.belongsToMany(models.Event, { through: 'EventBackgrounds' });
+    Background.belongsToMany(models.Event, { through: 'EventBackground', as: 'event_backgrounds' });
   };
   return Background;
 };
