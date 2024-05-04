@@ -5,6 +5,10 @@ module.exports = (sequelize, Sequelize) => {
       primaryKey: true,
       autoIncrement: true
     },
+    order: {
+      type: Sequelize.INTEGER,
+      allowNull: false
+    },
     parentEvent: {
       type: Sequelize.INTEGER,
       allowNull: true,

@@ -2,14 +2,33 @@ import React, { useContext, useState, useEffect } from 'react';
 import AppContext from '../../../context/AppContext';
 import { Button, Form, Modal, ListGroup } from 'react-bootstrap';
 import { Pencil } from 'react-bootstrap-icons';
+import ProjectContext from '../../../context/ProjectContext';
 
-const MugshotSelector = ({event, setEvent, project}) => {
+const MugshotSelector = ({event, scene }) => {
     const [showCharacterModal, setShowCharacterModal] = useState(false);
     const [showAdjustmentModal, setShowAdjustmentModal] = useState(false);
     const [editMode, setEditMode] = useState(false);
+    const { project, setProject} = useContext(ProjectContext);
 
     const handleSelectCharacter = (character) => {
-        setSelectedCharacter(character);
+        setProject((prevProject) => {
+            const updatedProject = {
+                ...prevProject,
+                scenes: prevProject.scenes.map((s) => {
+                    if (s.id === scene.id) {
+                        return { ...s, childEvents: s.childEvents.map((e) => {
+                            if (e.id === event.id) {
+                                return { ...e, mugshot: character, mugshotId: character.id };
+                            }
+                            return e;
+                        }) };
+                    }
+                    return s;
+                })
+            };
+            return updatedProject;
+        });
+
         setShowCharacterModal(false);
     };
 

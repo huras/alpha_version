@@ -7,8 +7,8 @@ import DialogMugshotEditor from './Editor/DialogMugshotEditor';
 import MugshotSelector from './Editor/MugshotSelector';
 import ProjectContext from '../../context/ProjectContext';
 
-const EventItemContentEdit = ({ event, scene, setEvent }) => {
-  const { project } = useContext(ProjectContext);
+const EventItemContentEdit = ({ event, scene }) => {
+  const { project, setProject} = useContext(ProjectContext);
   const [showBackgroundModal, setShowBackgroundModal] = useState(false);
   const [showEventCharacterDrawer, setShowEventCharacterDrawer] = useState(false);
 
@@ -16,20 +16,36 @@ const EventItemContentEdit = ({ event, scene, setEvent }) => {
     <>
       {(showBackgroundModal && event) &&
         <ImageModal
-          currentImages={event.event_backgrounds.map(bg => bg.image)}
-          images={project.backgrounds.map(bg => bg.image)}
-          onSelect={(selectedImages) => {
+          currentImages={event.event_backgrounds}
+          images={project.backgrounds}
+          onSelect={(selectedBgs) => {
             // Handle selected image
             setShowBackgroundModal(false);
-            const selectedBgs = project.backgrounds.filter(bg => selectedImages.includes(bg.image));
             const updatedEvent = {
               ...event,
               event_backgrounds: selectedBgs
             };
-            setEvent(updatedEvent);
+
+            setProject((prevProject) => {
+              const updatedProject = { 
+                ...prevProject,
+                scenes: prevProject.scenes.map((s) => {
+                  if (s.id === scene.id) {
+                    return { ...s, childEvents: s.childEvents.map((e) => {
+                      if (e.id === event.id) {
+                        return updatedEvent;
+                      }
+                      return e;
+                    }) };
+                  }
+                  return s;
+                })
+              };
+              return updatedProject;
+            });
           }}
           onCancel={() => {
-            setShowBackgroundModal(false);
+            // setShowBackgroundModal(false);
           }}
         />
       }
@@ -38,11 +54,24 @@ const EventItemContentEdit = ({ event, scene, setEvent }) => {
         <EventCharactersDrawer 
           characters={project.characters}
           onDecide={(selectedCharacters) => {
-            setEvent({
-              ...event,
-              event_characters: selectedCharacters
+            setProject((prevProject) => {
+              const updatedProject = {
+                ...prevProject,
+                scenes: prevProject.scenes.map((s) => {
+                  if (s.id === scene.id) {
+                    return { ...s, childEvents: s.childEvents.map((e) => {
+                      if (e.id === event.id) {
+                        return { ...e, event_characters: selectedCharacters };
+                      }
+                      return e;
+                    }) };
+                  }
+                  return s;
+                })
+              };
+              return updatedProject;
             });
-            // setShowEventCharacterDrawer(false);
+            setShowEventCharacterDrawer(false);
           }}
           onCancel={() => {
             setShowEventCharacterDrawer(false);
@@ -90,7 +119,7 @@ const EventItemContentEdit = ({ event, scene, setEvent }) => {
         {event.dialogText && (
           <div className="d-flex flex-column justify-content-start align-items-start ms-2 px-2" style={{ flex: 1 }}>
             <div className="speaker vn-window">
-                <MugshotSelector event={event} setEvent={setEvent} project={project} />
+                <MugshotSelector event={event}  scene={scene} />
             </div>
             <pre className="text vn-window w-100">
               {event.dialogText}
@@ -114,7 +143,7 @@ const ImageModal = ({ images, onSelect, onCancel, currentImages }) => {
 
   const handleSelect = (image) => {
     if (selectedImages.includes(image)) {
-      setSelectedImages(selectedImages.filter(img => img !== image));
+      setSelectedImages(selectedImages.filter(img => img.id !== image.id));
     } else {
       // setSelectedImages([...selectedImages, image]);
       setSelectedImages([image]);
@@ -135,7 +164,7 @@ const ImageModal = ({ images, onSelect, onCancel, currentImages }) => {
         <div className="d-flex flex-wrap row">
           {images.map((image, index) => {
             const img_component = (<img
-              src={image}
+              src={image.image}
               alt={`Image ${index}`}
               className="img-thumbnail"
               style={{ cursor: 'pointer' }}

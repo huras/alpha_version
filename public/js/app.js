@@ -6414,6 +6414,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -6429,22 +6435,6 @@ var ProjectProvider = function ProjectProvider(_ref) {
     _useState2 = _slicedToArray(_useState, 2),
     project = _useState2[0],
     setProject = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-    _useState4 = _slicedToArray(_useState3, 2),
-    scenes = _useState4[0],
-    setScenes = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-    _useState6 = _slicedToArray(_useState5, 2),
-    characters = _useState6[0],
-    setCharacters = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-    _useState8 = _slicedToArray(_useState7, 2),
-    backgrounds = _useState8[0],
-    setBackgrounds = _useState8[1];
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
-    _useState10 = _slicedToArray(_useState9, 2),
-    events = _useState10[0],
-    setEvents = _useState10[1];
   function preprocess_incoming_project_data(data) {
     //iterate with key and value of data.scenes!!!!
     Object.keys(data.scenes).forEach(function (key) {
@@ -6468,9 +6458,6 @@ var ProjectProvider = function ProjectProvider(_ref) {
         }
       });
     });
-    setCharacters(data.characters);
-    setBackgrounds(data.backgrounds);
-    setScenes(data.scenes);
     setProject(data);
   }
 
@@ -6496,19 +6483,19 @@ var ProjectProvider = function ProjectProvider(_ref) {
     // .finally();
   }, []);
   var saveScene = function saveScene(scene) {
+    scene.childEvents = scene.childEvents.map(function (event, index) {
+      event.event_characters = event.event_characters.map(function (character) {
+        return _objectSpread(_objectSpread({}, character), {}, {
+          order: index
+        });
+      });
+      return event;
+    });
     // Save scene to database
     axios__WEBPACK_IMPORTED_MODULE_1__["default"].put("http://localhost:8080/scene/".concat(scene.id), scene);
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ProjectContext.Provider, {
     value: {
-      scenes: scenes,
-      setScenes: setScenes,
-      characters: characters,
-      setCharacters: setCharacters,
-      backgrounds: backgrounds,
-      setBackgrounds: setBackgrounds,
-      events: events,
-      setEvents: setEvents,
       project: project,
       setProject: setProject,
       saveScene: saveScene
@@ -7336,10 +7323,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../context/AppContext */ "./context/AppContext.jsx");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Modal.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/ListGroup.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Modal.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/ListGroup.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
+/* harmony import */ var _context_ProjectContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../context/ProjectContext */ "./context/ProjectContext.jsx");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -7350,11 +7344,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var MugshotSelector = function MugshotSelector(_ref) {
   var _event$mugshot, _event$mugshot2;
   var event = _ref.event,
-    setEvent = _ref.setEvent,
-    project = _ref.project;
+    scene = _ref.scene;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     showCharacterModal = _useState2[0],
@@ -7367,8 +7361,31 @@ var MugshotSelector = function MugshotSelector(_ref) {
     _useState6 = _slicedToArray(_useState5, 2),
     editMode = _useState6[0],
     setEditMode = _useState6[1];
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_ProjectContext__WEBPACK_IMPORTED_MODULE_2__["default"]),
+    project = _useContext.project,
+    setProject = _useContext.setProject;
   var handleSelectCharacter = function handleSelectCharacter(character) {
-    setSelectedCharacter(character);
+    setProject(function (prevProject) {
+      var updatedProject = _objectSpread(_objectSpread({}, prevProject), {}, {
+        scenes: prevProject.scenes.map(function (s) {
+          if (s.id === scene.id) {
+            return _objectSpread(_objectSpread({}, s), {}, {
+              childEvents: s.childEvents.map(function (e) {
+                if (e.id === event.id) {
+                  return _objectSpread(_objectSpread({}, e), {}, {
+                    mugshot: character,
+                    mugshotId: character.id
+                  });
+                }
+                return e;
+              })
+            });
+          }
+          return s;
+        })
+      });
+      return updatedProject;
+    });
     setShowCharacterModal(false);
   };
   var handleSave = function handleSave() {
@@ -7417,15 +7434,15 @@ var MugshotSelector = function MugshotSelector(_ref) {
     width: "".concat(size, "px"),
     height: "".concat(size, "px")
   };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, editMode && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, editMode && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
     onClick: function onClick() {
       return setShowCharacterModal(true);
     }
-  }, "Select Mugshot"), mugshotData && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, "Select Mugshot"), mugshotData && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
     onClick: function onClick() {
       return setShowAdjustmentModal(true);
     }
-  }, "Adjust Mugshot"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, "Adjust Mugshot"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
     variant: "success",
     onClick: handleSave
   }, "Save Changes")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -7440,15 +7457,15 @@ var MugshotSelector = function MugshotSelector(_ref) {
       setShowCharacterModal(true);
     },
     style: mugshotStyle
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
     show: showCharacterModal,
     onHide: function onHide() {
       setShowCharacterModal(false);
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Header, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Header, {
     closeButton: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Title, null, "Select Character Mugshot")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], null, project.characters.map(function (_char) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Item, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Title, null, "Select Character Mugshot")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], null, project.characters.map(function (_char) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Item, {
       key: _char.id,
       onClick: function onClick() {
         return handleSelectCharacter(_char);
@@ -7464,35 +7481,35 @@ var MugshotSelector = function MugshotSelector(_ref) {
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "ms-2"
     }, _char.fullname || "Unnamed Character"));
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
     show: showAdjustmentModal,
     onHide: function onHide() {
       return setShowAdjustmentModal(false);
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Header, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Header, {
     closeButton: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Title, null, "Adjust Mugshot")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Group, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Title, null, "Adjust Mugshot")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Group, {
     className: "mb-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Label, null, "Scale"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Control, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Label, null, "Scale"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Control, {
     type: "number",
     name: "scale",
     value: mugshotData.scale,
     onChange: handleChange
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Group, {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Group, {
     className: "mb-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Label, null, "X Position"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Control, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Label, null, "X Position"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Control, {
     type: "number",
     name: "x",
     value: mugshotData.x,
     onChange: handleChange
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Group, {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Group, {
     className: "mb-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Label, null, "Y Position"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Control, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Label, null, "Y Position"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Control, {
     type: "number",
     name: "y",
     value: mugshotData.y,
     onChange: handleChange
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
     variant: "success",
     onClick: handleSave
   }, "Save Adjustments"))));
@@ -7714,10 +7731,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var EventItemContentEdit = function EventItemContentEdit(_ref) {
   var event = _ref.event,
-    scene = _ref.scene,
-    setEvent = _ref.setEvent;
+    scene = _ref.scene;
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_ProjectContext__WEBPACK_IMPORTED_MODULE_4__["default"]),
-    project = _useContext.project;
+    project = _useContext.project,
+    setProject = _useContext.setProject;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     showBackgroundModal = _useState2[0],
@@ -7727,35 +7744,61 @@ var EventItemContentEdit = function EventItemContentEdit(_ref) {
     showEventCharacterDrawer = _useState4[0],
     setShowEventCharacterDrawer = _useState4[1];
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, showBackgroundModal && event && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ImageModal, {
-    currentImages: event.event_backgrounds.map(function (bg) {
-      return bg.image;
-    }),
-    images: project.backgrounds.map(function (bg) {
-      return bg.image;
-    }),
-    onSelect: function onSelect(selectedImages) {
+    currentImages: event.event_backgrounds,
+    images: project.backgrounds,
+    onSelect: function onSelect(selectedBgs) {
       // Handle selected image
       setShowBackgroundModal(false);
-      var selectedBgs = project.backgrounds.filter(function (bg) {
-        return selectedImages.includes(bg.image);
-      });
       var updatedEvent = _objectSpread(_objectSpread({}, event), {}, {
         event_backgrounds: selectedBgs
       });
-      setEvent(updatedEvent);
+      setProject(function (prevProject) {
+        var updatedProject = _objectSpread(_objectSpread({}, prevProject), {}, {
+          scenes: prevProject.scenes.map(function (s) {
+            if (s.id === scene.id) {
+              return _objectSpread(_objectSpread({}, s), {}, {
+                childEvents: s.childEvents.map(function (e) {
+                  if (e.id === event.id) {
+                    return updatedEvent;
+                  }
+                  return e;
+                })
+              });
+            }
+            return s;
+          })
+        });
+        return updatedProject;
+      });
     },
     onCancel: function onCancel() {
-      setShowBackgroundModal(false);
+      // setShowBackgroundModal(false);
     }
   }), showEventCharacterDrawer && event && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Editor_EventCharactersDrawer__WEBPACK_IMPORTED_MODULE_1__["default"], {
     characters: project.characters,
     onDecide: function onDecide(selectedCharacters) {
-      setEvent(_objectSpread(_objectSpread({}, event), {}, {
-        event_characters: selectedCharacters
-      }));
-      // setShowEventCharacterDrawer(false);
+      setProject(function (prevProject) {
+        var updatedProject = _objectSpread(_objectSpread({}, prevProject), {}, {
+          scenes: prevProject.scenes.map(function (s) {
+            if (s.id === scene.id) {
+              return _objectSpread(_objectSpread({}, s), {}, {
+                childEvents: s.childEvents.map(function (e) {
+                  if (e.id === event.id) {
+                    return _objectSpread(_objectSpread({}, e), {}, {
+                      event_characters: selectedCharacters
+                    });
+                  }
+                  return e;
+                })
+              });
+            }
+            return s;
+          })
+        });
+        return updatedProject;
+      });
+      setShowEventCharacterDrawer(false);
     },
-
     onCancel: function onCancel() {
       setShowEventCharacterDrawer(false);
     },
@@ -7825,8 +7868,7 @@ var EventItemContentEdit = function EventItemContentEdit(_ref) {
     className: "speaker vn-window"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Editor_MugshotSelector__WEBPACK_IMPORTED_MODULE_3__["default"], {
     event: event,
-    setEvent: setEvent,
-    project: project
+    scene: scene
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("pre", {
     className: "text vn-window w-100"
   }, event.dialogText)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -7853,7 +7895,7 @@ var ImageModal = function ImageModal(_ref2) {
   var handleSelect = function handleSelect(image) {
     if (selectedImages.includes(image)) {
       setSelectedImages(selectedImages.filter(function (img) {
-        return img !== image;
+        return img.id !== image.id;
       }));
     } else {
       // setSelectedImages([...selectedImages, image]);
@@ -7871,7 +7913,7 @@ var ImageModal = function ImageModal(_ref2) {
     className: "d-flex flex-wrap row"
   }, images.map(function (image, index) {
     var img_component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-      src: image,
+      src: image.image,
       alt: "Image ".concat(index),
       className: "img-thumbnail",
       style: {
@@ -7937,12 +7979,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Editor_BackgroudDrawer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Editor/BackgroudDrawer */ "./pages/Event/Editor/BackgroudDrawer.jsx");
 /* harmony import */ var _EventItemContentEdit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./EventItemContentEdit */ "./pages/Event/EventItemContentEdit.jsx");
 /* harmony import */ var _context_ProjectContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../context/ProjectContext */ "./context/ProjectContext.jsx");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
-function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -7958,13 +7994,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var EventList = function EventList(_ref) {
-  var scene = _ref.scene,
-    project = _ref.project,
-    setScene = _ref.setScene;
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_ProjectContext__WEBPACK_IMPORTED_MODULE_5__["default"]),
-    scenes = _useContext.scenes,
-    setScenes = _useContext.setScenes,
-    saveScene = _useContext.saveScene;
+  var scene = _ref.scene;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     showBackgroudDrawer = _useState2[0],
@@ -8016,20 +8046,7 @@ var EventList = function EventList(_ref) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_EventItemContentEdit__WEBPACK_IMPORTED_MODULE_4__["default"], {
       key: event.id,
       event: event,
-      scene: scene,
-      setEvent: function setEvent(updatedEvent) {
-        setScene(function (prevScene) {
-          var updatedEvents = prevScene.childEvents.map(function (e, i) {
-            if (i === index) {
-              return updatedEvent;
-            }
-            return e;
-          });
-          return _objectSpread(_objectSpread({}, prevScene), {}, {
-            childEvents: updatedEvents
-          });
-        });
-      }
+      scene: scene
     });
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
     onClick: function onClick() {},
@@ -8654,8 +8671,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function ScenePage() {
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useNavigate)();
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_ProjectContext__WEBPACK_IMPORTED_MODULE_5__["default"]),
-    scenes = _useContext.scenes,
-    setScenes = _useContext.setScenes,
+    project = _useContext.project,
     saveScene = _useContext.saveScene;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState2 = _slicedToArray(_useState, 2),
@@ -8776,7 +8792,7 @@ function ScenePage() {
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_8__["default"], null))))), nextEventId && renderEvent(nextEventId));
   };
-  var scene = scenes.find(function (s) {
+  var scene = project === null || project === void 0 ? void 0 : project.scenes.find(function (s) {
     var lala = s.id === Number.parseInt(sceneID);
     return lala;
   });
@@ -8810,15 +8826,7 @@ function ScenePage() {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_12__["default"], {
     className: "mx-2"
   }), " Scene Settings"))), scene && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Event_EventList__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    scene: scene,
-    setScene: function setScene(updatedScene) {
-      return setScenes(scenes.map(function (s) {
-        if (s.id === scene.id) {
-          return updatedScene;
-        }
-        return s;
-      }));
-    }
+    scene: scene
   }), currentEventID && renderEvent(currentEventID));
 }
 

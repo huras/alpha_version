@@ -251,10 +251,10 @@ module.exports = {
     ], {});
 
     await queryInterface.bulkInsert('Events', [
-      { id: 1, parentEvent: null, speakerId: 1, mugshotId: 1, dialogText: 'You look lost asdasdasd!', parentSceneId: 1, createdAt: new Date(), updatedAt: new Date() },
-      { id: 2, parentEvent: 1, speakerId: null, mugshotId: 2, dialogText: 'Yes. Who are you?', parentSceneId: 1, createdAt: new Date(), updatedAt: new Date() },
-      { id: 3, parentEvent: null, speakerId: 1, mugshotId: 1, dialogText: "I'm Elara, a pleasure meet you", parentSceneId: 1, createdAt: new Date(), updatedAt: new Date() },
-      { id: 4, parentEvent: null, speakerId: 1, mugshotId: 1, dialogText: 'Why do you lie to me?\nI can read your mind!', parentSceneId: 1, createdAt: new Date(), updatedAt: new Date() },
+      { id: 1, order: 1, parentEvent: null, speakerId: 1, mugshotId: 1, dialogText: 'You look lost asdasdasd!', parentSceneId: 1, createdAt: new Date(), updatedAt: new Date() },
+      { id: 2, order: 2, parentEvent: 1, speakerId: null, mugshotId: 2, dialogText: 'Yes. Who are you?', parentSceneId: 1, createdAt: new Date(), updatedAt: new Date() },
+      { id: 3, order: 3, parentEvent: null, speakerId: 1, mugshotId: 1, dialogText: "I'm Elara, a pleasure meet you", parentSceneId: 1, createdAt: new Date(), updatedAt: new Date() },
+      { id: 4, order: 4, parentEvent: null, speakerId: 1, mugshotId: 1, dialogText: 'Why do you lie to me?\nI can read your mind!', parentSceneId: 1, createdAt: new Date(), updatedAt: new Date() },
     ], {});
 
     await queryInterface.bulkInsert('EventChoices', [

@@ -171,7 +171,10 @@ exports.update = async (req, res) => {
 
       const eventInstance = await db.Event.findByPk(eventId, { transaction: t });
       if (eventInstance) {
+        
+        console.log("Updating event:", eventId);
         await eventInstance.update({ dialogText, speakerId, mugshotId }, { transaction: t });
+        console.log("Updated event:", eventId);
 
         // Update or recreate relationships for Backgrounds
         if (event_backgrounds && event_backgrounds.length) {

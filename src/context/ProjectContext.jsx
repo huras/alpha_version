@@ -5,10 +5,6 @@ const ProjectContext = createContext();
 
 export const ProjectProvider = ({ children }) => {
   const [project, setProject] = useState(undefined);
-  const [scenes, setScenes] = useState([]);
-  const [characters, setCharacters] = useState([]);
-  const [backgrounds, setBackgrounds] = useState([]);
-  const [events, setEvents] = useState([]);
 
   function preprocess_incoming_project_data(data) {
     
@@ -31,9 +27,6 @@ export const ProjectProvider = ({ children }) => {
       });
     });
 
-    setCharacters(data.characters);
-    setBackgrounds(data.backgrounds);
-    setScenes(data.scenes);
     setProject(data);
   }
 
@@ -63,6 +56,12 @@ export const ProjectProvider = ({ children }) => {
   }, []);
 
   const saveScene = (scene) => {
+    scene.childEvents = scene.childEvents.map((event, index) => {
+      event.event_characters = event.event_characters.map(character => {
+        return { ...character, order: index};
+      });
+      return event;
+    });
     // Save scene to database
     axios.put(`http://localhost:8080/scene/${scene.id}`, scene)
   }
@@ -70,10 +69,6 @@ export const ProjectProvider = ({ children }) => {
   return (
     <ProjectContext.Provider
       value={{
-        scenes, setScenes,
-        characters, setCharacters,
-        backgrounds, setBackgrounds,
-        events, setEvents,
         project, setProject,
         saveScene
       }}

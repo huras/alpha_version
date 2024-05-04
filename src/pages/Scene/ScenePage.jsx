@@ -11,7 +11,7 @@ import ProjectContext from '../../context/ProjectContext';
 
 export default function ScenePage() {
     const navigate = useNavigate();
-    const { scenes, setScenes, saveScene } = useContext(ProjectContext);
+    const { project, saveScene } = useContext(ProjectContext);
     const [sceneID, setSceneID] = useState(null);
 
     const [currentEventID, setCurrentEventID] = useState(null);
@@ -113,8 +113,7 @@ export default function ScenePage() {
         );
     };
 
-
-    const scene = scenes.find(s => {
+    const scene = project?.scenes.find(s => {
         const lala = s.id === Number.parseInt(sceneID);
         return lala
     });
@@ -140,14 +139,7 @@ export default function ScenePage() {
                 </div>
             </div>
 
-            {scene && <EventList scene={scene} setScene={
-                (updatedScene) => setScenes(scenes.map(s => {
-                    if (s.id === scene.id) {
-                        return updatedScene;
-                    }
-                    return s;
-                }))
-            } />}
+            {scene && <EventList scene={scene} />}
             {currentEventID && renderEvent(currentEventID)}
         </div>
     );

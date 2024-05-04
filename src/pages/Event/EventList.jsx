@@ -7,9 +7,7 @@ import BackgroundDrawer from './Editor/BackgroudDrawer';
 import EventItemContentEdit from './EventItemContentEdit';
 import ProjectContext from '../../context/ProjectContext';
 
-const EventList = ({ scene, project, setScene }) => {
-
-  const { scenes, setScenes, saveScene } = useContext(ProjectContext);
+const EventList = ({ scene }) => {
   const [showBackgroudDrawer, setShowBackgroudDrawer] = useState(false);
 
   // const handleDelete = (eventId) => {
@@ -69,20 +67,6 @@ const EventList = ({ scene, project, setScene }) => {
             key={event.id}
             event={event}
             scene={scene}
-            setEvent={
-              (updatedEvent) => {
-                setScene((prevScene) => {
-                  const updatedEvents = prevScene.childEvents.map((e, i) => {
-                    if (i === index) {
-                      return updatedEvent;
-                    }
-                    return e;
-                  });
-
-                  return { ...prevScene, childEvents: updatedEvents };
-                });
-              }
-            }
           />
 
         ))}
