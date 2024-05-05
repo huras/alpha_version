@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import AppContext from '../../../context/AppContext';
 import { Button, Form } from 'react-bootstrap';
 import { ChevronDown, ChevronUp } from 'react-bootstrap-icons';
-import MugshotSelector from './MugshotSelector'; // Adjust the path according to your file structure
+import MugshotSelector from './Mugshot/MugshotSelector'; // Adjust the path according to your file structure
 
 const DialogMugshotEditor = ({event, setEvent, project}) => {
 

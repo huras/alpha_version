@@ -76,7 +76,7 @@ exports.findOne = (req, res) => {
             as: 'childEvents',
             include: [
               { model: Background, as: 'event_backgrounds' },
-              { model: Character, as: 'event_characters' },
+              { model: Character, as: 'event_characters',through: { attributes: []  }, attributes: ['id'] },
               { model: EventChoice, as: 'childEvents'},
               { model: EventChoice, as: 'parentEvents'},
               { model: Character, as: 'speaker' },

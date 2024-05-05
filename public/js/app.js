@@ -6435,30 +6435,33 @@ var ProjectProvider = function ProjectProvider(_ref) {
     _useState2 = _slicedToArray(_useState, 2),
     project = _useState2[0],
     setProject = _useState2[1];
-  function preprocess_incoming_project_data(data) {
+  function setProject_2(newProject) {
     //iterate with key and value of data.scenes!!!!
-    Object.keys(data.scenes).forEach(function (key) {
-      var scene = data.scenes[key];
+    Object.keys(newProject === null || newProject === void 0 ? void 0 : newProject.scenes).forEach(function (key) {
+      var scene = newProject === null || newProject === void 0 ? void 0 : newProject.scenes[key];
       Object.keys(scene.childEvents).forEach(function (key) {
         var event = scene.childEvents[key];
         Object.keys(event.event_characters).forEach(function (key) {
-          event.event_characters[key] = data.characters.find(function (character) {
+          event.event_characters[key] = newProject === null || newProject === void 0 ? void 0 : newProject.characters.find(function (character) {
             return character.id === event.event_characters[key].id;
           });
         });
         Object.keys(event.event_backgrounds).forEach(function (key) {
-          event.event_backgrounds[key] = data.backgrounds.find(function (background) {
+          event.event_backgrounds[key] = newProject === null || newProject === void 0 ? void 0 : newProject.backgrounds.find(function (background) {
             return background.id === event.event_backgrounds[key].id;
           });
         });
         if (event.mugshot) {
-          event.mugshot = data.characters.find(function (character) {
+          event.mugshot = newProject === null || newProject === void 0 ? void 0 : newProject.characters.find(function (character) {
             return character.id === event.mugshot.id;
           });
         }
       });
     });
-    setProject(data);
+    setProject(newProject);
+  }
+  function preprocess_incoming_project_data(data) {
+    setProject_2(data);
   }
 
   // Fetch scenes from the backend 
@@ -6840,7 +6843,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../context/AppContext */ "./context/AppContext.jsx");
-/* harmony import */ var _MugshotSelector__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MugshotSelector */ "./pages/Event/Editor/MugshotSelector.jsx");
+/* harmony import */ var _Mugshot_MugshotSelector__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Mugshot/MugshotSelector */ "./pages/Event/Editor/Mugshot/MugshotSelector.jsx");
 
 
 
@@ -6853,7 +6856,7 @@ var DialogMugshotEditor = function DialogMugshotEditor(_ref) {
     project = _ref.project;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "speaker vn-window"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MugshotSelector__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Mugshot_MugshotSelector__WEBPACK_IMPORTED_MODULE_2__["default"], {
     event: event,
     setEvent: setEvent,
     project: project
@@ -6876,17 +6879,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Offcanvas.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/ListGroup.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Badge.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Modal.js");
-/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/pencil.js");
-/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/trash.js");
-/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/arrow-up.js");
-/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/arrow-down.js");
-/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/plus.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Offcanvas.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/ListGroup.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Badge.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Modal.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/pencil.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/trash.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/arrow-up.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/arrow-down.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/plus.js");
 /* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../context/AppContext */ "./context/AppContext.jsx");
+/* harmony import */ var _context_ProjectContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../context/ProjectContext */ "./context/ProjectContext.jsx");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
@@ -6903,18 +6907,21 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
  // Update the path as per your project structure
 
 var EventCharactersDrawer = function EventCharactersDrawer(_ref) {
-  var characters = _ref.characters,
+  var scene = _ref.scene,
+    event = _ref.event,
     onDecide = _ref.onDecide,
-    onCancel = _ref.onCancel,
-    currentCharacters = _ref.currentCharacters;
+    onCancel = _ref.onCancel;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     showCharactersModal = _useState2[0],
     setShowCharactersModal = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(currentCharacters),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(event.event_characters || []),
     _useState4 = _slicedToArray(_useState3, 2),
     selectedCharacters = _useState4[0],
     setSelectedCharacters = _useState4[1];
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_ProjectContext__WEBPACK_IMPORTED_MODULE_2__["default"]),
+    project = _useContext.project,
+    setProject = _useContext.setProject;
   var handleAddCharacter = function handleAddCharacter() {
     // setSelectedCharIndex(-1); // -1 indicates adding a new character
     setShowCharactersModal(true);
@@ -6941,20 +6948,10 @@ var EventCharactersDrawer = function EventCharactersDrawer(_ref) {
     // updatedScenes[currentScene].events = updatedEvents;
     // setScenes(updatedScenes);
   };
-  var handleDeleteCharacter = function handleDeleteCharacter(charIndex) {
-    // const updatedEvents = scenes[currentScene].events.map((event, eventIndex) => {
-    //     if (eventIndex === currentEvent) {
-    //         return {
-    //             ...event,
-    //             Characters: event.Characters.filter((_, i) => i !== charIndex)
-    //         };
-    //     }
-    //     return event;
-    // });
-
-    // const updatedScenes = [...scenes];
-    // updatedScenes[currentScene].events = updatedEvents;
-    // setScenes(updatedScenes);
+  var handleDeleteCharacter = function handleDeleteCharacter(_char) {
+    setSelectedCharacters(selectedCharacters.filter(function (_) {
+      return _.id !== _char.id;
+    }));
   };
   var handleEditCharacter = function handleEditCharacter(charIndex) {
     // setSelectedCharIndex(charIndex);
@@ -7014,14 +7011,16 @@ var EventCharactersDrawer = function EventCharactersDrawer(_ref) {
     onDecide(selectedCharacters); // Assuming onDecide is where you handle the final character list
   };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
     show: true,
-    onHide: onCancel,
+    onHide: function onHide() {
+      onDecide(selectedCharacters);
+    },
     placement: "start"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Header, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Header, {
     closeButton: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Title, null, "Current Event Characters")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], null, selectedCharacters.map(function (character, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Item, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Title, null, "Current Event Characters")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], null, selectedCharacters.map(function (character, index) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Item, {
       key: character.id,
       className: "d-flex align-items-center character-item",
       style: {
@@ -7041,57 +7040,60 @@ var EventCharactersDrawer = function EventCharactersDrawer(_ref) {
       className: "flex-grow-1"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "d-flex justify-content-between align-items-center"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
       bg: "secondary",
       className: "me-2"
-    }, "#", index + 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      size: "sm",
-      className: "me-1"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_6__["default"], {
-      size: 16
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
-      variant: "danger",
+    }, "#", index + 1), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
       size: "sm",
       className: "me-1"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_7__["default"], {
       size: 16
-    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      variant: "danger",
+      size: "sm",
+      className: "me-1",
+      onClick: function onClick() {
+        return handleDeleteCharacter(character);
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      size: 16
+    })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
       variant: "light",
       size: "sm",
       className: "me-1"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_8__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_9__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
       variant: "light",
       size: "sm"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_9__["default"], null))))));
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_10__["default"], null))))));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
     variant: "primary",
     onClick: function onClick() {
       return setShowCharactersModal(true);
     },
     className: "mt-2"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_10__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_11__["default"], {
     size: 16
-  }), " Add New Character")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"], {
+  }), " Add New Character")))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"], {
     show: showCharactersModal,
     onHide: handleModalClose
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"].Header, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Header, {
     closeButton: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"].Title, null, "Select Character")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_11__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], null, characters.map(function (_char) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Item, {
-      key: _char.id,
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Title, null, "Select Character")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], null, project.characters.map(function (_char2) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Item, {
+      key: _char2.id,
       onClick: function onClick() {
-        return handleToggleCharacter(_char);
+        return handleToggleCharacter(_char2);
       },
       className: "d-flex align-items-center character-item",
       style: {
         cursor: 'pointer',
         backgroundColor: selectedCharacters.some(function (c) {
-          return c.id === _char.id;
+          return c.id === _char2.id;
         }) ? '#dedede' : 'transparent'
       }
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-      src: _char.image,
-      alt: _char.fullname || "Character",
+      src: _char2.image,
+      alt: _char2.fullname || "Character",
       style: {
         width: '60px',
         height: '100px',
@@ -7099,7 +7101,7 @@ var EventCharactersDrawer = function EventCharactersDrawer(_ref) {
       }
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "ms-2"
-    }, _char.fullname || "Unnamed Character"));
+    }, _char2.fullname || "Unnamed Character"));
   })))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EventCharactersDrawer);
@@ -7309,10 +7311,10 @@ var EventListDrawer = function EventListDrawer(_ref) {
 
 /***/ }),
 
-/***/ "./pages/Event/Editor/MugshotSelector.jsx":
-/*!************************************************!*\
-  !*** ./pages/Event/Editor/MugshotSelector.jsx ***!
-  \************************************************/
+/***/ "./pages/Event/Editor/Mugshot/MugshotSelector.jsx":
+/*!********************************************************!*\
+  !*** ./pages/Event/Editor/Mugshot/MugshotSelector.jsx ***!
+  \********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -7322,12 +7324,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../context/AppContext */ "./context/AppContext.jsx");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../context/AppContext */ "./context/AppContext.jsx");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Modal.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/ListGroup.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
-/* harmony import */ var _context_ProjectContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../context/ProjectContext */ "./context/ProjectContext.jsx");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/gear-fill.js");
+/* harmony import */ var _context_ProjectContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../context/ProjectContext */ "./context/ProjectContext.jsx");
+/* harmony import */ var _MugshotSettings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./MugshotSettings */ "./pages/Event/Editor/Mugshot/MugshotSettings.jsx");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
@@ -7345,8 +7348,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var MugshotSelector = function MugshotSelector(_ref) {
-  var _event$mugshot, _event$mugshot2;
   var event = _ref.event,
     scene = _ref.scene;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
@@ -7357,14 +7360,14 @@ var MugshotSelector = function MugshotSelector(_ref) {
     _useState4 = _slicedToArray(_useState3, 2),
     showAdjustmentModal = _useState4[0],
     setShowAdjustmentModal = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState6 = _slicedToArray(_useState5, 2),
-    editMode = _useState6[0],
-    setEditMode = _useState6[1];
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_ProjectContext__WEBPACK_IMPORTED_MODULE_2__["default"]),
     project = _useContext.project,
     setProject = _useContext.setProject;
-  var handleSelectCharacter = function handleSelectCharacter(character) {
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(undefined),
+    _useState6 = _slicedToArray(_useState5, 2),
+    character = _useState6[0],
+    setCharacter = _useState6[1];
+  var handleSelectCharacter = function handleSelectCharacter(c) {
     setProject(function (prevProject) {
       var updatedProject = _objectSpread(_objectSpread({}, prevProject), {}, {
         scenes: prevProject.scenes.map(function (s) {
@@ -7373,8 +7376,8 @@ var MugshotSelector = function MugshotSelector(_ref) {
               childEvents: s.childEvents.map(function (e) {
                 if (e.id === event.id) {
                   return _objectSpread(_objectSpread({}, e), {}, {
-                    mugshot: character,
-                    mugshotId: character.id
+                    mugshot: c,
+                    mugshotId: c.id
                   });
                 }
                 return e;
@@ -7388,74 +7391,39 @@ var MugshotSelector = function MugshotSelector(_ref) {
     });
     setShowCharacterModal(false);
   };
-  var handleSave = function handleSave() {
-    // if (selectedCharacter && eventID !== null) {
-    //     const updatedScenes = scenes.map(scene => {
-    //         if (scene.id === currentSceneID) {
-    //             return {
-    //                 ...scene,
-    //                 events: scene.events.map(event => {
-    //                     if (event.id === eventID) {
-    //                         return {
-    //                             ...event,
-    //                             Characters: [{ ...selectedCharacter, mugshot: JSON.stringify(mugshotData) }]
-    //                         };
-    //                     }
-    //                     return event;
-    //                 })
-    //             };
-    //         }
-    //         return scene;
-    //     });
-
-    //     setScenes(updatedScenes);
-    //     setEditMode(false);
-    // }
-  };
-  var handleChange = function handleChange(e) {
-    // setEvent(prev => ({
-    // }))
-  };
-  var mugshotData = event === null || event === void 0 || (_event$mugshot = event.mugshot) === null || _event$mugshot === void 0 ? void 0 : _event$mugshot.mugshot;
-  if (mugshotData && typeof mugshotData === 'string') mugshotData = JSON.parse(mugshotData);
-
-  // Calculate the size based on the scale
-  var maxWidth = 100; // Replace with the actual width of the parent container
-  var zoom = maxWidth / 100;
-  var size = 1 / mugshotData.scale * (maxWidth * zoom);
 
   // CSS for the mugshot
-
-  var mugshotStyle = {
-    backgroundImage: "url('".concat(event === null || event === void 0 || (_event$mugshot2 = event.mugshot) === null || _event$mugshot2 === void 0 ? void 0 : _event$mugshot2.image, "')"),
-    backgroundPosition: "".concat(mugshotData.x * 100, "% ").concat(mugshotData.y * 100, "%"),
-    transform: "scale(".concat(mugshotData.scale, ")"),
-    transformOrigin: '0% 100%',
-    width: "".concat(size, "px"),
-    height: "".concat(size, "px")
+  var createMugshotData = function createMugshotData(mugshotData) {
+    if (mugshotData && typeof mugshotData === 'string') mugshotData = JSON.parse(mugshotData);
+    return mugshotData;
   };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, editMode && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    onClick: function onClick() {
-      return setShowCharacterModal(true);
-    }
-  }, "Select Mugshot"), mugshotData && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    onClick: function onClick() {
-      return setShowAdjustmentModal(true);
-    }
-  }, "Adjust Mugshot"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    variant: "success",
-    onClick: handleSave
-  }, "Save Changes")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  var createMugshotStyle = function createMugshotStyle(character) {
+    var mugshotData = createMugshotData(character === null || character === void 0 ? void 0 : character.mugshot);
+
+    // Calculate the size based on the scale
+    var maxWidth = 100; // Replace with the actual width of the parent container
+    var zoom = maxWidth / 100;
+    var size = 1 / (mugshotData === null || mugshotData === void 0 ? void 0 : mugshotData.scale) * (maxWidth * zoom);
+    return {
+      backgroundImage: "url('".concat(character === null || character === void 0 ? void 0 : character.image, "')"),
+      backgroundPosition: "".concat((mugshotData === null || mugshotData === void 0 ? void 0 : mugshotData.x) * 100, "% ").concat((mugshotData === null || mugshotData === void 0 ? void 0 : mugshotData.y) * 100, "%"),
+      transform: "scale(".concat(mugshotData === null || mugshotData === void 0 ? void 0 : mugshotData.scale, ")"),
+      transformOrigin: '0% 100%',
+      width: "".concat(size, "px"),
+      height: "".concat(size, "px")
+    };
+  };
+  var mugshotStyle = createMugshotStyle(event.mugshot);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "mugshot-placeholder",
     style: {
-      display: mugshotData ? 'block' : 'none'
+      display: event.mugshot ? 'block' : 'none'
+    },
+    onClick: function onClick() {
+      setShowCharacterModal(true);
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "mugshot",
-    onClick: function onClick() {
-      setEditMode(!editMode);
-      setShowCharacterModal(true);
-    },
     style: mugshotStyle
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
     show: showCharacterModal,
@@ -7467,11 +7435,11 @@ var MugshotSelector = function MugshotSelector(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Title, null, "Select Character Mugshot")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], null, project.characters.map(function (_char) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Item, {
       key: _char.id,
+      className: "d-flex align-items-center"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
       onClick: function onClick() {
         return handleSelectCharacter(_char);
       },
-      className: "d-flex align-items-center"
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
       src: _char.image,
       alt: _char.fullname,
       style: {
@@ -7480,41 +7448,133 @@ var MugshotSelector = function MugshotSelector(_ref) {
       }
     }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "ms-2"
-    }, _char.fullname || "Unnamed Character"));
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    }, _char.fullname || "Unnamed Character"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      variant: "light",
+      size: "sm",
+      className: "ms-auto",
+      onClick: function onClick() {
+        setCharacter(_char);
+        setShowAdjustmentModal(true);
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_7__["default"], {
+      size: 16
+    })));
+  })))), showAdjustmentModal && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_MugshotSettings__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    createMugshotStyle: createMugshotStyle,
+    createMugshotData: createMugshotData,
+    character: character,
     show: showAdjustmentModal,
-    onHide: function onHide() {
-      return setShowAdjustmentModal(false);
+    onFinish: function onFinish() {
+      setShowAdjustmentModal(false);
+      setCharacter(undefined);
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Header, {
+  }));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MugshotSelector);
+
+/***/ }),
+
+/***/ "./pages/Event/Editor/Mugshot/MugshotSettings.jsx":
+/*!********************************************************!*\
+  !*** ./pages/Event/Editor/Mugshot/MugshotSettings.jsx ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../context/AppContext */ "./context/AppContext.jsx");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Modal.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
+/* harmony import */ var _context_ProjectContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../context/ProjectContext */ "./context/ProjectContext.jsx");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
+
+
+
+
+
+var MugshotSettings = function MugshotSettings(_ref) {
+  var createMugshotStyle = _ref.createMugshotStyle,
+    createMugshotData = _ref.createMugshotData,
+    character = _ref.character,
+    show = _ref.show,
+    onFinish = _ref.onFinish;
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_ProjectContext__WEBPACK_IMPORTED_MODULE_2__["default"]),
+    project = _useContext.project,
+    setProject = _useContext.setProject;
+  var handleChange = function handleChange(e) {
+    character.mugshot = createMugshotData(character.mugshot);
+    character.mugshot = _objectSpread(_objectSpread({}, character.mugshot), {}, _defineProperty({}, e.target.name, e.target.value));
+    setProject(function (prevProject) {
+      var updatedProject = _objectSpread(_objectSpread({}, prevProject), {}, {
+        characters: prevProject.characters.map(function (c) {
+          if (c.id === character.id) {
+            return character;
+          }
+          return c;
+        })
+      });
+      return updatedProject;
+    });
+  };
+  var mugshotData = createMugshotData(character === null || character === void 0 ? void 0 : character.mugshot);
+  var mugshotStyle = createMugshotStyle(character);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    show: show,
+    onHide: function onHide() {
+      onFinish();
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Header, {
     closeButton: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Title, null, "Adjust Mugshot")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Group, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Title, null, "Adjust Mugshot")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Group, {
     className: "mb-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Label, null, "Scale"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Control, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mugshot-placeholder",
+    style: {
+      display: character ? 'block' : 'none'
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mugshot",
+    onClick: function onClick() {
+      setShowCharacterModal(true);
+    },
+    style: mugshotStyle
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Group, {
+    className: "mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Label, null, "Scale"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Control, {
+    step: 0.03,
     type: "number",
     name: "scale",
     value: mugshotData.scale,
     onChange: handleChange
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Group, {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Group, {
     className: "mb-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Label, null, "X Position"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Control, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Label, null, "X Position"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Control, {
+    step: 0.02,
     type: "number",
     name: "x",
     value: mugshotData.x,
     onChange: handleChange
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Group, {
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Group, {
     className: "mb-3"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Label, null, "Y Position"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"].Control, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Label, null, "Y Position"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Control, {
+    step: 0.02,
     type: "number",
     name: "y",
     value: mugshotData.y,
     onChange: handleChange
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    variant: "success",
-    onClick: handleSave
-  }, "Save Adjustments"))));
+  })))));
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MugshotSelector);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MugshotSettings);
 
 /***/ }),
 
@@ -7707,7 +7767,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/trash.js");
 /* harmony import */ var _Editor_EventCharactersDrawer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Editor/EventCharactersDrawer */ "./pages/Event/Editor/EventCharactersDrawer.jsx");
 /* harmony import */ var _Editor_DialogMugshotEditor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Editor/DialogMugshotEditor */ "./pages/Event/Editor/DialogMugshotEditor.jsx");
-/* harmony import */ var _Editor_MugshotSelector__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Editor/MugshotSelector */ "./pages/Event/Editor/MugshotSelector.jsx");
+/* harmony import */ var _Editor_Mugshot_MugshotSelector__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Editor/Mugshot/MugshotSelector */ "./pages/Event/Editor/Mugshot/MugshotSelector.jsx");
 /* harmony import */ var _context_ProjectContext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../context/ProjectContext */ "./context/ProjectContext.jsx");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -7775,7 +7835,8 @@ var EventItemContentEdit = function EventItemContentEdit(_ref) {
       // setShowBackgroundModal(false);
     }
   }), showEventCharacterDrawer && event && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Editor_EventCharactersDrawer__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    characters: project.characters,
+    scene: scene,
+    event: event,
     onDecide: function onDecide(selectedCharacters) {
       setProject(function (prevProject) {
         var updatedProject = _objectSpread(_objectSpread({}, prevProject), {}, {
@@ -7814,7 +7875,7 @@ var EventItemContentEdit = function EventItemContentEdit(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
     bg: "dark",
     className: "mb-1"
-  }, "#", event.id), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  }, "#", event.order), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
     variant: "primary",
     size: "sm",
     className: "mt-3",
@@ -7859,17 +7920,17 @@ var EventItemContentEdit = function EventItemContentEdit(_ref) {
         maxWidth: '100px'
       }
     });
-  }))), event.dialogText && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }))), (event.dialogText || event.mugshot) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "d-flex flex-column justify-content-start align-items-start ms-2 px-2",
     style: {
       flex: 1
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "speaker vn-window"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Editor_MugshotSelector__WEBPACK_IMPORTED_MODULE_3__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Editor_Mugshot_MugshotSelector__WEBPACK_IMPORTED_MODULE_3__["default"], {
     event: event,
     scene: scene
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("pre", {
+  })), event.dialogText && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("pre", {
     className: "text vn-window w-100"
   }, event.dialogText)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "d-flex flex-column justify-content-start align-items-center mx-1"
@@ -11252,6 +11313,62 @@ EyeFill.defaultProps = {
   title: null
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EyeFill);
+
+/***/ }),
+
+/***/ "./node_modules/react-bootstrap-icons/dist/icons/gear-fill.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/react-bootstrap-icons/dist/icons/gear-fill.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+var _excluded = ["color", "size", "title"];
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+
+
+var GearFill = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.forwardRef)(function (_ref, ref) {
+  var color = _ref.color,
+      size = _ref.size,
+      title = _ref.title,
+      rest = _objectWithoutProperties(_ref, _excluded);
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", _extends({
+    ref: ref,
+    xmlns: "http://www.w3.org/2000/svg",
+    viewBox: "0 0 16 16",
+    width: size,
+    height: size,
+    fill: color
+  }, rest), title ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("title", null, title) : null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", {
+    d: "M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"
+  }));
+});
+GearFill.propTypes = {
+  color: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
+  size: prop_types__WEBPACK_IMPORTED_MODULE_1___default().oneOfType([(prop_types__WEBPACK_IMPORTED_MODULE_1___default().string), (prop_types__WEBPACK_IMPORTED_MODULE_1___default().number)]),
+  title: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string)
+};
+GearFill.defaultProps = {
+  color: 'currentColor',
+  size: '1em',
+  title: null
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (GearFill);
 
 /***/ }),
 

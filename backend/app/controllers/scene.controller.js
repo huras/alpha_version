@@ -195,6 +195,13 @@ exports.update = async (req, res) => {
               EventId: eventId,
               CharacterId: character.id
             }, { transaction: t });
+
+            // update characters
+            const characterInstance = await db.Character.findByPk(character.id, { transaction: t });
+            if (characterInstance) {
+              character.mugshot = (typeof character.mugshot === 'string') ? JSON.stringify(character.mugshot) : character.mugshot;
+              await characterInstance.update(character, { transaction: t });
+            }
           }
         }
       }

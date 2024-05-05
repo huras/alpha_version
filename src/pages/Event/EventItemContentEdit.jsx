@@ -4,7 +4,7 @@ import { ListGroup, Button, Badge, Modal } from 'react-bootstrap';
 import { Trash, Pencil, Person, ChatFill, ImageAlt, PeopleFill } from 'react-bootstrap-icons';
 import EventCharactersDrawer from './Editor/EventCharactersDrawer';
 import DialogMugshotEditor from './Editor/DialogMugshotEditor';
-import MugshotSelector from './Editor/MugshotSelector';
+import MugshotSelector from './Editor/Mugshot/MugshotSelector';
 import ProjectContext from '../../context/ProjectContext';
 
 const EventItemContentEdit = ({ event, scene }) => {
@@ -52,22 +52,23 @@ const EventItemContentEdit = ({ event, scene }) => {
 
       {(showEventCharacterDrawer && event) && 
         <EventCharactersDrawer 
-          characters={project.characters}
+          scene={scene}
+          event={event}
           onDecide={(selectedCharacters) => {
             setProject((prevProject) => {
               const updatedProject = {
-                ...prevProject,
-                scenes: prevProject.scenes.map((s) => {
-                  if (s.id === scene.id) {
-                    return { ...s, childEvents: s.childEvents.map((e) => {
-                      if (e.id === event.id) {
-                        return { ...e, event_characters: selectedCharacters };
+                  ...prevProject,
+                  scenes: prevProject.scenes.map((s) => {
+                      if (s.id === scene.id) {
+                          return { ...s, childEvents: s.childEvents.map((e) => {
+                              if (e.id === event.id) {
+                                  return { ...e, event_characters: selectedCharacters };
+                              }
+                              return e;
+                          }) };
                       }
-                      return e;
-                    }) };
-                  }
-                  return s;
-                })
+                      return s;
+                  })
               };
               return updatedProject;
             });
@@ -83,7 +84,7 @@ const EventItemContentEdit = ({ event, scene }) => {
 
       <ListGroup.Item key={event.id} className="d-flex py-3">
         <div className="d-flex flex-column justify-content-start align-items-center mx-2">
-          <Badge bg="dark" className="mb-1">#{event.id}</Badge>
+          <Badge bg="dark" className="mb-1">#{event.order}</Badge>
 
           <Button variant="primary" size="sm" className="mt-3" onClick={() => {
             setShowBackgroundModal(!showBackgroundModal);
@@ -116,14 +117,16 @@ const EventItemContentEdit = ({ event, scene }) => {
           </div>
         </div>
         
-        {event.dialogText && (
+        {(event.dialogText || event.mugshot) && (
           <div className="d-flex flex-column justify-content-start align-items-start ms-2 px-2" style={{ flex: 1 }}>
             <div className="speaker vn-window">
                 <MugshotSelector event={event}  scene={scene} />
             </div>
-            <pre className="text vn-window w-100">
-              {event.dialogText}
-            </pre>
+            {event.dialogText && (
+              <pre className="text vn-window w-100">
+                {event.dialogText}
+              </pre>
+            )}
           </div>
         )}
 

@@ -6,28 +6,31 @@ const ProjectContext = createContext();
 export const ProjectProvider = ({ children }) => {
   const [project, setProject] = useState(undefined);
 
-  function preprocess_incoming_project_data(data) {
-    
+  function setProject_2(newProject) {
     //iterate with key and value of data.scenes!!!!
-    Object.keys(data.scenes).forEach(key => {
-      const scene = data.scenes[key];
+    Object.keys(newProject?.scenes).forEach(key => {
+      const scene = newProject?.scenes[key];
       Object.keys(scene.childEvents).forEach(key => {
         const event = scene.childEvents[key];
         Object.keys(event.event_characters).forEach(key => {
-          event.event_characters[key] = data.characters.find(character => character.id === event.event_characters[key].id);
+          event.event_characters[key] = newProject?.characters.find(character => character.id === event.event_characters[key].id);
         });
 
         Object.keys(event.event_backgrounds).forEach(key => {
-          event.event_backgrounds[key] = data.backgrounds.find(background => background.id === event.event_backgrounds[key].id);
+          event.event_backgrounds[key] = newProject?.backgrounds.find(background => background.id === event.event_backgrounds[key].id);
         });
       
         if(event.mugshot){
-          event.mugshot = data.characters.find(character => character.id === event.mugshot.id);
+          event.mugshot = newProject?.characters.find(character => character.id === event.mugshot.id);
         }
       });
     });
 
-    setProject(data);
+    setProject(newProject);
+  }
+
+  function preprocess_incoming_project_data(data) {
+    setProject_2(data);
   }
 
   // Fetch scenes from the backend 

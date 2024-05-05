@@ -2,10 +2,13 @@ import React, { useContext, useState } from 'react';
 import { Offcanvas, ListGroup, Button, Badge, Modal } from 'react-bootstrap';
 import { Trash, Plus, Pencil, ArrowUp, ArrowDown } from 'react-bootstrap-icons';
 import AppContext from '../../../context/AppContext'; // Update the path as per your project structure
+import ProjectContext from '../../../context/ProjectContext';
 
-const EventCharactersDrawer = ({ characters, onDecide, onCancel, currentCharacters }) => {
+const EventCharactersDrawer = ({ scene, event, onDecide, onCancel }) => {
     const [showCharactersModal, setShowCharactersModal] = useState(false);
-    const [selectedCharacters, setSelectedCharacters] = useState(currentCharacters);
+    const [selectedCharacters, setSelectedCharacters] = useState(event.event_characters || []);
+    const { project, setProject} = useContext(ProjectContext);
+    
 
     const handleAddCharacter = () => {
         // setSelectedCharIndex(-1); // -1 indicates adding a new character
@@ -35,20 +38,8 @@ const EventCharactersDrawer = ({ characters, onDecide, onCancel, currentCharacte
         // setScenes(updatedScenes);
     };
 
-    const handleDeleteCharacter = (charIndex) => {
-        // const updatedEvents = scenes[currentScene].events.map((event, eventIndex) => {
-        //     if (eventIndex === currentEvent) {
-        //         return {
-        //             ...event,
-        //             Characters: event.Characters.filter((_, i) => i !== charIndex)
-        //         };
-        //     }
-        //     return event;
-        // });
-
-        // const updatedScenes = [...scenes];
-        // updatedScenes[currentScene].events = updatedEvents;
-        // setScenes(updatedScenes);
+    const handleDeleteCharacter = (char) => {
+        setSelectedCharacters(selectedCharacters.filter((_) => _.id !== char.id));
     };
 
     const handleEditCharacter = (charIndex) => {
@@ -109,7 +100,7 @@ const EventCharactersDrawer = ({ characters, onDecide, onCancel, currentCharacte
 
     return (
         <>
-            <Offcanvas show={true} onHide={onCancel} placement="start">
+            <Offcanvas show={true} onHide={() => { onDecide(selectedCharacters)}} placement="start">
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>Current Event Characters</Offcanvas.Title>
                 </Offcanvas.Header>
@@ -135,7 +126,9 @@ const EventCharactersDrawer = ({ characters, onDecide, onCancel, currentCharacte
                                             <Button size="sm" className="me-1">
                                                 <Pencil size={16} />
                                             </Button>
-                                            <Button variant="danger" size="sm" className="me-1">
+                                            <Button variant="danger" size="sm" className="me-1"
+                                                onClick={() => handleDeleteCharacter(character)}
+                                            >
                                                 <Trash size={16} />
                                             </Button>
                                             <Button variant="light" size="sm" className="me-1">
@@ -162,7 +155,7 @@ const EventCharactersDrawer = ({ characters, onDecide, onCancel, currentCharacte
                 </Modal.Header>
                 <Modal.Body>
                     <ListGroup>
-                        {characters.map((char) => (
+                        {project.characters.map((char) => (
                             <ListGroup.Item 
                                 key={char.id} 
                                 onClick={() => handleToggleCharacter(char)} 
