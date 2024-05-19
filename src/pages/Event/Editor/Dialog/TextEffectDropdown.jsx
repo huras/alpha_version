@@ -4,7 +4,7 @@ import { Dropdown } from 'react-bootstrap';
 export const effects = {
     shaky:{
         name: 'shaky',
-        delayBetweenCharacters: 0.5
+        delayBetweenCharacters: 0.06
     },
     impact: {
         name: 'impact',
@@ -12,7 +12,7 @@ export const effects = {
     }
 }
 
-function TextEffectDropdown({word, editMode}) {
+function TextEffectDropdown({word, editMode, setEffect}) {
     const [effectSelected, setEffectSelected] = useState(word.effect);
 
     const wordContent = <span className='dialog-text-word'>{word.word.split('').map((char, index) => {
@@ -31,6 +31,11 @@ function TextEffectDropdown({word, editMode}) {
             </span>
         );
     })}</span>;
+
+    const handleEffectChange = (effect) => {
+        setEffectSelected(effect);
+        setEffect(effect);
+    }
     
 
     return (
@@ -42,9 +47,9 @@ function TextEffectDropdown({word, editMode}) {
                     </Dropdown.Toggle>
                 
                     <Dropdown.Menu>
-                        <Dropdown.Item href="#" onClick={() => setEffectSelected(null)}>None</Dropdown.Item>
-                        <Dropdown.Item href="#" onClick={() => setEffectSelected('shaky')}>Fear</Dropdown.Item>
-                        <Dropdown.Item href="#" onClick={() => setEffectSelected('impact')}>Impacting</Dropdown.Item>
+                        <Dropdown.Item href="#" onClick={() => handleEffectChange(null)}>None</Dropdown.Item>
+                        <Dropdown.Item href="#" onClick={() => handleEffectChange('shaky')}>Fear</Dropdown.Item>
+                        <Dropdown.Item href="#" onClick={() => handleEffectChange('impact')}>Impacting</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
                 : 

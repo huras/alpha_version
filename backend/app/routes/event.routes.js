@@ -4,7 +4,10 @@ module.exports = app => {
   var router = require("express").Router();
 
   // Create a new Entrega
-  router.post("/", event.create);
+  // router.post("/", event.create);
+
+  // Create a new Entrega
+  router.post("/fresh", event.attachFresh);
 
   // Retrieve all Entregas
   router.get("/", event.findAll);

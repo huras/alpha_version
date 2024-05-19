@@ -8,7 +8,7 @@ import MugshotSelector from './Editor/Mugshot/MugshotSelector';
 import ProjectContext from '../../context/ProjectContext';
 import DialogEditor from './Editor/Dialog/DialogEditor';
 
-const EventItemContentEdit = ({ event, scene }) => {
+const EventItemContentEdit = ({ event, scene, handleDelete }) => {
   const { project, setProject} = useContext(ProjectContext);
   const [showBackgroundModal, setShowBackgroundModal] = useState(false);
   const [showEventCharacterDrawer, setShowEventCharacterDrawer] = useState(false);
@@ -63,7 +63,6 @@ const EventItemContentEdit = ({ event, scene }) => {
                       if (s.id === scene.id) {
                           return { ...s, childEvents: s.childEvents.map((e) => {
                               if (e.id === event.id) {
-                                  debugger
                                   return { ...e, event_characters: selectedCharacters };
                               }
                               return e;
@@ -105,7 +104,7 @@ const EventItemContentEdit = ({ event, scene }) => {
 
         <div
           style={{
-            backgroundImage: `url('${event.event_backgrounds.length === 0 ? '' : event.event_backgrounds[0].image}')`,
+            backgroundImage: `url('${!event?.event_backgrounds?.length ? '' : event?.event_backgrounds[0].image}')`,
             width: 'calc(960px * 0.35)',
             height: 'calc(536px * 0.35)',
             backgroundSize: 'cover',
@@ -113,7 +112,7 @@ const EventItemContentEdit = ({ event, scene }) => {
             backgroundRepeat: 'no-repeat'
           }}>
           <div className="character-pivot">
-            {event.event_characters
+            {event?.event_characters && event?.event_characters
             .sort((a, b) => a.EventCharacter.order - b.EventCharacter.order)
             .map(character => (
               <img key={character.data.id} src={character.data.image} alt="Character" style={{ maxWidth: '100px' }} />
@@ -151,7 +150,7 @@ const EventItemContentEdit = ({ event, scene }) => {
         )}
 
         <div className="d-flex flex-column justify-content-start align-items-center mx-1">
-          <Button variant="danger" size="sm" onClick={() => onDelete(event.id)}>
+          <Button variant="danger" size="sm" onClick={() => handleDelete(event.id)}>
             <Trash size={16} />
           </Button>
         </div>

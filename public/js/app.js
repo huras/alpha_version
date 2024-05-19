@@ -11233,10 +11233,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TextEffectDropdown__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TextEffectDropdown */ "./pages/Event/Editor/Dialog/TextEffectDropdown.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 
 
 
@@ -11256,6 +11260,11 @@ function DialogEditor(_ref) {
         })) === null || _dialogText === void 0 ? void 0 : _dialogText.effect) || null
       };
     }));
+  };
+  var _setEffect = function setEffect(index, effect) {
+    var newDialog = _toConsumableArray(dialogText);
+    newDialog[index].effect = effect;
+    setDialog(newDialog);
   };
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
@@ -11283,7 +11292,10 @@ function DialogEditor(_ref) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_TextEffectDropdown__WEBPACK_IMPORTED_MODULE_1__["default"], {
       key: "".concat(word.word, "_").concat(index, "_view"),
       word: word,
-      editMode: editMode
+      editMode: editMode,
+      setEffect: function setEffect(effect) {
+        return _setEffect(index, effect);
+      }
     });
   })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "w-100"
@@ -11304,11 +11316,16 @@ function DialogEditor(_ref) {
       setEditMode(false);
       saveDialog();
     }
-  }, "x")), editTextEffectsMode ? dialogText.map(function (word, index) {
+  }, "x")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "w-100 d-flex justify-content-start align-items-start"
+  }, editTextEffectsMode ? dialogText.map(function (word, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_TextEffectDropdown__WEBPACK_IMPORTED_MODULE_1__["default"], {
       key: "".concat(word.word, "_").concat(index),
       word: word,
-      editMode: editTextEffectsMode
+      editMode: editTextEffectsMode,
+      setEffect: function setEffect(effect) {
+        return _setEffect(index, effect);
+      }
     });
   }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
     className: "vn-window w-100",
@@ -11316,7 +11333,7 @@ function DialogEditor(_ref) {
     onChange: function onChange(e) {
       setTempText(e.target.value);
     }
-  }))));
+  })))));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DialogEditor);
 
@@ -11354,7 +11371,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var effects = {
   shaky: {
     name: 'shaky',
-    delayBetweenCharacters: 0.5
+    delayBetweenCharacters: 0.06
   },
   impact: {
     name: 'impact',
@@ -11363,7 +11380,8 @@ var effects = {
 };
 function TextEffectDropdown(_ref) {
   var word = _ref.word,
-    editMode = _ref.editMode;
+    editMode = _ref.editMode,
+    setEffect = _ref.setEffect;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(word.effect),
     _useState2 = _slicedToArray(_useState, 2),
     effectSelected = _useState2[0],
@@ -11384,23 +11402,27 @@ function TextEffectDropdown(_ref) {
       style: styles
     }, _char);
   }));
+  var handleEffectChange = function handleEffectChange(effect) {
+    setEffectSelected(effect);
+    setEffect(effect);
+  };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, editMode ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Toggle, {
     variant: "secondary",
     id: "dropdown-basic"
   }, wordContent && wordContent), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Menu, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Item, {
     href: "#",
     onClick: function onClick() {
-      return setEffectSelected(null);
+      return handleEffectChange(null);
     }
   }, "None"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Item, {
     href: "#",
     onClick: function onClick() {
-      return setEffectSelected('shaky');
+      return handleEffectChange('shaky');
     }
   }, "Fear"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_1__["default"].Item, {
     href: "#",
     onClick: function onClick() {
-      return setEffectSelected('impact');
+      return handleEffectChange('impact');
     }
   }, "Impacting"))) : wordContent);
 }
@@ -12395,8 +12417,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 var EventItemContentEdit = function EventItemContentEdit(_ref) {
+  var _event$event_backgrou;
   var event = _ref.event,
-    scene = _ref.scene;
+    scene = _ref.scene,
+    handleDelete = _ref.handleDelete;
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_ProjectContext__WEBPACK_IMPORTED_MODULE_4__["default"]),
     project = _useContext.project,
     setProject = _useContext.setProject;
@@ -12450,7 +12474,6 @@ var EventItemContentEdit = function EventItemContentEdit(_ref) {
               return _objectSpread(_objectSpread({}, s), {}, {
                 childEvents: s.childEvents.map(function (e) {
                   if (e.id === event.id) {
-                    debugger;
                     return _objectSpread(_objectSpread({}, e), {}, {
                       event_characters: selectedCharacters
                     });
@@ -12501,7 +12524,7 @@ var EventItemContentEdit = function EventItemContentEdit(_ref) {
     size: 16
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     style: {
-      backgroundImage: "url('".concat(event.event_backgrounds.length === 0 ? '' : event.event_backgrounds[0].image, "')"),
+      backgroundImage: "url('".concat(!(event !== null && event !== void 0 && (_event$event_backgrou = event.event_backgrounds) !== null && _event$event_backgrou !== void 0 && _event$event_backgrou.length) ? '' : event === null || event === void 0 ? void 0 : event.event_backgrounds[0].image, "')"),
       width: 'calc(960px * 0.35)',
       height: 'calc(536px * 0.35)',
       backgroundSize: 'cover',
@@ -12510,7 +12533,7 @@ var EventItemContentEdit = function EventItemContentEdit(_ref) {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "character-pivot"
-  }, event.event_characters.sort(function (a, b) {
+  }, (event === null || event === void 0 ? void 0 : event.event_characters) && (event === null || event === void 0 ? void 0 : event.event_characters.sort(function (a, b) {
     return a.EventCharacter.order - b.EventCharacter.order;
   }).map(function (character) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
@@ -12521,7 +12544,7 @@ var EventItemContentEdit = function EventItemContentEdit(_ref) {
         maxWidth: '100px'
       }
     });
-  }))), (event.dialogText || event.mugshot) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  })))), (event.dialogText || event.mugshot) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "d-flex flex-column justify-content-start align-items-start ms-2 px-2",
     style: {
       flex: 1
@@ -12562,7 +12585,7 @@ var EventItemContentEdit = function EventItemContentEdit(_ref) {
     variant: "danger",
     size: "sm",
     onClick: function onClick() {
-      return onDelete(event.id);
+      return handleDelete(event.id);
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_11__["default"], {
     size: 16
@@ -12656,14 +12679,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/ListGroup.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
-/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/plus.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/ListGroup.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/plus.js");
 /* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../context/AppContext */ "./context/AppContext.jsx");
 /* harmony import */ var _EventItemContent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EventItemContent */ "./pages/Event/EventItemContent.jsx");
 /* harmony import */ var _Editor_BackgroudDrawer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Editor/BackgroudDrawer */ "./pages/Event/Editor/BackgroudDrawer.jsx");
 /* harmony import */ var _EventItemContentEdit__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./EventItemContentEdit */ "./pages/Event/EventItemContentEdit.jsx");
 /* harmony import */ var _context_ProjectContext__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../context/ProjectContext */ "./context/ProjectContext.jsx");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -12678,65 +12712,114 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var EventList = function EventList(_ref) {
   var scene = _ref.scene;
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     showBackgroudDrawer = _useState2[0],
     setShowBackgroudDrawer = _useState2[1];
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_ProjectContext__WEBPACK_IMPORTED_MODULE_5__["default"]),
+    project = _useContext.project,
+    setProject = _useContext.setProject;
+  var handleDelete = function handleDelete(eventId) {
+    if (confirm('Are you sure you want to delete this event?') === false) return;
+    axios__WEBPACK_IMPORTED_MODULE_6__["default"]["delete"]("http://localhost:8080/event/".concat(eventId)).then(function (response) {
+      console.log(response.data);
+      setProject(function (prevProject) {
+        var updatedProject = _objectSpread(_objectSpread({}, prevProject), {}, {
+          scenes: prevProject.scenes.map(function (s) {
+            if (s.id === scene.id) {
+              return _objectSpread(_objectSpread({}, s), {}, {
+                childEvents: s.childEvents.filter(function (e) {
+                  return e.id !== eventId;
+                })
+              });
+            }
+            return s;
+          })
+        });
+        return updatedProject;
+      });
+    })["catch"](function (error) {
+      console.error(error);
+    });
 
-  // const handleDelete = (eventId) => {
-  //   // const updatedEvents = events.filter(event => event.id !== eventId);
-  //   // setScenes(scenes.map(scene => {
-  //   //   if (scene.id === currentSceneID) {
-  //   //     return { ...scene, events: updatedEvents };
-  //   //   }
-  //   //   return scene;
-  //   // }));
+    // const updatedEvents = events.filter(event => event.id !== eventId);
+    // setScenes(scenes.map(scene => {
+    //   if (scene.id === currentSceneID) {
+    //     return { ...scene, events: updatedEvents };
+    //   }
+    //   return scene;
+    // }));
 
-  //   // // Check if the current event is the one being deleted
-  //   // if (eventId === setCurrentEventID) {
-  //   //   setCurrentEventID(null);
-  //   // }
-  // };
+    // // Check if the current event is the one being deleted
+    // if (eventId === setCurrentEventID) {
+    //   setCurrentEventID(null);
+    // }
+  };
 
   // const handleEdit = (eventId) => {
   //   // setCurrentEventID(eventId);
   //   // handleClose();
   // };
 
-  // const handleAddEvent = () => {
-  //   // Logic to add a new event
-  //   // var newEvent = {
-  //   //   // Define the structure of your new event here
-  //   //   // Example structure
-  //   //   id: Math.max(...events.map(e => e.id)) + 1, // Assuming numeric IDs
-  //   //   background: [],
-  //   //   Characters: [],
-  //   //   dialog: {},
-  //   //   ChildEvents: [],
-  //   //   ParentEvents: [],
-  //   //   parentEvent: null
-  //   // };
+  var handleAddEvent = function handleAddEvent() {
+    var _scene$childEvents;
+    // Logic to add a new event
+    axios__WEBPACK_IMPORTED_MODULE_6__["default"].post("http://localhost:8080/event/fresh", {
+      parentScene: scene.id,
+      order: (scene === null || scene === void 0 || (_scene$childEvents = scene.childEvents) === null || _scene$childEvents === void 0 ? void 0 : _scene$childEvents.length) + 1
+    }).then(function (response) {
+      console.log(response.data);
+      setProject(function (prevProject) {
+        var updatedProject = _objectSpread(_objectSpread({}, prevProject), {}, {
+          scenes: prevProject.scenes.map(function (s) {
+            if (s.id === scene.id) {
+              return _objectSpread(_objectSpread({}, s), {}, {
+                childEvents: [].concat(_toConsumableArray(s.childEvents), [response.data])
+              });
+            }
+            return s;
+          })
+        });
+        return updatedProject;
+      });
+    })["catch"](function (error) {
+      console.error(error);
+    });
 
-  //   // setScenes(scenes.map(scene => {
-  //   //   if (scene.id === currentSceneID) {
-  //   //     return { ...scene, events: [...scene.events, newEvent] };
-  //   //   }
-  //   //   return scene;
-  //   // }));
-  // };
+    // var newEvent = {
+    //   // Define the structure of your new event here
+    //   // Example structure
+    //   id: null,
+    //   background: [],
+    //   Characters: [],
+    //   dialog: {},
+    //   ChildEvents: [],
+    //   ParentEvents: [],
+    //   parentEvent: null
+    // };
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], null, scene.childEvents.map(function (event, index) {
+    // setScenes(scenes.map(scene => {
+    //   if (scene.id === currentSceneID) {
+    //     return { ...scene, events: [...scene.events, newEvent] };
+    //   }
+    //   return scene;
+    // }));
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], null, scene.childEvents.map(function (event, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_EventItemContentEdit__WEBPACK_IMPORTED_MODULE_4__["default"], {
       key: event.id,
       event: event,
-      scene: scene
+      scene: scene,
+      handleDelete: handleDelete
     });
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    onClick: function onClick() {},
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    onClick: handleAddEvent,
     className: "my-2"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_9__["default"], {
     size: 16
   }), " Add New Event")));
 };

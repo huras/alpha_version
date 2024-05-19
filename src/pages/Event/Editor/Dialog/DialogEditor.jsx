@@ -17,6 +17,12 @@ function DialogEditor({event, scene, setDialog}) {
         )
     }
 
+    const setEffect = (index, effect) => {
+        const newDialog = [...dialogText];
+        newDialog[index].effect = effect;
+        setDialog(newDialog);
+    }
+
     const [ editMode, setEditMode ] = useState(false);
     const [ editTextEffectsMode, setEditTextEffectsMode ] = useState(false);
     const [tempText, setTempText] = useState('');
@@ -30,7 +36,14 @@ function DialogEditor({event, scene, setDialog}) {
             !editMode ? (
                 <pre className="text vn-window w-100" onClick={() => setEditMode(true)} >
                     {
-                        dialogText.map((word, index) => <TextEffectDropdown key={`${word.word}_${index}_view`} word={word} editMode={editMode} /> )
+                        dialogText.map((word, index) => 
+                            <TextEffectDropdown 
+                                key={`${word.word}_${index}_view`} 
+                                word={word} 
+                                editMode={editMode}  
+                                setEffect={(effect) => setEffect(index, effect)}
+                            /> 
+                        )
                     }
                 </pre>
             ) : (
@@ -46,18 +59,22 @@ function DialogEditor({event, scene, setDialog}) {
                             saveDialog()
                         }}>x</button>
                     </div>
-                    {
-                        editTextEffectsMode ?
-                        dialogText.map((word, index) => <TextEffectDropdown key={`${word.word}_${index}`} word={word} editMode={editTextEffectsMode} /> )
-                        :
-                        <textarea
-                            className="vn-window w-100"
-                            value={tempText}
-                            onChange={(e) => {
-                                setTempText(e.target.value);
-                            }}
-                        />
-                    }
+                    <div className='w-100 d-flex justify-content-start align-items-start'>
+                        {
+                            editTextEffectsMode ?
+                            dialogText.map((word, index) => 
+                                <TextEffectDropdown key={`${word.word}_${index}`} word={word} editMode={editTextEffectsMode} setEffect={(effect) => setEffect(index, effect)}/> 
+                            )
+                            :
+                            <textarea
+                                className="vn-window w-100"
+                                value={tempText}
+                                onChange={(e) => {
+                                    setTempText(e.target.value);
+                                }}
+                            />
+                        }
+                    </div>
                 </div>
             )
         )}

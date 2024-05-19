@@ -47,9 +47,11 @@
 
 // ==============================
 
-.dialog-text-word {
-    margin-left: 0.09em;
-}
-.dialog-text-word:not(:last-child) {
-    margin-left: 0.29em;
+// .dialog-text-word {
+//     margin-left: 0.09em;
+// }
+.dialog-text-word
+// :not(:last-child) 
+{
+    margin-right: 0.29em;
 }

@@ -1,40 +1,45 @@
 const db = require("../models/sqlite_db");
 
-const {Scene, EventChoice, Background, Character, Event} = db;
+const {Scene, Event, Character,EventChoice,Background, Project, EventBackground, EventCharacter } = db;
 const { Op } = require("sequelize");
 
-exports.create = (req, res) => {
-  console.log('13213=============');
-  console.log(req.file);
-  console.log('13213=============');
+exports.attachFresh = async (req, res) => {
+  
+  const { parentScene, order } = req.body;
+
   // Validate request
-  if (!req.body.nome) {
-    res.status(400).send({
-      message: "Content can not be empty!"
-    });
-    return;
-  }
+  // if (!req.body.nome) {
+  //   res.status(400).send({
+  //     message: "Content can not be empty!"
+  //   });
+  //   return;
+  // }
 
   //check if the image uploaded is from a valid extension
-  if (!req.file) {
-    res.status(500).send({ msg: 'The app must have a cover image!' })
-  };
-  if (!req.file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
-    res.status(500).send({ msg: 'Only image files (jpg, jpeg, png) are allowed for the cover!' })
-  };
-  const imageName = req.file.filename;
+  // if (!req.file) {
+  //   res.status(500).send({ msg: 'The app must have a cover image!' })
+  // };
+  // if (!req.file.originalname.match(/\.(jpg|JPG|jpeg|JPEG|png|PNG|gif|GIF)$/)) {
+  //   res.status(500).send({ msg: 'Only image files (jpg, jpeg, png) are allowed for the cover!' })
+  // };
+  // const imageName = req.file.filename;
 
   // Create a Event
   const event = {
-    nome: req.body.nome,
-    cover: imageName,
-    ordem: req.body.ordem,
-    audio: req.body.audio,
+    order: req.body.order,
   };
 
+  // const data = await Event.create(event)
+
   // Save Event in the database
-  Event.create(event)
+  await Event.create(event)
     .then(data => {
+
+      //relate event to scene
+      data.setParentScene(parentScene);
+      data.save();
+      
+
       res.send(data);
     })
     .catch(err => {
