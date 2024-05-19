@@ -11243,7 +11243,20 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function DialogEditor(_ref) {
   var event = _ref.event,
-    scene = _ref.scene;
+    scene = _ref.scene,
+    setDialog = _ref.setDialog;
+  var saveDialog = function saveDialog() {
+    // Save dialog
+    setDialog(tempText.split(' ').map(function (word) {
+      var _dialogText;
+      return {
+        word: word,
+        effect: ((_dialogText = dialogText) === null || _dialogText === void 0 || (_dialogText = _dialogText.find(function (w) {
+          return w.word === word;
+        })) === null || _dialogText === void 0 ? void 0 : _dialogText.effect) || null
+      };
+    }));
+  };
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     editMode = _useState2[0],
@@ -11252,8 +11265,15 @@ function DialogEditor(_ref) {
     _useState4 = _slicedToArray(_useState3, 2),
     editTextEffectsMode = _useState4[0],
     setEditTextEffectsMode = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState6 = _slicedToArray(_useState5, 2),
+    tempText = _useState6[0],
+    setTempText = _useState6[1];
   var dialogText = event.dialogText;
   if (typeof dialogText === 'string') dialogText = JSON.parse(dialogText);
+  if (!tempText && dialogText) setTempText(dialogText.map(function (word) {
+    return word.word;
+  }).join(' '));
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, " ", dialogText && (!editMode ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("pre", {
     className: "text vn-window w-100",
     onClick: function onClick() {
@@ -11268,9 +11288,9 @@ function DialogEditor(_ref) {
   })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "w-100"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "d-flex justify-content-between"
+    className: "d-flex justify-content-between my-1"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    variant: "primary",
+    variant: "warning",
     size: "sm",
     className: "mt-1",
     onClick: function onClick() {
@@ -11279,16 +11299,23 @@ function DialogEditor(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_3__["default"], {
     size: 16
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
-    className: "btn btn-secondary",
+    className: "btn btn-primary",
     onClick: function onClick() {
-      return setEditMode(false);
+      setEditMode(false);
+      saveDialog();
     }
-  }, "Save")), dialogText.map(function (word, index) {
+  }, "x")), editTextEffectsMode ? dialogText.map(function (word, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_TextEffectDropdown__WEBPACK_IMPORTED_MODULE_1__["default"], {
       key: "".concat(word.word, "_").concat(index),
       word: word,
       editMode: editTextEffectsMode
     });
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
+    className: "vn-window w-100",
+    value: tempText,
+    onChange: function onChange(e) {
+      setTempText(e.target.value);
+    }
   }))));
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DialogEditor);
@@ -12506,7 +12533,29 @@ var EventItemContentEdit = function EventItemContentEdit(_ref) {
     scene: scene
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Editor_Dialog_DialogEditor__WEBPACK_IMPORTED_MODULE_5__["default"], {
     event: event,
-    scene: scene
+    scene: scene,
+    setDialog: function setDialog(dialogText) {
+      setProject(function (prevProject) {
+        var updatedProject = _objectSpread(_objectSpread({}, prevProject), {}, {
+          scenes: prevProject.scenes.map(function (s) {
+            if (s.id === scene.id) {
+              return _objectSpread(_objectSpread({}, s), {}, {
+                childEvents: s.childEvents.map(function (e) {
+                  if (e.id === event.id) {
+                    return _objectSpread(_objectSpread({}, e), {}, {
+                      dialogText: dialogText
+                    });
+                  }
+                  return e;
+                })
+              });
+            }
+            return s;
+          })
+        });
+        return updatedProject;
+      });
+    }
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "d-flex flex-column justify-content-start align-items-center mx-1"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {

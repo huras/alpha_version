@@ -126,7 +126,27 @@ const EventItemContentEdit = ({ event, scene }) => {
             <div className="speaker vn-window">
                 <MugshotSelector event={event}  scene={scene} />
             </div>
-            <DialogEditor event={event} scene={scene} />
+            <DialogEditor event={event} scene={scene} setDialog={
+              (dialogText) => {
+                setProject((prevProject) => {
+                  const updatedProject = {
+                    ...prevProject,
+                    scenes: prevProject.scenes.map((s) => {
+                      if (s.id === scene.id) {
+                        return { ...s, childEvents: s.childEvents.map((e) => {
+                          if (e.id === event.id) {
+                            return { ...e, dialogText };
+                          }
+                          return e;
+                        }) };
+                      }
+                      return s;
+                    })
+                  };
+                  return updatedProject;
+                });
+              }
+            }/>
           </div>
         )}
 

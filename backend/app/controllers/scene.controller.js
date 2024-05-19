@@ -169,6 +169,7 @@ exports.update = async (req, res) => {
     // Update each Event
     for (const event of childEvents) {
       var { id: eventId, dialogText, speakerId, mugshotId, mugshot, event_backgrounds, event_characters } = event;
+      dialogText = dialogText ? (((typeof dialogText === 'object')) ? JSON.stringify(dialogText) : dialogText) : null;
 
       const eventInstance = await db.Event.findByPk(eventId, { transaction: t });
       if (eventInstance) {
