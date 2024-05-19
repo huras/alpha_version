@@ -20,6 +20,8 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 // Chama models
+db.EventCharacter = require("./event_character.model.js")(sequelize, Sequelize);
+db.EventBackground = require("./event_background.model.js")(sequelize, Sequelize);
 db.Character = require("./character.model.js")(sequelize, Sequelize);
 db.Scene = require("./scene.model.js")(sequelize, Sequelize);
 db.Event = require("./event.model.js")(sequelize, Sequelize);

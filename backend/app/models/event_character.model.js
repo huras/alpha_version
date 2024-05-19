@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id'
       }
     },
+    order: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+      defaultValue: 1
+    },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE,

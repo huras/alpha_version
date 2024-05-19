@@ -151,7 +151,8 @@ exports.findAllEvents = (req, res) => {
 };
 
 exports.update = async (req, res) => {
-  const { id, title, order, parentProjectId, childEvents } = req.body;
+  const { scene, project } = req.body;
+  const {id, title, order, parentProjectId, childEvents} = scene;
 
   const t = await db.sequelize.transaction();
   try {
@@ -164,16 +165,26 @@ exports.update = async (req, res) => {
     }
 
     await scene.update({ title, order, parentProjectId }, { transaction: t });
-
+    
     // Update each Event
     for (const event of childEvents) {
-      const { id: eventId, dialogText, speakerId, mugshotId, event_backgrounds, event_characters } = event;
+      var { id: eventId, dialogText, speakerId, mugshotId, mugshot, event_backgrounds, event_characters } = event;
 
       const eventInstance = await db.Event.findByPk(eventId, { transaction: t });
       if (eventInstance) {
         
         console.log("Updating event:", eventId);
+        if(!speakerId) speakerId = null;
+        if(!mugshotId) mugshotId = null;
         await eventInstance.update({ dialogText, speakerId, mugshotId }, { transaction: t });
+        // if(mugshotId){
+        //   const mugshot_character = await db.Character.findByPk(mugshotId, { transaction: t });
+        //   if (mugshot_character) {
+        //     const mugshotata = JSON.stringify((typeof mugshot === 'string') ? JSON.parse(mugshot.mugshot) : mugshot.mugshot);
+        //     // mugshot_data = JSON.stringify(JSON.parse(mugshot).mugshot); 
+        //     await mugshot_character.update({ mugshot: mugshotata }, { transaction: t });
+        //   }
+        // }
         console.log("Updated event:", eventId);
 
         // Update or recreate relationships for Backgrounds
@@ -187,22 +198,30 @@ exports.update = async (req, res) => {
           }
         }
 
+        
         // Update or recreate relationships for Characters
         if (event_characters && event_characters.length) {
           await db.EventCharacter.destroy({ where: { EventId: eventId }, transaction: t });
           for (const character of event_characters) {
             await db.EventCharacter.create({
               EventId: eventId,
-              CharacterId: character.id
+              CharacterId: character.data.id,
+              order: character.EventCharacter.order,
             }, { transaction: t });
-
-            // update characters
-            const characterInstance = await db.Character.findByPk(character.id, { transaction: t });
-            if (characterInstance) {
-              character.mugshot = (typeof character.mugshot === 'string') ? JSON.stringify(character.mugshot) : character.mugshot;
-              await characterInstance.update(character, { transaction: t });
-            }
           }
+        }
+
+
+      }
+    }
+    
+    // Update project characters
+    if (project && project.characters) {
+      for (const character of project.characters) {
+        const characterInstance = await db.Character.findByPk(character.id, { transaction: t });
+        if (characterInstance) {
+          character.mugshot = character?.mugshot ? (((typeof character?.mugshot === 'object')) ? JSON.stringify(character?.mugshot) : character?.mugshot) : null;
+          await characterInstance.update(character, { transaction: t });
         }
       }
     }

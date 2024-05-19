@@ -8,7 +8,7 @@ import ProjectContext from '../../context/ProjectContext';
 
 export default function SceneList() {
     // const { currentSceneID, setCurrentSceneID, setCurrentScene, currentEventID } = useContext(AppContext);
-    const { project, scenes, setScenes } = useContext(ProjectContext);
+    const { project } = useContext(ProjectContext);
 
     const handleCheckScene = (sceneID) => {
         setCurrentScene( Number.parseInt(sceneID) );
@@ -17,7 +17,7 @@ export default function SceneList() {
 
     return (
         <div>
-            {scenes.length > 0 ? scenes.map(scene => (
+            {project?.scenes?.length > 0 ? project.scenes.map(scene => (
                 <Card key={scene.id} className="mb-3">
                     <ListGroup variant="flush">
                         <ListGroup.Item>

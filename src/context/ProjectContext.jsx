@@ -13,7 +13,11 @@ export const ProjectProvider = ({ children }) => {
       Object.keys(scene.childEvents).forEach(key => {
         const event = scene.childEvents[key];
         Object.keys(event.event_characters).forEach(key => {
-          event.event_characters[key] = newProject?.characters.find(character => character.id === event.event_characters[key].id);
+
+          event.event_characters[key] = {
+            data: newProject?.characters.find(character => character.id === event.event_characters[key].id),
+            EventCharacter: {...event.event_characters[key].EventCharacter}
+          };
         });
 
         Object.keys(event.event_backgrounds).forEach(key => {
@@ -61,12 +65,15 @@ export const ProjectProvider = ({ children }) => {
   const saveScene = (scene) => {
     scene.childEvents = scene.childEvents.map((event, index) => {
       event.event_characters = event.event_characters.map(character => {
-        return { ...character, order: index};
+        return { ...character};
       });
+      if(event?.mugshot && typeof event.mugshot !== 'string'){
+        event.mugshot = JSON.stringify(event.mugshot);
+      }
       return event;
     });
     // Save scene to database
-    axios.put(`http://localhost:8080/scene/${scene.id}`, scene)
+    axios.put(`http://localhost:8080/scene/${scene.id}`, {scene, project})
   }
 
   return (

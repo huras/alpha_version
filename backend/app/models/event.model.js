@@ -36,7 +36,11 @@ module.exports = (sequelize, Sequelize) => {
         as: 'mugshot',
       }
     },
-    dialogText: Sequelize.STRING,
+    dialogText: {
+      type: Sequelize.STRING,
+      allowNull: true,
+      defaultValue: null
+    },
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE,
@@ -50,8 +54,8 @@ module.exports = (sequelize, Sequelize) => {
     // ... add other fields as needed
   }, {});
   Event.associate = function (models) {
-    Event.belongsToMany(models.Background, { through: 'EventBackgrounds', as: 'event_backgrounds' });
-    Event.belongsToMany(models.Character, { through: 'EventCharacters', as: 'event_characters' });
+    Event.belongsToMany(models.Background, { through: 'EventBackground', as: 'event_backgrounds' });
+    Event.belongsToMany(models.Character, { through: 'EventCharacter', as: 'event_characters' });
 
     Event.hasMany(models.EventChoice, { foreignKey: 'EventId', as: 'childEvents' });
     Event.hasMany(models.EventChoice, { foreignKey: 'RelatedEventId', as: 'parentEvents' });

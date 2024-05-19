@@ -13,7 +13,7 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
-app.use(express.json());
+app.use(express.json({limit: '100mb'}));
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
@@ -33,7 +33,7 @@ const db = require("./app/models/sqlite_db");
     );
     // console.log(resultado);
 
-    const seed = require("./app/seeders/initial_seed");
+    // const seed = require("./app/seeders/initial_seed");
     // seed.up( db.sequelize.queryInterface, db.Sequelize.DataTypes);
   } catch (error) {
     console.log(error);

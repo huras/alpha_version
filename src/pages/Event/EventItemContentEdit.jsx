@@ -6,6 +6,7 @@ import EventCharactersDrawer from './Editor/EventCharactersDrawer';
 import DialogMugshotEditor from './Editor/DialogMugshotEditor';
 import MugshotSelector from './Editor/Mugshot/MugshotSelector';
 import ProjectContext from '../../context/ProjectContext';
+import DialogEditor from './Editor/Dialog/DialogEditor';
 
 const EventItemContentEdit = ({ event, scene }) => {
   const { project, setProject} = useContext(ProjectContext);
@@ -62,6 +63,7 @@ const EventItemContentEdit = ({ event, scene }) => {
                       if (s.id === scene.id) {
                           return { ...s, childEvents: s.childEvents.map((e) => {
                               if (e.id === event.id) {
+                                  debugger
                                   return { ...e, event_characters: selectedCharacters };
                               }
                               return e;
@@ -75,7 +77,7 @@ const EventItemContentEdit = ({ event, scene }) => {
             setShowEventCharacterDrawer(false);
           }}
           onCancel={() => {
-            setShowEventCharacterDrawer(false);
+            // setShowEventCharacterDrawer(false);
           }}
           handleClose={() => setShowEventCharacterDrawer(false)} 
           currentCharacters={event.event_characters}
@@ -96,9 +98,9 @@ const EventItemContentEdit = ({ event, scene }) => {
           }}>
             <PeopleFill size={16} />
           </Button>
-          <Button variant="primary" size="sm" className="mt-1" onClick={() => { }}>
+          {/* <Button variant="primary" size="sm" className="mt-1" onClick={() => { }}>
             <ChatFill size={16} />
-          </Button>
+          </Button> */}
         </div>
 
         <div
@@ -111,8 +113,10 @@ const EventItemContentEdit = ({ event, scene }) => {
             backgroundRepeat: 'no-repeat'
           }}>
           <div className="character-pivot">
-            {event.event_characters.map(character => (
-              <img key={character.id} src={character.image} alt="Character" style={{ maxWidth: '100px' }} />
+            {event.event_characters
+            .sort((a, b) => a.EventCharacter.order - b.EventCharacter.order)
+            .map(character => (
+              <img key={character.data.id} src={character.data.image} alt="Character" style={{ maxWidth: '100px' }} />
             ))}
           </div>
         </div>
@@ -122,11 +126,7 @@ const EventItemContentEdit = ({ event, scene }) => {
             <div className="speaker vn-window">
                 <MugshotSelector event={event}  scene={scene} />
             </div>
-            {event.dialogText && (
-              <pre className="text vn-window w-100">
-                {event.dialogText}
-              </pre>
-            )}
+            <DialogEditor event={event} scene={scene} />
           </div>
         )}
 

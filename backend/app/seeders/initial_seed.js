@@ -251,10 +251,34 @@ module.exports = {
     ], {});
 
     await queryInterface.bulkInsert('Events', [
-      { id: 1, order: 1, parentEvent: null, speakerId: 1, mugshotId: 1, dialogText: 'You look lost asdasdasd!', parentSceneId: 1, createdAt: new Date(), updatedAt: new Date() },
-      { id: 2, order: 2, parentEvent: 1, speakerId: null, mugshotId: 2, dialogText: 'Yes. Who are you?', parentSceneId: 1, createdAt: new Date(), updatedAt: new Date() },
-      { id: 3, order: 3, parentEvent: null, speakerId: 1, mugshotId: 1, dialogText: "I'm Elara, a pleasure meet you", parentSceneId: 1, createdAt: new Date(), updatedAt: new Date() },
-      { id: 4, order: 4, parentEvent: null, speakerId: 1, mugshotId: 1, dialogText: 'Why do you lie to me?\nI can read your mind!', parentSceneId: 1, createdAt: new Date(), updatedAt: new Date() },
+      { id: 1, order: 1, parentEvent: null, speakerId: 1, mugshotId: 1, dialogText: JSON.stringify([
+        {word:'You', effect: null},
+        {word:'look', effect: null},
+        {word:'lost', effect: 'shaky'},
+        {word:'!', effect: null},
+      ]), parentSceneId: 1, createdAt: new Date(), updatedAt: new Date() },
+
+      { id: 2, order: 2, parentEvent: 1, speakerId: null, mugshotId: 2, dialogText: JSON.stringify([
+        {word:'Yes', effect: null},
+        {word:'.', effect: null},
+        {word:'\n', effect: null},
+        {word:'But', effect: null},
+        {word:'how', effect: null},
+        {word:'do', effect: null},
+        {word:'you', effect: null},
+        {word:'know', effect: null},
+        {word:'?', effect: null},
+      ]), parentSceneId: 1, createdAt: new Date(), updatedAt: new Date() },
+
+      { id: 3, order: 3, parentEvent: null, speakerId: 1, mugshotId: 1, dialogText: JSON.stringify([
+        {word:"I'm", effect: null},
+        {word:'a', effect: null},
+        {word:'mage', effect: null},
+        {word:'bitch', effect: 'impact'},
+        {word:'.', effect: null},
+      ]), parentSceneId: 1, createdAt: new Date(), updatedAt: new Date() },
+
+      { id: 4, order: 4, parentEvent: null, speakerId: 1, mugshotId: 1, dialogText: null, parentSceneId: 1, createdAt: new Date(), updatedAt: new Date() },
     ], {});
 
     await queryInterface.bulkInsert('EventChoices', [
@@ -297,11 +321,11 @@ module.exports = {
     ], {});
 
     await queryInterface.bulkInsert('EventCharacters', [
-      { CharacterId: 3, EventId: 1, createdAt: new Date(), updatedAt: new Date() },
-      { CharacterId: 3, EventId: 2, createdAt: new Date(), updatedAt: new Date() },
-      { CharacterId: 4, EventId: 2, createdAt: new Date(), updatedAt: new Date() },
-      { CharacterId: 4, EventId: 3, createdAt: new Date(), updatedAt: new Date() },
-      { CharacterId: 3, EventId: 4, createdAt: new Date(), updatedAt: new Date() },
+      { CharacterId: 3, EventId: 1, order: 0, createdAt: new Date(), updatedAt: new Date() },
+      { CharacterId: 3, EventId: 2, order: 0, createdAt: new Date(), updatedAt: new Date() },
+      { CharacterId: 4, EventId: 2, order: 1, createdAt: new Date(), updatedAt: new Date() },
+      { CharacterId: 4, EventId: 3, order: 0, createdAt: new Date(), updatedAt: new Date() },
+      { CharacterId: 3, EventId: 4, order: 0, createdAt: new Date(), updatedAt: new Date() },
     ], {});
   },
 

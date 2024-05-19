@@ -1,0 +1,55 @@
+@keyframes shake {
+    0%, 100% {
+        transform:  rotateZ(0deg);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: rotateZ(3deg);
+    }
+    20%, 40%, 60%, 80% {
+        transform: rotateZ(-3deg);
+    }
+    25%, 45%, 65%, 85% {
+        transform:  rotateZ(5deg);
+    }
+    15%, 35%, 55%, 75%, 95% {
+        transform:  rotateZ(-5deg);
+    }
+}
+
+.text-animation-shaky {
+    transform-origin: 50% 80%;
+    display: inline-block; /* Allows transform to apply */
+    animation: shake 0.5s infinite;
+    animation-timing-function: steps(7, end);
+}
+
+// ==============================
+
+@keyframes impact {
+    0% {
+        transform: scale(1) rotateZ(0deg);
+    }
+    10% {
+        transform: scale(0.3) rotateZ(3deg);
+    }
+    40%{
+        transform: scale(1.1) rotateZ(-7deg);
+    }
+    80%{
+        transform: scale(1) rotateZ(0deg);
+    }
+}
+
+.text-animation-impact {
+    display: inline-block; /* Allows transform to apply */
+    animation: impact 1.1s ease-out infinite;
+}
+
+// ==============================
+
+.dialog-text-word {
+    margin-left: 0.09em;
+}
+.dialog-text-word:not(:last-child) {
+    margin-left: 0.29em;
+}

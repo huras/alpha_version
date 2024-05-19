@@ -15,7 +15,6 @@ const SceneEditorNavbar = ({ toggleEventListDrawer, toggleBackgroundDrawer, togg
     const event = scenes.find(e => e.id === eventId);
     if (!event) return null;
 
-    debugger
     if (event.ChildEvents?.length > 0) {
       const branchIndex = branchSelection[eventId] || 0;
       return event.ChildEvents[branchIndex]?.RelatedEventId;

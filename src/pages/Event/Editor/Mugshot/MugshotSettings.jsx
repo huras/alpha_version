@@ -22,7 +22,7 @@ const MugshotSettings = ({createMugshotStyle, createMugshotData, character, show
                         return character;
                     }
                     return c;
-                })
+                }),
             };
             return updatedProject;
         });

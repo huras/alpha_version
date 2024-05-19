@@ -10,8 +10,14 @@ const MugshotSelector = ({event, scene }) => {
     const [showAdjustmentModal, setShowAdjustmentModal] = useState(false);
     const { project, setProject} = useContext(ProjectContext);
     const [character, setCharacter] = useState(undefined);
+    const [hasMugshot, setHasMugshot] = useState(false);
+
+    useEffect(() => {
+        setHasMugshot(event?.mugshot ? true : false);
+    }, []);
 
     const handleSelectCharacter = (c) => {
+        
         setProject((prevProject) => {
             const updatedProject = {
                 ...prevProject,
@@ -19,6 +25,7 @@ const MugshotSelector = ({event, scene }) => {
                     if (s.id === scene.id) {
                         return { ...s, childEvents: s.childEvents.map((e) => {
                             if (e.id === event.id) {
+                                
                                 return { ...e, mugshot: c, mugshotId: c.id };
                             }
                             return e;
@@ -39,7 +46,9 @@ const MugshotSelector = ({event, scene }) => {
         return mugshotData;
     }
     const createMugshotStyle = (character) => {
+        
         var mugshotData = createMugshotData(character?.mugshot);
+        if(typeof mugshotData === 'string') mugshotData = JSON.parse(mugshotData);
 
         // Calculate the size based on the scale
         const maxWidth = 100; // Replace with the actual width of the parent container
@@ -60,7 +69,32 @@ const MugshotSelector = ({event, scene }) => {
 
     return (
         <>
-            <div className="mugshot-placeholder" style={{ display: event.mugshot ? 'block' : 'none' }} onClick={() => {setShowCharacterModal(true)}}>
+            <label>
+                <input type="checkbox" checked={event.mugshot} onChange={(e) => {
+                    const updatedEvent = { 
+                        ...event,
+                        mugshot: false, 
+                        mugshotId: false, 
+                    };
+                    const updatedProject = {
+                        ...project,
+                        scenes: project.scenes.map((s) => {
+                            if (s.id === scene.id) {
+                                return { ...s, childEvents: s.childEvents.map((e) => {
+                                    if (e.id === event.id) {
+                                        return updatedEvent;
+                                    }
+                                    return e;
+                                }) };
+                            }
+                            return s;
+                        })
+                    };
+                    setHasMugshot( !hasMugshot);
+                    setProject(updatedProject);
+                }} />
+            </label>
+            <div className="mugshot-placeholder" style={{ display: (hasMugshot) ? 'block' : 'none' }} onClick={() => {setShowCharacterModal(true)}}>
                 <div className="mugshot" style={mugshotStyle}></div>
             </div>
 

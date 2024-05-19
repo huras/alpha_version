@@ -39,7 +39,7 @@ const EventCharactersDrawer = ({ scene, event, onDecide, onCancel }) => {
     };
 
     const handleDeleteCharacter = (char) => {
-        setSelectedCharacters(selectedCharacters.filter((_) => _.id !== char.id));
+        setSelectedCharacters(selectedCharacters.filter((_) => _.data.id !== char.data.id));
     };
 
     const handleEditCharacter = (charIndex) => {
@@ -85,17 +85,40 @@ const EventCharactersDrawer = ({ scene, event, onDecide, onCancel }) => {
     // const currentCharacters = scenes[currentScene].events[currentEvent].Characters;
 
     const handleToggleCharacter = (character) => {
-        const isAlreadyAdded = selectedCharacters.some(selected => selected.id === character.id);
+        character = {
+            data: character,
+            EventCharacter: { order: selectedCharacters.length }
+        };
+        const isAlreadyAdded = selectedCharacters.some(selected => selected.id === character.data.id);
         if (isAlreadyAdded) {
-            setSelectedCharacters(selectedCharacters.filter(selected => selected.id !== character.id));
+            const newCharacters = selectedCharacters.filter(selected => selected.id !== character.data.id)
+            setSelectedCharacters(newCharacters);
         } else {
-            setSelectedCharacters([...selectedCharacters, character]);
+            const newCharacters = [...selectedCharacters, character];
+            setSelectedCharacters(newCharacters);
         }
     };
 
     const handleModalClose = () => {
         setShowCharactersModal(false);
         onDecide(selectedCharacters); // Assuming onDecide is where you handle the final character list
+    };
+
+    const changeOrder = (character, orderChange) => {
+        const newCharacters = [...selectedCharacters];
+        
+
+        const currentOrder = character.EventCharacter.order;
+        const newOrder = currentOrder + orderChange;
+        if (newOrder < 0 || newOrder >= newCharacters.length) return;
+
+        const characterOfSwap = newCharacters.find(c => c.EventCharacter.order === newOrder);
+        if (!characterOfSwap) return;
+
+        character.EventCharacter.order = newOrder;
+        characterOfSwap.EventCharacter.order = currentOrder;
+
+        setSelectedCharacters(newCharacters);
     };
 
     return (
@@ -106,15 +129,18 @@ const EventCharactersDrawer = ({ scene, event, onDecide, onCancel }) => {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <ListGroup>
-                        {selectedCharacters.map((character, index) => (
+                        {selectedCharacters
+                            .sort((a, b) => a.EventCharacter.order - b.EventCharacter.order)
+                            .map((character, index) => (
                             <ListGroup.Item 
-                                key={character.id} 
+                                key={character.data.id} 
                                 className="d-flex align-items-center character-item"
                                 style={{ backgroundColor: 'lightgray' }} // Style for already added characters
                             >
                                 <div className="me-2">
                                     <img
-                                        src={character.image}
+                                        className={`order-${character.EventCharacter.order}`}
+                                        src={character.data.image}
                                         alt="Character"
                                         style={{ width: '60px', height: '100px', objectFit: 'cover' }}
                                     />
@@ -122,21 +148,30 @@ const EventCharactersDrawer = ({ scene, event, onDecide, onCancel }) => {
                                 <div className="flex-grow-1">
                                     <div className="d-flex justify-content-between align-items-center">
                                         <Badge bg="secondary" className="me-2">#{index + 1}</Badge>
+                                        <Badge bg="secondary" className="me-2"> Order: {character.EventCharacter.order}</Badge>
                                         <div>
-                                            <Button size="sm" className="me-1">
+                                            {/* <Button size="sm" className="me-1">
                                                 <Pencil size={16} />
-                                            </Button>
+                                            </Button> */}
                                             <Button variant="danger" size="sm" className="me-1"
                                                 onClick={() => handleDeleteCharacter(character)}
                                             >
                                                 <Trash size={16} />
                                             </Button>
-                                            <Button variant="light" size="sm" className="me-1">
+                                            {index !== 0 && 
+                                            <Button variant="light" size="sm" className="me-1"
+                                                onClick={() => changeOrder(character, -1)}
+                                            >
                                                 <ArrowUp />
                                             </Button>
-                                            <Button variant="light" size="sm">
+                                            }
+                                            {(index !== selectedCharacters.length - 1) && 
+                                            <Button variant="light" size="sm"
+                                               onClick={() => changeOrder(character, 1)}
+                                            >
                                                 <ArrowDown />
                                             </Button>
+                                            }
                                         </div>
                                     </div>
                                 </div>
