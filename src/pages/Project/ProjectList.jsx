@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Card, ListGroup } from 'react-bootstrap';
+import { Button, Card, ListGroup } from 'react-bootstrap';
 import AppContext from '../../context/AppContext';
-import { EyeFill, PencilFill } from 'react-bootstrap-icons';
+import { EyeFill, PencilFill, Plus } from 'react-bootstrap-icons';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -38,6 +38,11 @@ export default function ProjectList() {
                     </ListGroup>
                 </Card>
             ))}
+            <Link to={`/project/add`}>
+                <Button className="my-2">
+                    <Plus size={16} /> Add New Project
+                </Button>
+            </Link>
         </div>
     )
 }

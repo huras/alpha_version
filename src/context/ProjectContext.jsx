@@ -37,6 +37,19 @@ export const ProjectProvider = ({ children }) => {
     setProject_2(data);
   }
 
+  function fetch_project_data(id) {
+    axios.get(`http://localhost:8080/project/${id}`)
+      .then(res => {
+        preprocess_incoming_project_data(res.data);
+      })
+      // .catch(err => {
+        
+      //     console.error(err);
+      //     setError('Failed to fetch project');
+      // })
+      // .finally();
+  }
+
   // Fetch scenes from the backend 
   useEffect(() => {
     
@@ -50,23 +63,16 @@ export const ProjectProvider = ({ children }) => {
       }
       if(!idToUse) return;
 
-      axios.get(`http://localhost:8080/project/${idToUse}`)
-          .then(res => {
-            preprocess_incoming_project_data(res.data);
-          })
-          // .catch(err => {
-            
-          //     console.error(err);
-          //     setError('Failed to fetch project');
-          // })
-          // .finally();
+      fetch_project_data(idToUse);
   }, []);
 
   const saveScene = (scene) => {
     scene.childEvents = scene.childEvents.map((event, index) => {
-      event.event_characters = event.event_characters.map(character => {
-        return { ...character};
-      });
+      if(event.event_characters){
+        event.event_characters = event?.event_characters.map(character => {
+          return { ...character};
+        });
+      }
       if(event?.mugshot && typeof event.mugshot !== 'string'){
         event.mugshot = JSON.stringify(event.mugshot);
       }
@@ -80,7 +86,8 @@ export const ProjectProvider = ({ children }) => {
     <ProjectContext.Provider
       value={{
         project, setProject,
-        saveScene
+        saveScene,
+        fetch_project_data
       }}
     >
       {children}

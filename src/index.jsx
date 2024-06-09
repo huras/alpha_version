@@ -9,6 +9,7 @@ import ScenePage from "./pages/Scene/ScenePage";
 import RouteHandler from "./context/RouteHandler";
 import ProjectPage from "./pages/Project/ProjectPage";
 import { ProjectProvider } from "./context/ProjectContext";
+import StorySetupForm from "./pages/Project/Creation/StorySetupForm";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Dashboard />} />
             {/* <Route path="/projects/:id" element={<ProjectPage />} /> */}
+            <Route path="/project/add" element={<StorySetupForm />} />
             <Route path="/project" element={<ProjectPage />} />
 
             <Route path="/scene" element={<ScenePage />} />

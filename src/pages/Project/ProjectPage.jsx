@@ -7,11 +7,22 @@ import Breadcrumb from "../Breadcrumb";
 import ProjectContext from "../../context/ProjectContext";
 
 const ProjectPage = () => {
-    const { project } = useContext(ProjectContext);
+    const { project, fetch_project_data } = useContext(ProjectContext);
     const [error, setError] = useState('');
 
     useEffect(() => {
-    }, [project]);
+        var idToUse = undefined;
+        if (!project) {
+            const urlParams = new URLSearchParams(window.location.search);
+            idToUse = urlParams.get('project');
+        } else {
+            // if (project) return;
+            idToUse = project.id;
+        }
+        if(!idToUse) return;
+
+        fetch_project_data(idToUse);
+    }, []);
 
     if (error) return <p>Error loading events: {error}</p>;
 

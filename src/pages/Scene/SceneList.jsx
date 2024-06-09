@@ -9,6 +9,7 @@ import ProjectContext from '../../context/ProjectContext';
 export default function SceneList() {
     // const { currentSceneID, setCurrentSceneID, setCurrentScene, currentEventID } = useContext(AppContext);
     const { project } = useContext(ProjectContext);
+    
 
     const handleCheckScene = (sceneID) => {
         setCurrentScene( Number.parseInt(sceneID) );
