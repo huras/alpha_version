@@ -12,6 +12,39 @@ const EventItemContentEdit = ({ event, scene, handleDelete }) => {
   const { project, setProject} = useContext(ProjectContext);
   const [showBackgroundModal, setShowBackgroundModal] = useState(false);
   const [showEventCharacterDrawer, setShowEventCharacterDrawer] = useState(false);
+  const [showDialogInEvent, setShowDialogInEvent] = useState(event?.dialogText);
+
+  const toggleDialogInEvent = () => {
+    if (event?.dialogText && !confirm('Are you sure you want to toggle the dialog text?')) {
+      return;
+    }    
+    
+    setShowDialogInEvent(!showDialogInEvent);
+
+    if(showDialogInEvent){
+      setProject(prevProject => {
+        const updatedScenes = prevProject.scenes.map(s => {
+          if (s.id === scene.id) {
+            return {
+              ...s,
+              childEvents: s.childEvents.map(e => {
+                if (e.id === event.id) {
+                  // Toggle the dialogText to either be null or the original text based on the current state
+                  return {
+                    ...e,
+                    dialogText: '[]' // Example text
+                  };
+                }
+                return e;
+              })
+            };
+          }
+          return s;
+        });
+        return {...prevProject, scenes: updatedScenes};
+      });
+    }
+  };
 
   return (
     <>
@@ -97,9 +130,11 @@ const EventItemContentEdit = ({ event, scene, handleDelete }) => {
           }}>
             <PeopleFill size={16} />
           </Button>
-          {/* <Button variant="primary" size="sm" className="mt-1" onClick={() => { }}>
+          <Button variant="primary" size="sm" className="mt-1" onClick={() => { 
+            toggleDialogInEvent();
+          }}>
             <ChatFill size={16} />
-          </Button> */}
+          </Button>
         </div>
 
         <div
@@ -120,12 +155,13 @@ const EventItemContentEdit = ({ event, scene, handleDelete }) => {
           </div>
         </div>
         
-        {(event.dialogText || event.mugshot) && (
+        {(showDialogInEvent || (event.dialogText || event.mugshot)) && (
           <div className="d-flex flex-column justify-content-start align-items-start ms-2 px-2" style={{ flex: 1 }}>
             <div className="speaker vn-window">
                 <MugshotSelector event={event}  scene={scene} />
             </div>
-            <DialogEditor event={event} scene={scene} setDialog={
+            <DialogEditor event={event} scene={scene} visible={showDialogInEvent} 
+              setDialog={
               (dialogText) => {
                 setProject((prevProject) => {
                   const updatedProject = {

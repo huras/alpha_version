@@ -10976,6 +10976,13 @@ var ProjectProvider = function ProjectProvider(_ref) {
     axios__WEBPACK_IMPORTED_MODULE_1__["default"].put("http://localhost:8080/scene/".concat(scene.id), {
       scene: scene,
       project: project
+    }).then(function (res) {
+      console.log(res);
+      if (res.status === 200) {
+        alert(res.data.message);
+      } else {
+        alert("Error saving!");
+      }
     });
   };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ProjectContext.Provider, {
@@ -11380,6 +11387,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 function DialogEditor(_ref) {
   var event = _ref.event,
+    visible = _ref.visible,
     scene = _ref.scene,
     setDialog = _ref.setDialog;
   var saveDialog = function saveDialog() {
@@ -11416,12 +11424,12 @@ function DialogEditor(_ref) {
   if (!tempText && dialogText) setTempText(dialogText.map(function (word) {
     return word.word;
   }).join(' '));
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, " ", dialogText && (!editMode ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("pre", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, " ", visible && (!editMode ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("pre", {
     className: "text vn-window w-100",
     onClick: function onClick() {
       return setEditMode(true);
     }
-  }, dialogText.map(function (word, index) {
+  }, dialogText && dialogText.map(function (word, index) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_TextEffectDropdown__WEBPACK_IMPORTED_MODULE_1__["default"], {
       key: "".concat(word.word, "_").concat(index, "_view"),
       word: word,
@@ -11439,6 +11447,7 @@ function DialogEditor(_ref) {
     size: "sm",
     className: "mt-1",
     onClick: function onClick() {
+      saveDialog();
       setEditTextEffectsMode(!editTextEffectsMode);
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -11450,16 +11459,18 @@ function DialogEditor(_ref) {
       saveDialog();
     }
   }, "x")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "w-100 d-flex justify-content-start align-items-start"
+    className: "w-100 d-flex justify-content-start align-items-start flex-wrap"
   }, editTextEffectsMode ? dialogText.map(function (word, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_TextEffectDropdown__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       key: "".concat(word.word, "_").concat(index),
+      className: /\r|\n/.test(word) ? 'w-100' : ''
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_TextEffectDropdown__WEBPACK_IMPORTED_MODULE_1__["default"], {
       word: word,
       editMode: editTextEffectsMode,
       setEffect: function setEffect(effect) {
         return _setEffect(index, effect);
       }
-    });
+    }));
   }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("textarea", {
     className: "vn-window w-100",
     value: tempText,
@@ -12519,10 +12530,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/ListGroup.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Badge.js");
 /* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Modal.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Modal.js");
 /* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/image-alt.js");
 /* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/people-fill.js");
-/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/trash.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/chat-fill.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/trash.js");
 /* harmony import */ var _Editor_EventCharactersDrawer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Editor/EventCharactersDrawer */ "./pages/Event/Editor/EventCharactersDrawer.jsx");
 /* harmony import */ var _Editor_DialogMugshotEditor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Editor/DialogMugshotEditor */ "./pages/Event/Editor/DialogMugshotEditor.jsx");
 /* harmony import */ var _Editor_Mugshot_MugshotSelector__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Editor/Mugshot/MugshotSelector */ "./pages/Event/Editor/Mugshot/MugshotSelector.jsx");
@@ -12565,6 +12577,40 @@ var EventItemContentEdit = function EventItemContentEdit(_ref) {
     _useState4 = _slicedToArray(_useState3, 2),
     showEventCharacterDrawer = _useState4[0],
     setShowEventCharacterDrawer = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(event === null || event === void 0 ? void 0 : event.dialogText),
+    _useState6 = _slicedToArray(_useState5, 2),
+    showDialogInEvent = _useState6[0],
+    setShowDialogInEvent = _useState6[1];
+  var toggleDialogInEvent = function toggleDialogInEvent() {
+    if (event !== null && event !== void 0 && event.dialogText && !confirm('Are you sure you want to toggle the dialog text?')) {
+      return;
+    }
+    setShowDialogInEvent(!showDialogInEvent);
+    if (showDialogInEvent) {
+      setProject(function (prevProject) {
+        var updatedScenes = prevProject.scenes.map(function (s) {
+          if (s.id === scene.id) {
+            return _objectSpread(_objectSpread({}, s), {}, {
+              childEvents: s.childEvents.map(function (e) {
+                if (e.id === event.id) {
+                  // Toggle the dialogText to either be null or the original text based on the current state
+                  return _objectSpread(_objectSpread({}, e), {}, {
+                    dialogText: '[]' // Example text
+                  });
+                }
+
+                return e;
+              })
+            });
+          }
+          return s;
+        });
+        return _objectSpread(_objectSpread({}, prevProject), {}, {
+          scenes: updatedScenes
+        });
+      });
+    }
+  };
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, showBackgroundModal && event && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(ImageModal, {
     currentImages: event.event_backgrounds,
     images: project.backgrounds,
@@ -12655,6 +12701,15 @@ var EventItemContentEdit = function EventItemContentEdit(_ref) {
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_10__["default"], {
     size: 16
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    variant: "primary",
+    size: "sm",
+    className: "mt-1",
+    onClick: function onClick() {
+      toggleDialogInEvent();
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    size: 16
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     style: {
       backgroundImage: "url('".concat(!(event !== null && event !== void 0 && (_event$event_backgrou = event.event_backgrounds) !== null && _event$event_backgrou !== void 0 && _event$event_backgrou.length) ? '' : event === null || event === void 0 ? void 0 : event.event_backgrounds[0].image, "')"),
@@ -12677,7 +12732,7 @@ var EventItemContentEdit = function EventItemContentEdit(_ref) {
         maxWidth: '100px'
       }
     });
-  })))), (event.dialogText || event.mugshot) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  })))), (showDialogInEvent || event.dialogText || event.mugshot) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "d-flex flex-column justify-content-start align-items-start ms-2 px-2",
     style: {
       flex: 1
@@ -12690,6 +12745,7 @@ var EventItemContentEdit = function EventItemContentEdit(_ref) {
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Editor_Dialog_DialogEditor__WEBPACK_IMPORTED_MODULE_5__["default"], {
     event: event,
     scene: scene,
+    visible: showDialogInEvent,
     setDialog: function setDialog(dialogText) {
       setProject(function (prevProject) {
         var updatedProject = _objectSpread(_objectSpread({}, prevProject), {}, {
@@ -12720,7 +12776,7 @@ var EventItemContentEdit = function EventItemContentEdit(_ref) {
     onClick: function onClick() {
       return handleDelete(event.id);
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_11__["default"], {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_12__["default"], {
     size: 16
   })))));
 };
@@ -12729,10 +12785,10 @@ var ImageModal = function ImageModal(_ref2) {
     onSelect = _ref2.onSelect,
     onCancel = _ref2.onCancel,
     currentImages = _ref2.currentImages;
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(currentImages || []),
-    _useState6 = _slicedToArray(_useState5, 2),
-    selectedImages = _useState6[0],
-    setSelectedImages = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(currentImages || []),
+    _useState8 = _slicedToArray(_useState7, 2),
+    selectedImages = _useState8[0],
+    setSelectedImages = _useState8[1];
   var handleSelect = function handleSelect(image) {
     if (selectedImages.includes(image)) {
       setSelectedImages(selectedImages.filter(function (img) {
@@ -12743,14 +12799,14 @@ var ImageModal = function ImageModal(_ref2) {
       setSelectedImages([image]);
     }
   };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_13__["default"], {
     show: true,
     onHide: onCancel,
     size: "lg",
     centered: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Header, {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_13__["default"].Header, {
     closeButton: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Title, null, "Select an Image")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_13__["default"].Title, null, "Select an Image")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_13__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "d-flex flex-wrap row"
   }, images.map(function (image, index) {
     var img_component = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
@@ -12773,7 +12829,7 @@ var ImageModal = function ImageModal(_ref2) {
       className: "col-6",
       variant: "primary"
     }, img_component);
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_12__["default"].Footer, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_13__["default"].Footer, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {
     variant: "secondary",
     onClick: onCancel
   }, "Cancel"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_8__["default"], {

@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import { Stars } from 'react-bootstrap-icons';
 import TextEffectDropdown, { effects } from './TextEffectDropdown';
 
-function DialogEditor({event, scene, setDialog}) {
+function DialogEditor({event, visible, scene, setDialog}) {
 
     const saveDialog = () => {
         // Save dialog
@@ -32,10 +32,10 @@ function DialogEditor({event, scene, setDialog}) {
     if (!tempText && dialogText) setTempText(dialogText.map(word => word.word).join(' '));
 
     return <> {
-        dialogText && (
+        (visible) && (
             !editMode ? (
                 <pre className="text vn-window w-100" onClick={() => setEditMode(true)} >
-                    {
+                    {   dialogText &&
                         dialogText.map((word, index) => 
                             <TextEffectDropdown 
                                 key={`${word.word}_${index}_view`} 
@@ -50,6 +50,7 @@ function DialogEditor({event, scene, setDialog}) {
                 <div className="w-100">
                     <div className="d-flex justify-content-between my-1">
                         <Button variant="warning" size="sm" className="mt-1" onClick={() => { 
+                            saveDialog();
                             setEditTextEffectsMode(!editTextEffectsMode);
                         }}>
                             <Stars size={16} />
@@ -59,11 +60,13 @@ function DialogEditor({event, scene, setDialog}) {
                             saveDialog()
                         }}>x</button>
                     </div>
-                    <div className='w-100 d-flex justify-content-start align-items-start'>
+                    <div className='w-100 d-flex justify-content-start align-items-start flex-wrap'>
                         {
                             editTextEffectsMode ?
                             dialogText.map((word, index) => 
-                                <TextEffectDropdown key={`${word.word}_${index}`} word={word} editMode={editTextEffectsMode} setEffect={(effect) => setEffect(index, effect)}/> 
+                              <div key={`${word.word}_${index}`} className={((/\r|\n/).test(word)) ? 'w-100' : ''}>
+                                <TextEffectDropdown word={word} editMode={editTextEffectsMode} setEffect={(effect) => setEffect(index, effect)}/> 
+                              </div>
                             )
                             :
                             <textarea

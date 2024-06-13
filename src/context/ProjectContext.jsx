@@ -80,6 +80,14 @@ export const ProjectProvider = ({ children }) => {
     });
     // Save scene to database
     axios.put(`http://localhost:8080/scene/${scene.id}`, {scene, project})
+    .then(res => {
+      console.log(res);
+      if(res.status === 200) {
+        alert(res.data.message);
+      } else {
+        alert("Error saving!");
+      }
+    })
   }
 
   return (
