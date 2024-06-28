@@ -10,6 +10,7 @@ import RouteHandler from "./context/RouteHandler";
 import ProjectPage from "./pages/Project/ProjectPage";
 import { ProjectProvider } from "./context/ProjectContext";
 import StorySetupForm from "./pages/Project/Creation/StorySetupForm";
+import EventInteractor from "./pages/Event/Player/EventInteractor";
 
 const App = () => {
   return (
@@ -34,6 +35,8 @@ const App = () => {
             <Route path="/scene" element={<ScenePage />} />
             <Route path="/edit/scene" element={<SceneEditor />} />
             <Route path="/edit/event" element={<SceneEditor />} />
+
+            <Route path="/play-scene" element={<EventInteractor />} />
           </Routes>
         </RouteHandler>
       </Router>

@@ -73,11 +73,11 @@ exports.findOne = (req, res) => {
         model: Scene, as: 'scenes', include: [
           {
             model: Event,
-            as: 'childEvents',
+            as: 'childChoices',
             include: [
               { model: Background, as: 'event_backgrounds' },
               { model: Character, as: 'event_characters' },
-              { model: EventChoice, as: 'childEvents'},
+              { model: EventChoice, as: 'childChoices'},
               { model: EventChoice, as: 'parentEvents'},
               { model: Character, as: 'speaker' },
               { model: Character, as: 'mugshot' },

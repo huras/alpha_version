@@ -70,11 +70,11 @@ exports.findOne = (req, res) => {
     include: [
       {
         model: Event,
-        as: 'childEvents',
+        as: 'childChoices',
         include: [
           { model: Background, as: 'event_backgrounds'},
           { model: Character, as: 'event_characters'},
-          { model: EventChoice, as: 'childEvents'},
+          { model: EventChoice, as: 'childChoices'},
           { model: EventChoice, as: 'parentEvents'},
           { model: Character, as: 'speaker'},
           { model: Character, as: 'mugshot'},
@@ -152,7 +152,7 @@ exports.findAllEvents = (req, res) => {
 
 exports.update = async (req, res) => {
   const { scene, project } = req.body;
-  const {id, title, order, parentProjectId, childEvents} = scene;
+  const {id, title, order, parentProjectId, childChoices} = scene;
 
   const t = await db.sequelize.transaction();
   try {
@@ -167,7 +167,7 @@ exports.update = async (req, res) => {
     await scene.update({ title, order, parentProjectId }, { transaction: t });
     
     // Update each Event
-    for (const event of childEvents) {
+    for (const event of childChoices) {
       var { id: eventId, dialogText, speakerId, mugshotId, mugshot, event_backgrounds, event_characters } = event;
       dialogText = dialogText ? (((typeof dialogText === 'object')) ? JSON.stringify(dialogText) : dialogText) : null;
 

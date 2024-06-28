@@ -79,36 +79,16 @@ exports.findOne = (req, res) => {
   const id = req.params.id;
 
    Event.findByPk(Number.parseInt(id), {
-    include: [
-      {
-        model: Character,
-        as: 'speaker',
-        required: false,
-        attributes: ['fullname', 'id']
-      },
-      {
-        model: Character,
-        as: 'mugshot',
-        required: false,
-        attributes: ['image', 'mugshot', 'id']
-      },
-      {
-        model: Character,
-        as: 'EventCharacters',
-        required: false,
-        attributes: ['image', 'id']
-      },
-      {
-        model: EventChoice,
-        as: 'ChildEvents'
-      }, 
-      {
-        model: EventChoice,
-        as: 'ParentEvents'
-      }, 
-      { model: Background, required: false, attributes: ['image', 'name', 'id'] }, 
-      { model: Scene, as: 'parentScene', required: false, attributes: ['id'] },
-    ],
+      include: [
+        { model: Background, as: 'event_backgrounds' },
+        { model: Character, as: 'event_characters' },
+        { model: EventChoice, as: 'childChoices'},
+        { model: Event, as: 'nextEvents'},
+        { model: EventChoice, as: 'parentEvents'},
+        { model: Character, as: 'speaker' },
+        { model: Character, as: 'mugshot' },
+        { model: Scene, as: 'parentScene' }
+      ],
   })
     .then(data => {
       res.send(data);

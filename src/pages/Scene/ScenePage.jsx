@@ -40,7 +40,7 @@ export default function ScenePage() {
 
         //Check if index is out of bounds
         const currentIndex = branchSelection[eventId] || 0;
-        if (currentIndex + delta >= scene.childEvents.find(e => e.id === eventId).childEvents.length || currentIndex + delta < 0) {
+        if (currentIndex + delta >= scene.childChoices.find(e => e.id === eventId).childChoices.length || currentIndex + delta < 0) {
             return;
         }
 
@@ -51,15 +51,15 @@ export default function ScenePage() {
     };
 
     const getNextEventId = (eventId) => {
-        const event = scene.childEvents.find(e => e.id === eventId);
+        const event = scene.childChoices.find(e => e.id === eventId);
         if (!event) return null;
 
-        if (event.childEvents.length > 0) {
+        if (event.childChoices.length > 0) {
             const branchIndex = branchSelection[eventId] || 0;
-            return event.childEvents[branchIndex]?.RelatedEventId;
+            return event.childChoices[branchIndex]?.RelatedEventId;
         } else {
             // Find the next event in the sequence
-            return scene.childEvents.find(e => e.parentEvent === eventId)?.id;
+            return scene.childChoices.find(e => e.parentEvent === eventId)?.id;
         }
     };
 
@@ -69,7 +69,7 @@ export default function ScenePage() {
     }
 
     const renderEvent = (eventId) => {
-        const event = scene.childEvents.find(e => e.id === eventId);
+        const event = scene.childChoices.find(e => e.id === eventId);
         if (!event) return null;
 
         const nextEventId = getNextEventId(eventId);
@@ -89,14 +89,14 @@ export default function ScenePage() {
                         </div>
                     </div>
                 </div>
-                {event.childEvents.length > 0 && (
+                {event.childChoices.length > 0 && (
                     <div className='row mb-3'>
                         {/* Render Choice */}
                         <div className='col-12'>
                             <div className='card'>
                                 <div className='card-body'>
                                     <h5 className='card-title'>Choice</h5>
-                                    <p className='card-text'>{event.childEvents[Number.parseInt(branchSelection[eventId] || 0)]?.choice}</p>
+                                    <p className='card-text'>{event.childChoices[Number.parseInt(branchSelection[eventId] || 0)]?.choice}</p>
                                     {/* Render choice details here */}
                                 </div>
                             </div>
@@ -133,8 +133,8 @@ export default function ScenePage() {
             <div className='row'>
                 <div className='col-12 mb-3 py-3'>
                     <Button onClick={handleSaveScene} className='mx-1' variant="outline-primary"><Save2Fill className='mx-2' /> Save Scene</Button>
-                    <Button className='mx-1' variant="outline-success"><PlayFill className='mx-2' /> Play Scene</Button>
-                    <Button className='mx-1' variant="outline-dark"><JustifyLeft className='mx-2' /> Scene Settings</Button>
+                    {/* <Button className='mx-1' variant="outline-success"><PlayFill className='mx-2' /> Play Scene</Button> */}
+                    {/* <Button className='mx-1' variant="outline-dark"><JustifyLeft className='mx-2' /> Scene Settings</Button> */}
                     {/* <Button className='mx-1' variant="outline-dark"><PencilFill className='mx-2'/>Open event editor</Button> */}
                 </div>
             </div>

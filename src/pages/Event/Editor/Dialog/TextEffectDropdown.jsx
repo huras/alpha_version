@@ -3,11 +3,11 @@ import { Dropdown } from 'react-bootstrap';
 
 export const effects = {
     shaky:{
-        name: 'shaky',
+        name: 'shaky', // .text-animation-shaky
         delayBetweenCharacters: 0.06
     },
     impact: {
-        name: 'impact',
+        name: 'impact', // text-animation-impact
         delayBetweenCharacters: 0.1
     }
 }
@@ -23,7 +23,7 @@ function TextEffectDropdown({word, editMode, setEffect}) {
         };
         return (
             <span
-                className={className}
+                className={className + ' ' + 'dialog-text-char'}
                 key={`${word.word}_${char}_${index}_edit`}
                 style={styles}
             >

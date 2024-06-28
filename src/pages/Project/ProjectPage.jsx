@@ -14,7 +14,7 @@ const ProjectPage = () => {
         var idToUse = undefined;
         if (!project) {
             const urlParams = new URLSearchParams(window.location.search);
-            idToUse = urlParams.get('project');
+            idToUse = urlParams.get('id');
         } else {
             // if (project) return;
             idToUse = project.id;

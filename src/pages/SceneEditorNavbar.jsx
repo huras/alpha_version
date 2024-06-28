@@ -15,9 +15,9 @@ const SceneEditorNavbar = ({ toggleEventListDrawer, toggleBackgroundDrawer, togg
     const event = scenes.find(e => e.id === eventId);
     if (!event) return null;
 
-    if (event.ChildEvents?.length > 0) {
+    if (event.childChoices?.length > 0) {
       const branchIndex = branchSelection[eventId] || 0;
-      return event.ChildEvents[branchIndex]?.RelatedEventId;
+      return event.childChoices[branchIndex]?.RelatedEventId;
     } else {
       //finds current event id and gets next in the list if present
       const index = scenes.findIndex(e => e.id === eventId);

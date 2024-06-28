@@ -23,7 +23,7 @@ const MugshotSelector = ({event, scene }) => {
                 ...prevProject,
                 scenes: prevProject.scenes.map((s) => {
                     if (s.id === scene.id) {
-                        return { ...s, childEvents: s.childEvents.map((e) => {
+                        return { ...s, childChoices: s.childChoices.map((e) => {
                             if (e.id === event.id) {
                                 
                                 return { ...e, mugshot: c, mugshotId: c.id };
@@ -80,7 +80,7 @@ const MugshotSelector = ({event, scene }) => {
                         ...project,
                         scenes: project.scenes.map((s) => {
                             if (s.id === scene.id) {
-                                return { ...s, childEvents: s.childEvents.map((e) => {
+                                return { ...s, childChoices: s.childChoices.map((e) => {
                                     if (e.id === event.id) {
                                         return updatedEvent;
                                     }

@@ -57,8 +57,10 @@ module.exports = (sequelize, Sequelize) => {
     Event.belongsToMany(models.Background, { through: 'EventBackground', as: 'event_backgrounds' });
     Event.belongsToMany(models.Character, { through: 'EventCharacter', as: 'event_characters' });
 
-    Event.hasMany(models.EventChoice, { foreignKey: 'EventId', as: 'childEvents' });
-    Event.hasMany(models.EventChoice, { foreignKey: 'RelatedEventId', as: 'parentEvents' });
+    Event.hasMany(models.EventChoice, { foreignKey: 'EventId', as: 'childChoices' });
+    Event.hasMany(models.EventChoice, { foreignKey: 'RelatedEventId', as: 'parentEvents' });    
+    
+    Event.hasMany(models.Event, { foreignKey: 'parentEvent', as: 'nextEvents' });
 
     Event.belongsTo(models.Scene, { as: 'parentScene' });
     Event.belongsTo(models.Character, { as: 'speaker', foreignKey: 'speakerId' });

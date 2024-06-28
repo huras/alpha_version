@@ -35,7 +35,7 @@ const EventListDrawer = ({ show, handleClose, events }) => {
     //   background: [],
     //   Characters: [],
     //   dialog: {},
-    //   ChildEvents: [],
+    //   childChoices: [],
     //   ParentEvents: [],
     //   parentEvent: null
     // };

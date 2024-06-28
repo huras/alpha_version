@@ -19,8 +19,8 @@ const StorySetupForm = () => {
                             <Form.Label>Fantasy Genres:</Form.Label>
                             <CarouselSelect options={[
                                 {
-                                    'label': 'Epic Fantasy', 
-                                    'img': '/img/form/genre/epic_adventure.webp', 
+                                    'label': 'Classic Epic Fantasy', 
+                                    'img': '/img/form/genre/epic_fantasy.webp', 
                                     value: 'epic_adventure',
                                     'description': "Heroic quests in a fantastical world with magical elements, mythical creatures, and epic battles. Example: The Lord of the Rings."
                                 },
@@ -96,9 +96,9 @@ const StorySetupForm = () => {
                             <Form.Group controlId="formGenre">
                                 <Form.Label>Genres:</Form.Label>
                                 <CarouselSelect options={[
-                                    { 'label': 'Adventure', 'img': '/img/form/genre/adventure.webp', value: 'adventure' },
-                                    { 'label': 'Action', 'img': '/img/form/genre/action.webp', value: 'action' },
-                                    { 'label': 'Horror', 'img': '/img/form/genre/horror.webp', value: 'horror' },
+                                    { 'label': 'Adventure', 'img': '/img/form/genre/adventure.webp', value: 'adventure', description: '' },
+                                    { 'label': 'Action', 'img': '/img/form/genre/action.webp', value: 'action', description: '' },
+                                    { 'label': 'Horror', 'img': '/img/form/genre/horror.webp', value: 'horror', description: '' },
                                 ]} onSetOption={setGenre} />
                             </Form.Group>
                         </>

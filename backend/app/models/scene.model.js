@@ -34,7 +34,7 @@ module.exports = (sequelize, Sequelize) => {
     // ... add other fields as needed
 }, {});  
   Scene.associate = function (models) {
-    Scene.hasMany(models.Event, { as: 'childEvents', foreignKey: 'parentSceneId' });
+    Scene.hasMany(models.Event, { as: 'childChoices', foreignKey: 'parentSceneId' });
     Scene.belongsTo(models.Project, { as: 'parentProject', foreignKey: 'parentProjectId' });
   };  
   return Scene;

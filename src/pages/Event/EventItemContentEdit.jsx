@@ -1,12 +1,13 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { ListGroup, Button, Badge, Modal } from 'react-bootstrap';
-import { Trash, Pencil, Person, ChatFill, ImageAlt, PeopleFill } from 'react-bootstrap-icons';
+import { Trash, Pencil, Person, ChatFill, ImageAlt, PeopleFill, PlayBtnFill } from 'react-bootstrap-icons';
 import EventCharactersDrawer from './Editor/EventCharactersDrawer';
 import DialogMugshotEditor from './Editor/DialogMugshotEditor';
 import MugshotSelector from './Editor/Mugshot/MugshotSelector';
 import ProjectContext from '../../context/ProjectContext';
 import DialogEditor from './Editor/Dialog/DialogEditor';
+import { Link } from 'react-router-dom';
 
 const EventItemContentEdit = ({ event, scene, handleDelete }) => {
   const { project, setProject} = useContext(ProjectContext);
@@ -21,13 +22,19 @@ const EventItemContentEdit = ({ event, scene, handleDelete }) => {
     
     setShowDialogInEvent(!showDialogInEvent);
 
+    function goToPlayEvent(event){
+      const id = event.id;
+      //Go to url /play-scene?project=1&scene=1&event=id
+
+    }
+
     if(showDialogInEvent){
       setProject(prevProject => {
         const updatedScenes = prevProject.scenes.map(s => {
           if (s.id === scene.id) {
             return {
               ...s,
-              childEvents: s.childEvents.map(e => {
+              childChoices: s.childChoices.map(e => {
                 if (e.id === event.id) {
                   // Toggle the dialogText to either be null or the original text based on the current state
                   return {
@@ -65,7 +72,7 @@ const EventItemContentEdit = ({ event, scene, handleDelete }) => {
                 ...prevProject,
                 scenes: prevProject.scenes.map((s) => {
                   if (s.id === scene.id) {
-                    return { ...s, childEvents: s.childEvents.map((e) => {
+                    return { ...s, childChoices: s.childChoices.map((e) => {
                       if (e.id === event.id) {
                         return updatedEvent;
                       }
@@ -94,7 +101,7 @@ const EventItemContentEdit = ({ event, scene, handleDelete }) => {
                   ...prevProject,
                   scenes: prevProject.scenes.map((s) => {
                       if (s.id === scene.id) {
-                          return { ...s, childEvents: s.childEvents.map((e) => {
+                          return { ...s, childChoices: s.childChoices.map((e) => {
                               if (e.id === event.id) {
                                   return { ...e, event_characters: selectedCharacters };
                               }
@@ -135,6 +142,14 @@ const EventItemContentEdit = ({ event, scene, handleDelete }) => {
           }}>
             <ChatFill size={16} />
           </Button>
+          <Link to={`/play-scene?project=${project.id}&scene=${scene.id}&event=${event.id}`}>
+          
+            <Button variant="primary" size="sm" title="Play Event"  className="mt-1" onClick={() => { 
+              // goToPlayEvent(event);
+            }}>
+              <PlayBtnFill size={16} />
+            </Button>
+          </Link>
         </div>
 
         <div
@@ -168,7 +183,7 @@ const EventItemContentEdit = ({ event, scene, handleDelete }) => {
                     ...prevProject,
                     scenes: prevProject.scenes.map((s) => {
                       if (s.id === scene.id) {
-                        return { ...s, childEvents: s.childEvents.map((e) => {
+                        return { ...s, childChoices: s.childChoices.map((e) => {
                           if (e.id === event.id) {
                             return { ...e, dialogText };
                           }

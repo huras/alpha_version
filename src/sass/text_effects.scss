@@ -47,11 +47,84 @@
 
 // ==============================
 
+@keyframes hasNextDialogArrow_motion {
+    0% {
+        transform: translateY(-25%);
+    }
+    10% {
+        transform: translateY(0);
+    }
+    80% {
+        transform: translateY(-5%);
+    }
+    100%{
+        transform: translateY(-25%);
+    }
+}
+
+// ==============================
+
 // .dialog-text-word {
 //     margin-left: 0.09em;
 // }
-.dialog-text-word
-// :not(:last-child) 
-{
+.dialog-text-word {
     margin-right: 0.29em;
+}
+
+.character-pivot .char-cell{
+    position: relative;
+    color: white;
+    font-size: 1.6rem;
+
+    &:hover{
+        .char_options{
+            visibility: visible;
+
+            .char_option:hover{
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+        }
+    }
+
+    .char_options{
+        display:none;
+        position: absolute;
+        right: 0;
+        top: 20%;
+
+        visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .char_option{
+        background-color: rgba(0, 0, 0, 0.12);
+        padding: 4px 8px;
+        border-radius: 15px;
+        cursor: pointer;
+        margin-bottom: 0.5rem;
+    }
+}
+
+
+.hasNextDialogArrow{
+    position: absolute;
+    right: 1%;
+    bottom: 4%;
+    font-size: 1.6rem;
+    color: white;
+    animation: hasNextDialogArrow_motion 1.1s ease-out infinite;
+}
+
+
+.playing {
+    .dialog-text-char{
+        font-size: 2.0rem;
+        letter-spacing: 0.00rem;
+    }
+    .dialog-text-word{
+        margin-right: 0.64rem;
+    }
 }

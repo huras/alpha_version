@@ -22,7 +22,7 @@ const EventList = ({ scene }) => {
           ...prevProject,
           scenes: prevProject.scenes.map((s) => {
             if (s.id === scene.id) {
-              return { ...s, childEvents: s.childEvents.filter((e) => e.id !== eventId) };
+              return { ...s, childChoices: s.childChoices.filter((e) => e.id !== eventId) };
             }
             return s;
           })
@@ -56,7 +56,7 @@ const EventList = ({ scene }) => {
     // Logic to add a new event
     axios.post(`http://localhost:8080/event/fresh`, {
       parentScene: scene.id,
-      order: scene?.childEvents?.length + 1
+      order: scene?.childChoices?.length + 1
     }).then(response => {
       console.log(response.data);
       setProject((prevProject) => {
@@ -64,7 +64,7 @@ const EventList = ({ scene }) => {
           ...prevProject,
           scenes: prevProject.scenes.map((s) => {
             if (s.id === scene.id) {
-              return { ...s, childEvents: [...s.childEvents, response.data] };
+              return { ...s, childChoices: [...s.childChoices, response.data] };
             }
             return s;
           })
@@ -82,7 +82,7 @@ const EventList = ({ scene }) => {
     //   background: [],
     //   Characters: [],
     //   dialog: {},
-    //   ChildEvents: [],
+    //   childChoices: [],
     //   ParentEvents: [],
     //   parentEvent: null
     // };
@@ -105,7 +105,7 @@ const EventList = ({ scene }) => {
       
 
       <ListGroup>
-        {scene.childEvents.map((event, index) => (
+        {scene.childChoices.map((event, index) => (
           <EventItemContentEdit
             key={event.id}
             event={event}
