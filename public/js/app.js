@@ -11511,12 +11511,12 @@ function DialogViewer(_ref) {
     className: "text vn-window w-100",
     onClick: onclick
   }, dialog && (typeof dialog === 'string' ? JSON.parse(dialog) : []).map(function (word, index) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_TextEffectDropdown__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_TextEffectDropdown__WEBPACK_IMPORTED_MODULE_1__["default"], {
       key: "".concat(word.word, "_").concat(index, "_view"),
       word: word,
       editMode: false,
       setEffect: function setEffect() {}
-    });
+    }), ['.', ':', '?'].includes(word.word[word.word.length - 1]) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null) : '');
   }), hasNextDialogArrow && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_2__["default"], {
     className: "hasNextDialogArrow",
     size: 18,
@@ -12394,6 +12394,65 @@ var MugshotSettings = function MugshotSettings(_ref) {
 
 /***/ }),
 
+/***/ "./pages/Event/Editor/Mugshot/MugshotViewer.jsx":
+/*!******************************************************!*\
+  !*** ./pages/Event/Editor/Mugshot/MugshotViewer.jsx ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+function MugshotViewer(_ref) {
+  var character = _ref.character;
+  var createMugshotData = function createMugshotData(mugshotData) {
+    if (mugshotData && typeof mugshotData === 'string') mugshotData = JSON.parse(mugshotData);
+    return mugshotData;
+  };
+  var customScale = 1.6;
+  var createMugshotStyle = function createMugshotStyle(character) {
+    var _mugshotData, _mugshotData2, _mugshotData3, _mugshotData4;
+    var mugshotData = createMugshotData(character === null || character === void 0 ? void 0 : character.mugshot);
+    if (typeof mugshotData === 'string') mugshotData = JSON.parse(mugshotData);
+
+    // Calculate the size based on the scale
+    var maxWidth = 100; // Replace with the actual width of the parent container
+    var zoom = maxWidth / 100 / customScale;
+    var size = 1 / ((_mugshotData = mugshotData) === null || _mugshotData === void 0 ? void 0 : _mugshotData.scale) * (maxWidth * zoom) * customScale;
+    return {
+      backgroundImage: "url('".concat(character === null || character === void 0 ? void 0 : character.image, "')"),
+      backgroundPosition: "".concat(((_mugshotData2 = mugshotData) === null || _mugshotData2 === void 0 ? void 0 : _mugshotData2.x) * 100, "% ").concat(((_mugshotData3 = mugshotData) === null || _mugshotData3 === void 0 ? void 0 : _mugshotData3.y) * 100, "%"),
+      transform: "scale(".concat(((_mugshotData4 = mugshotData) === null || _mugshotData4 === void 0 ? void 0 : _mugshotData4.scale) * customScale, ")"),
+      transformOrigin: '0% 100%',
+      width: "".concat(size, "px"),
+      height: "".concat(size, "px")
+    };
+  };
+  var mugshotStyle = createMugshotStyle(character);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mugshot-placeholder",
+    style: {
+      display: mugshotStyle ? 'block' : 'none',
+      width: "calc(100px * ".concat(customScale, ")"),
+      height: "calc(100px * ".concat(customScale, ")")
+    },
+    onClick: function onClick() {
+      setShowCharacterModal(true);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mugshot",
+    style: mugshotStyle
+  }));
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MugshotViewer);
+
+/***/ }),
+
 /***/ "./pages/Event/Editor/SingleEventEditor.jsx":
 /*!**************************************************!*\
   !*** ./pages/Event/Editor/SingleEventEditor.jsx ***!
@@ -13093,21 +13152,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/chat-dots-fill.js");
-/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/hand-index-thumb-fill.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/chat-dots-fill.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/hand-index-thumb-fill.js");
 /* harmony import */ var _Editor_Mugshot_MugshotSelector__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Editor/Mugshot/MugshotSelector */ "./pages/Event/Editor/Mugshot/MugshotSelector.jsx");
 /* harmony import */ var _Editor_Dialog_DialogEditor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Editor/Dialog/DialogEditor */ "./pages/Event/Editor/Dialog/DialogEditor.jsx");
 /* harmony import */ var _Editor_Dialog_TextEffectDropdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Editor/Dialog/TextEffectDropdown */ "./pages/Event/Editor/Dialog/TextEffectDropdown.jsx");
 /* harmony import */ var _Editor_Dialog_DialogViewer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Editor/Dialog/DialogViewer */ "./pages/Event/Editor/Dialog/DialogViewer.jsx");
+/* harmony import */ var _Editor_Mugshot_MugshotViewer__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Editor/Mugshot/MugshotViewer */ "./pages/Event/Editor/Mugshot/MugshotViewer.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -13135,7 +13196,7 @@ function EventInteractor() {
     fetch_event_data(idToUse);
   }, []);
   function fetch_event_data(id) {
-    axios__WEBPACK_IMPORTED_MODULE_5__["default"].get("http://localhost:8080/event/".concat(id)).then(function (res) {
+    axios__WEBPACK_IMPORTED_MODULE_6__["default"].get("http://localhost:8080/event/".concat(id)).then(function (res) {
       console.log(event);
       // preprocess_incoming_project_data(res.data);
       setEvent(res.data);
@@ -13146,6 +13207,27 @@ function EventInteractor() {
     //     setError('Failed to fetch project');
     // })
     // .finally();
+  }
+
+  function clickTalk(character) {
+    var text = prompt("What do you want to say?");
+    if (text) {
+      axios__WEBPACK_IMPORTED_MODULE_6__["default"].post("http://localhost:8080/event/talkWithCharacter", {
+        text: text,
+        char_id: character.id,
+        leaf_event_id: event.id
+      }).then(function (res) {
+        console.log(res.data);
+        // console.log(event);
+        // preprocess_incoming_project_data(res.data);
+        // setEvent(res.data.updated_event);
+        var currentUrl = new URL(window.location.href);
+        currentUrl.searchParams.set('event', res.data.updated_event.nextEvents[0].id);
+        window.location.href = currentUrl.href;
+      });
+
+      // alert(`You said: "${text}" with ${character.fullname}`);
+    }
   }
 
   var bgRatioW = 960,
@@ -13175,13 +13257,18 @@ function EventInteractor() {
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "char_options"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-      className: "char_option talk-ballon"
-    }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_6__["default"], {
+      className: "char_option"
+    }, " ", character.fullname.split(' ').splice(0, 2).join(' '), " "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+      className: "char_option talk-ballon",
+      onClick: function onClick() {
+        clickTalk(character);
+      }
+    }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_7__["default"], {
       size: 32,
       color: "white"
     }), " Talk "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
       className: "char_option action-ballon"
-    }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    }, " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_8__["default"], {
       size: 32,
       color: "white"
     }), " Interact ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
@@ -13197,17 +13284,21 @@ function EventInteractor() {
     style: {
       width: "calc(".concat(screenWidth, " * 0.97)"),
       position: "absolute",
-      bottom: "0px",
+      bottom: "1%",
       left: "0.5%"
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "speaker vn-window"
-  }), event && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Editor_Dialog_DialogViewer__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  }, (event === null || event === void 0 ? void 0 : event.mugshot) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "speaker vn-window vn-w-dark d-flex flex-column justify-content-center align-items-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Editor_Mugshot_MugshotViewer__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    character: event === null || event === void 0 ? void 0 : event.mugshot
+  }), (event === null || event === void 0 ? void 0 : event.speaker) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "speaker-name"
+  }, event === null || event === void 0 ? void 0 : event.speaker.fullname)), event && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Editor_Dialog_DialogViewer__WEBPACK_IMPORTED_MODULE_4__["default"], {
     dialog: event.dialogText,
     hasNextDialogArrow: event.nextEvents && event.nextEvents.length > 0,
     onclick: function onclick() {
       // Go to the next event url
-      if (event.nextEvents) {
+      if (event.nextEvents && event.nextEvents.length > 0) {
         var currentUrl = new URL(window.location.href);
         //override only the event id in the url
         currentUrl.searchParams.set('event', event.nextEvents[0].id);

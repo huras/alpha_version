@@ -29,12 +29,12 @@ const db = require("./app/models/sqlite_db");
 
   try {
     const resultado = await database.sequelize.sync(
-      // { force: true }
+      { force: true }
     );
     // console.log(resultado);
 
-    // const seed = require("./app/seeders/initial_seed");
-    // seed.up( db.sequelize.queryInterface, db.Sequelize.DataTypes);
+    const seed = require("./app/seeders/initial_seed");
+    seed.up( db.sequelize.queryInterface, db.Sequelize.DataTypes);
   } catch (error) {
     console.log(error);
   }

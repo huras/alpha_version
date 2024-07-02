@@ -6,6 +6,20 @@ module.exports = (sequelize, Sequelize) => {
       autoIncrement: true
     },
     name: Sequelize.STRING,
+    description: {
+      type: Sequelize.STRING,
+      allowNull: true,
+      defaultValue: null
+    },
+    parentBackground: {
+      type: Sequelize.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'Backgrounds', // refers to the Event model
+        key: 'id',
+        as: 'parentPlace',
+      }
+    },
     image: Sequelize.TEXT,
     createdAt: {
       allowNull: false,
@@ -21,6 +35,9 @@ module.exports = (sequelize, Sequelize) => {
   }, {});
   Background.associate = function (models) {
     Background.belongsToMany(models.Event, { through: 'EventBackground', as: 'event_backgrounds' });
+    // parentPlace
+    Background.belongsTo(models.Background, { as: 'parentPlace', foreignKey: 'parentBackground' });
+    Background.hasMany(models.Background, { as: 'childPlaces', foreignKey: 'parentBackground' });
   };
   return Background;
 };

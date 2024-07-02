@@ -7,12 +7,15 @@ function DialogViewer({dialog, hasNextDialogArrow = false, onclick = () => {}}) 
     <pre className="text vn-window w-100" onClick={onclick} >
         {   dialog &&
             ( (typeof dialog === 'string') ? JSON.parse(dialog) : []).map((word, index) => 
-                <TextEffectDropdown 
-                    key={`${word.word}_${index}_view`} 
-                    word={word} 
-                    editMode={false}
-                    setEffect={() => {}}
-                /> 
+                <>
+                    <TextEffectDropdown 
+                        key={`${word.word}_${index}_view`} 
+                        word={word} 
+                        editMode={false}
+                        setEffect={() => {}}
+                    />
+                    {(['.', ':', '?']).includes(word.word[word.word.length - 1])  ? <br /> : ''}
+                </>
             )
         }
         {

@@ -5,6 +5,7 @@ import MugshotSelector from '../Editor/Mugshot/MugshotSelector';
 import DialogEditor from '../Editor/Dialog/DialogEditor';
 import TextEffectDropdown from '../Editor/Dialog/TextEffectDropdown';
 import DialogViewer from '../Editor/Dialog/DialogViewer';
+import MugshotViewer from '../Editor/Mugshot/MugshotViewer';
 
 function EventInteractor() {
 
@@ -40,6 +41,27 @@ function EventInteractor() {
         // .finally();
     }
 
+    function clickTalk(character){
+        const text = prompt("What do you want to say?");
+        if (text) {
+            
+            axios.post(`http://localhost:8080/event/talkWithCharacter`, {text, char_id: character.id, leaf_event_id: event.id})
+            .then(res => {
+                console.log(res.data);
+                // console.log(event);
+                // preprocess_incoming_project_data(res.data);
+                // setEvent(res.data.updated_event);
+                const currentUrl = new URL(window.location.href);                
+                currentUrl.searchParams.set('event', res.data.updated_event.nextEvents[0].id);
+                window.location.href = currentUrl.href;
+
+                
+            })
+
+            // alert(`You said: "${text}" with ${character.fullname}`);
+        }
+    }
+
     const bgRatioW = 960, bgRatioH = 536;
     const bgRatio = (bgRatioW / bgRatioH).toFixed(2);
     const screenHeight = `100vh * 0.9 `;
@@ -65,7 +87,8 @@ function EventInteractor() {
                         .map((character, i) => (
                             <div key={character.id + "_" + i} className={"char-cell"}>
                                 <div className="char_options">
-                                    <div className="char_option talk-ballon"> <ChatDotsFill size={32} color='white' /> Talk </div>
+                                    <div className='char_option'> {character.fullname.split(' ').splice(0,2).join(' ')} </div>
+                                    <div className="char_option talk-ballon" onClick={() => {clickTalk(character)}}> <ChatDotsFill size={32} color='white' /> Talk </div>
                                     <div className="char_option action-ballon"> <HandIndexThumbFill size={32} color='white' /> Interact </div>
                                 </div>
                                 <img key={character.EventCharacter.EventId} src={character.image} alt="Character" style={{ width: `calc(${screenWidth} * 0.9 / 3)` }} />
@@ -73,15 +96,16 @@ function EventInteractor() {
                         ))}
                 </div>
 
-                <div className="d-flex flex-column justify-content-start align-items-start ms-2 px-2" style={{ width: `calc(${screenWidth} * 0.97)`, position: "absolute", bottom: "0px", left: "0.5%", }}>
-                    <div className="speaker vn-window">
-                        {/* <MugshotViewer character={event?.mugshot} /> */}
-                    </div>
+                <div className="d-flex flex-column justify-content-start align-items-start ms-2 px-2" style={{ width: `calc(${screenWidth} * 0.97)`, position: "absolute", bottom: "1%", left: "0.5%", }}>
+                    { event?.mugshot && <div className="speaker vn-window vn-w-dark d-flex flex-column justify-content-center align-items-center">
+                        <MugshotViewer character={event?.mugshot} />
+                        {event?.speaker && <div className="speaker-name">{event?.speaker.fullname}</div>}
+                    </div>}
                     {event && <DialogViewer dialog={event.dialogText}
                         hasNextDialogArrow={event.nextEvents && event.nextEvents.length > 0}
                         onclick={() => {
                             // Go to the next event url
-                            if (event.nextEvents) {
+                            if (event.nextEvents && event.nextEvents.length > 0) {
                                 const currentUrl = new URL(window.location.href);
                                 //override only the event id in the url
                                 currentUrl.searchParams.set('event', event.nextEvents[0].id);
