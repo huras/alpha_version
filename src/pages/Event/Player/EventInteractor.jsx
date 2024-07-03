@@ -27,7 +27,7 @@ function EventInteractor() {
     }, []);
 
     function fetch_event_data(id) {
-        axios.get(`http://localhost:8080/event/${id}`)
+        axios.get(`http://alpha.hurast.com/event/${id}`)
             .then(res => {
                 console.log(event);
                 // preprocess_incoming_project_data(res.data);
@@ -45,7 +45,7 @@ function EventInteractor() {
         const text = prompt("What do you want to say?");
         if (text) {
             
-            axios.post(`http://localhost:8080/event/talkWithCharacter`, {text, char_id: character.id, leaf_event_id: event.id})
+            axios.post(`http://alpha.hurast.com/event/talkWithCharacter`, {text, char_id: character.id, leaf_event_id: event.id})
             .then(res => {
                 console.log(res.data);
                 // console.log(event);

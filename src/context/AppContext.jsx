@@ -15,7 +15,7 @@ export const AppProvider = ({ children }) => {
 /*
   // Fetch scenes from the backend 
   useEffect(() => {
-    axios.get('http://localhost:8080/scene')
+    axios.get('http://alpha.hurast.com/scene')
       .then(res => setScenes(res.data))
       .catch(err => console.log(err));
   }, []);
@@ -23,15 +23,15 @@ export const AppProvider = ({ children }) => {
   // Fetch events, characters, and backgrounds based on the current scene
   useEffect(() => {
     if (currentSceneID) {
-      axios.get(`http://localhost:8080/scene/${currentSceneID}/events`)
+      axios.get(`http://alpha.hurast.com/scene/${currentSceneID}/events`)
         .then(res => setEvents(res.data))
         .catch(err => console.log(err));
       
-      // axios.get(`http://localhost:8080/scene/${currentSceneID}/characters`)
+      // axios.get(`http://alpha.hurast.com/scene/${currentSceneID}/characters`)
       //   .then(res => setCharacters(res.data))
       //   .catch(err => console.log(err));
 
-      // axios.get(`http://localhost:8080/scene/${currentSceneID}/backgrounds`)
+      // axios.get(`http://alpha.hurast.com/scene/${currentSceneID}/backgrounds`)
       //   .then(res => setBackgrounds(res.data))
       //   .catch(err => console.log(err));
     }

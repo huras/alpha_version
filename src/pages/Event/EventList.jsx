@@ -15,7 +15,7 @@ const EventList = ({ scene }) => {
   const handleDelete = (eventId) => {
     if(confirm('Are you sure you want to delete this event?') === false) return;
     
-    axios.delete(`http://localhost:8080/event/${eventId}`).then(response => {
+    axios.delete(`http://alpha.hurast.com/event/${eventId}`).then(response => {
       console.log(response.data);
       setProject((prevProject) => {
         const updatedProject = {
@@ -54,7 +54,7 @@ const EventList = ({ scene }) => {
 
   const handleAddEvent = () => {
     // Logic to add a new event
-    axios.post(`http://localhost:8080/event/fresh`, {
+    axios.post(`http://alpha.hurast.com/event/fresh`, {
       parentScene: scene.id,
       order: scene?.childChoices?.length + 1
     }).then(response => {

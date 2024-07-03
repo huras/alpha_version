@@ -39,7 +39,7 @@ export const ProjectProvider = ({ children }) => {
   }
 
   function fetch_project_data(id) {
-    axios.get(`http://localhost:8080/project/${id}`)
+    axios.get(`http://alpha.hurast.com/project/${id}`)
       .then(res => {
         preprocess_incoming_project_data(res.data);
       })
@@ -80,7 +80,7 @@ export const ProjectProvider = ({ children }) => {
       return event;
     });
     // Save scene to database
-    axios.put(`http://localhost:8080/scene/${scene.id}`, {scene, project})
+    axios.put(`http://alpha.hurast.com/scene/${scene.id}`, {scene, project})
     .then(res => {
       console.log(res);
       if(res.status === 200) {
