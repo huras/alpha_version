@@ -1,3 +1,51 @@
+@keyframes mysterious {
+    0% {
+        transform:  scaleY(1);
+    }
+    50% {
+        transform:  scaleY(1.2);
+    }
+    100% {
+        transform:  scaleY(1);
+    }
+}
+
+.text-animation-mysterious {
+    transform-origin: 50% 80%;
+    display: inline-block; /* Allows transform to apply */
+    animation: mysterious 1s infinite;
+    animation-timing-function: steps(7, end);
+}
+
+//==============================================
+
+@keyframes crazy {
+    0%, 100% {
+        transform:  scale(1);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform:  scale(1.1);
+    }
+    20%, 40%, 60%, 80% {
+        transform:  scale(0.9);
+    }
+    25%, 45%, 65%, 85% {
+        transform:  scale(1.15);
+    }
+    15%, 35%, 55%, 75%, 95% {
+        transform:  scale(0.69);
+    }
+}
+
+.text-animation-crazy {
+    transform-origin: 50% 80%;
+    display: inline-block; /* Allows transform to apply */
+    animation: crazy 0.5s infinite;
+    animation-timing-function: steps(7, end);
+}
+
+// ==============================
+
 @keyframes shake {
     0%, 100% {
         transform:  rotateZ(0deg);
@@ -110,6 +158,14 @@
         cursor: pointer;
         margin-bottom: 0.5rem;
     }
+
+    .char_name{
+        position: absolute;
+        top: -100%;
+        right: 0;
+        transform: translate(-50%, -110%);
+        text-wrap: nowrap;
+    }
 }
 
 
@@ -139,4 +195,16 @@ pre.text {
 
     flex-wrap: wrap;
     display: flex;
+}
+
+.play_frame{
+    min-height: 100vh;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .playing{
+        
+    }
 }

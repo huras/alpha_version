@@ -7,7 +7,12 @@ module.exports = (sequelize, Sequelize) => {
     },
     name: Sequelize.STRING,
     description: {
-      type: Sequelize.STRING,
+      type: Sequelize.TEXT,
+      allowNull: true,
+      defaultValue: null
+    },
+    you_can_see: {
+      type: Sequelize.TEXT,
       allowNull: true,
       defaultValue: null
     },

@@ -14,6 +14,7 @@ export const ProjectProvider = ({ children }) => {
         const event = scene.childChoices[key];
         Object.keys(event.event_characters).forEach(key => {
 
+          
           event.event_characters[key] = {
             data: newProject?.characters.find(character => character.id === event.event_characters[key].id),
             EventCharacter: {...event.event_characters[key].EventCharacter}

@@ -9,6 +9,11 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING,
       allowNull: false
     },
+    description: {
+      type: Sequelize.TEXT,
+      allowNull: true,
+      defaultValue: ''
+    },
     order: {
       type: Sequelize.INTEGER,
       allowNull: false

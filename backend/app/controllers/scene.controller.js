@@ -206,7 +206,7 @@ exports.update = async (req, res) => {
           for (const character of event_characters) {
             await db.EventCharacter.create({
               EventId: eventId,
-              CharacterId: character.data.id,
+              CharacterId: character.EventCharacter.CharacterId,
               order: character.EventCharacter.order,
             }, { transaction: t });
           }

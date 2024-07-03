@@ -101,6 +101,9 @@ exports.talkWithCharacter = async (req, res) => {
     eventThread.push(leafEvent);
     event_id = leafEvent.prevEvents ? leafEvent.prevEvents.id : null;
   } while (event_id);
+
+  const mainLeafEvent = eventThread[eventThread.length - 1];
+  const scene = await Scene.findByPk(mainLeafEvent.parentScene.id);
   
   // Build the text to send to Chat GPT
   const threadText = eventThread
@@ -123,6 +126,10 @@ exports.talkWithCharacter = async (req, res) => {
     And will not respond well to everything the player says, only to things that are relevant to the character.
     The way the character acts is STRONGLY based on its personality and the context of the situation.
     The character is NOT an helpful assitant, it has free will because of the game it is in.
+
+    --------------------------------------------
+
+    Context of the scene: 
 
     --------------------------------------------
 
@@ -197,7 +204,8 @@ exports.talkWithCharacter = async (req, res) => {
     model: "gpt-4",
     messages: [
       {"role": "system", "content": prompt},
-      {"role": "system", "content": `Scene up to now: \`\`\`${threadText}\`\`\``},
+      {"role": "system", "content": `Scene content description (meaning the dialog generate should make some real effort to take the scene to meet the purpose): \`\`\`${scene.description}\`\`\``},
+      {"role": "system", "content": `Scene events up to now: \`\`\`${threadText}\`\`\``},
       {"role": "user", "content": protagonistSpeech},
     ],
     temperature: 1,

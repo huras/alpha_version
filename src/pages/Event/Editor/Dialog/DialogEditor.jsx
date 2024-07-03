@@ -27,8 +27,28 @@ function DialogEditor({event, visible, scene, setDialog}) {
     const [ editTextEffectsMode, setEditTextEffectsMode ] = useState(false);
     const [tempText, setTempText] = useState('');
 
+    function isJSON(str) {
+        try {
+            JSON.parse(str);
+        } catch (e) {
+            return false;
+        }
+        return true;
+    }
+
     var dialogText = event.dialogText;
-    if (typeof dialogText === 'string') dialogText = JSON.parse(dialogText);
+    if (typeof dialogText === 'string') { 
+        if(isJSON(dialogText)){
+            dialogText = JSON.parse(dialogText);
+        } else {
+            dialogText = dialogText.split(' ').map(word => {
+                return {
+                    word,
+                    effect: null
+                }
+            });
+        }
+    }
     if (!tempText && dialogText) setTempText(dialogText.map(word => word.word).join(' '));
 
     return <> {

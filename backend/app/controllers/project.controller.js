@@ -100,7 +100,7 @@ exports.findOne = (req, res) => {
       res.send(data);
     })
     .catch(err => {
-      debugger
+      
       res.status(500).send({
         message: "Error retrieving Project with id=" + id,
         ...err

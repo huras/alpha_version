@@ -139,6 +139,7 @@ export default function ScenePage() {
                 </div>
             </div>
 
+            {scene && <><strong> Description: </strong><p>{scene.description}</p></>}
             {scene && <EventList scene={scene} />}
             {currentEventID && renderEvent(currentEventID)}
         </div>

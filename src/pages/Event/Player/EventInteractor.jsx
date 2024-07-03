@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { ChatDotsFill, HandIndexThumbFill } from 'react-bootstrap-icons';
+import { BoxArrowRight, ChatDotsFill, HandIndexThumbFill } from 'react-bootstrap-icons';
 import MugshotSelector from '../Editor/Mugshot/MugshotSelector';
 import DialogEditor from '../Editor/Dialog/DialogEditor';
 import TextEffectDropdown from '../Editor/Dialog/TextEffectDropdown';
@@ -68,7 +68,7 @@ function EventInteractor() {
     const screenWidth = `(${screenHeight} / ${bgRatioH}) * 0.9 * ${bgRatioW}`;
 
     return (
-        <>
+        <div className="container-fluid play_frame">
             <div
                 className="playing"
                 style={{
@@ -87,9 +87,10 @@ function EventInteractor() {
                         .map((character, i) => (
                             <div key={character.id + "_" + i} className={"char-cell"}>
                                 <div className="char_options">
-                                    <div className='char_option'> {character.fullname.split(' ').splice(0,2).join(' ')} </div>
+                                    <div className='char_option char_name'> {character.fullname} </div>
                                     <div className="char_option talk-ballon" onClick={() => {clickTalk(character)}}> <ChatDotsFill size={32} color='white' /> Talk </div>
-                                    <div className="char_option action-ballon"> <HandIndexThumbFill size={32} color='white' /> Interact </div>
+                                    {/* <div className="char_option action-ballon"> <HandIndexThumbFill size={32} color='white' /> Interact </div> */}
+                                    <div className="char_option action-ballon"> <BoxArrowRight size={32} color='white' /> Good Bye </div>
                                 </div>
                                 <img key={character.EventCharacter.EventId} src={character.image} alt="Character" style={{ width: `calc(${screenWidth} * 0.9 / 3)` }} />
                             </div>
@@ -117,9 +118,7 @@ function EventInteractor() {
                     }
                 </div>
             </div>
-
-
-        </>
+        </div>
     )
 }
 

@@ -9,6 +9,14 @@ export const effects = {
     impact: {
         name: 'impact', // text-animation-impact
         delayBetweenCharacters: 0.1
+    },
+    mysterious: {
+        name: 'mysterious', // text-animation-mysterious
+        delayBetweenCharacters: 0.06
+    },
+    crazy: {
+        name: 'crazy', // text-animation-crazy
+        delayBetweenCharacters: 0.5
     }
 }
 

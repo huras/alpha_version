@@ -27,6 +27,11 @@ module.exports = (sequelize, Sequelize) => {
     unique_abilities_powers: Sequelize.TEXT,
     hobbies_interests: Sequelize.TEXT,
     quirks_habits: Sequelize.TEXT,
+    character_type: {
+      allowNull: true,
+      type: Sequelize.STRING,
+      defaultValue: "NPC character"
+    },
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE,
