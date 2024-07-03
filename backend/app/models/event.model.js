@@ -7,7 +7,7 @@ module.exports = (sequelize, Sequelize) => {
     },
     order: {
       type: Sequelize.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     parentEvent: {
       type: Sequelize.INTEGER,
@@ -61,6 +61,7 @@ module.exports = (sequelize, Sequelize) => {
     Event.hasMany(models.EventChoice, { foreignKey: 'RelatedEventId', as: 'parentEvents' });    
     
     Event.hasMany(models.Event, { foreignKey: 'parentEvent', as: 'nextEvents' });
+    Event.belongsTo(models.Event, { foreignKey: 'parentEvent', as: 'prevEvents' });
 
     Event.belongsTo(models.Scene, { as: 'parentScene' });
     Event.belongsTo(models.Character, { as: 'speaker', foreignKey: 'speakerId' });

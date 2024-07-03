@@ -138,6 +138,10 @@ body{
     line-height: 1.2;
     margin-bottom: 0px;
 }
+.vn-w-dark{
+    background-color: rgba(0, 0, 0, 0.561);
+    border: 3px solid rgba(15, 15, 15, 0.42);
+}
 
 .vn-dialog-edit-mode{
     position: relative;

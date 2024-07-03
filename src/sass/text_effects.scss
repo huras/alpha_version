@@ -75,13 +75,17 @@
     position: relative;
     color: white;
     font-size: 1.6rem;
+    img{
+        // transform: scaleX(-1);
+    }
 
     &:hover{
         .char_options{
             visibility: visible;
 
             .char_option:hover{
-                background-color: rgba(0, 0, 0, 0.5);
+                background-color: rgba(0, 0, 0, 0.675);
+                filter: brightness(1.2);
             }
         }
     }
@@ -100,7 +104,7 @@
     }
 
     .char_option{
-        background-color: rgba(0, 0, 0, 0.12);
+        background-color: rgba(0, 0, 0, 0.337);
         padding: 4px 8px;
         border-radius: 15px;
         cursor: pointer;
@@ -127,4 +131,12 @@
     .dialog-text-word{
         margin-right: 0.64rem;
     }
+}
+
+pre.text {
+    white-space: normal;
+    word-wrap: break-word;
+
+    flex-wrap: wrap;
+    display: flex;
 }
