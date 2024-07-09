@@ -16,6 +16,12 @@ module.exports = app => {
   router.post("/talkWithCharacter", event.talkWithCharacter);
 
   // Retrieve a single Entrega with id
+  router.post("/continueEvent", event.continueEvent);
+
+  // Retrieve a single Entrega with id
+  router.get("/event_tree/:id", event.getEventTree);
+
+  // Retrieve a single Entrega with id
   router.get("/:id", event.findOne);
 
   // Update a Entrega with id

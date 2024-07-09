@@ -62,10 +62,22 @@ module.exports = (sequelize, Sequelize) => {
     
     Event.hasMany(models.Event, { foreignKey: 'parentEvent', as: 'nextEvents' });
     Event.belongsTo(models.Event, { foreignKey: 'parentEvent', as: 'prevEvents' });
+    // Define "Brother Events" as events that share the same parent event
+    Event.hasMany(models.Event, { foreignKey: 'parentEvent', as: 'brotherEvents' });
 
     Event.belongsTo(models.Scene, { as: 'parentScene' });
     Event.belongsTo(models.Character, { as: 'speaker', foreignKey: 'speakerId' });
     Event.belongsTo(models.Character, { as: 'mugshot', foreignKey: 'mugshotId' });
+  };
+  Event.getEventBrothers = async function(eventId) {
+    const event = await Event.findByPk(eventId);
+    if (!event || !event.parentEvent) return [];
+
+    return Event.findAll({
+      where: {
+        parentEvent: event.parentEvent,
+      }
+    });
   };
   return Event;
 };

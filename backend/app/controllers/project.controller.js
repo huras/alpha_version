@@ -1,6 +1,8 @@
 const db = require("../models/sqlite_db");
 const { Scene, Event, Character, EventChoice, Background, Project } = db;
 const { Op } = require("sequelize");
+const event = require("../controllers/event.controller.js");
+const scenes = require("../controllers/scene.controller.js");
 
 exports.create = (req, res) => {
   console.log('13213=============');
@@ -63,37 +65,29 @@ exports.findAll = (req, res) => {
     });
 };
 
+exports.projectBasicIncludes = [
+  { model: Background, as: 'backgrounds' },
+  { model: Character, as: 'characters' },
+];
+
 exports.findOne = (req, res) => {
   const id = req.params.id;
-
   
   Project.findByPk(id, {
     include: [
-      {
-        model: Scene, as: 'scenes', include: [
+      ...exports.projectBasicIncludes, 
+      { 
+        model: Scene, 
+        as: 'scenes', 
+        include: [
+          ...scenes.BasicSceneInfo,
           {
             model: Event,
-            as: 'childChoices',
-            include: [
-              { model: Background, as: 'event_backgrounds' },
-              { model: Character, as: 'event_characters' },
-              { model: EventChoice, as: 'childChoices'},
-              { model: EventChoice, as: 'parentEvents'},
-              { model: Character, as: 'speaker' },
-              { model: Character, as: 'mugshot' },
-              { model: Scene, as: 'parentScene' }
-            ],
-          },
-          {
-            model: Project, as: 'parentProject', include: [
-              { model: Background, as: 'backgrounds' },
-              { model: Character, as: 'characters' },
-            ]
-          },
+            as: 'childScenes',
+            include: event.EventBasicInfo,
+          }
         ]
-      },
-      { model: Background, as: 'backgrounds' },
-      { model: Character, as: 'characters' },
+      }
     ]
   })
     .then(data => {
@@ -101,9 +95,10 @@ exports.findOne = (req, res) => {
     })
     .catch(err => {
       
+      debugger
       res.status(500).send({
         message: "Error retrieving Project with id=" + id,
-        ...err
+        err
       });
     });
 };

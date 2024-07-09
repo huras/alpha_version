@@ -202,9 +202,15 @@ pre.text {
     background-color: black;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    flex-direction: column;
 
     .playing{
-        
+        .dialogsss{
+            cursor: pointer;
+            &:hover{
+                filter: brightness(1.1);
+            }
+        }
     }
 }

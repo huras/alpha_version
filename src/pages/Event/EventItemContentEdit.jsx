@@ -164,6 +164,7 @@ const EventItemContentEdit = ({ event, scene, handleDelete }) => {
           <div className="character-pivot">
             {event?.event_characters && event?.event_characters
             .sort((a, b) => a.EventCharacter.order - b.EventCharacter.order)
+            .filter((character) => !character.data.is_protagonist)
             .map((character, i) => { 
               
               return <img key={character.EventCharacter.CharacterId+"_"+i} src={character.data.image} alt="Character" style={{ maxWidth: '100px' }} />

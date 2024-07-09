@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import DBAPI from "../services/db";
 
 const ProjectContext = createContext();
 
@@ -10,8 +11,8 @@ export const ProjectProvider = ({ children }) => {
     //iterate with key and value of data.scenes!!!!
     Object.keys(newProject?.scenes).forEach(key => {
       const scene = newProject?.scenes[key];
-      Object.keys(scene.childChoices).forEach(key => {
-        const event = scene.childChoices[key];
+      Object.keys(scene.childScenes).forEach(key => {
+        const event = scene.childScenes[key];
         Object.keys(event.event_characters).forEach(key => {
 
           
@@ -39,7 +40,7 @@ export const ProjectProvider = ({ children }) => {
   }
 
   function fetch_project_data(id) {
-    axios.get(`http://alpha.hurast.com/project/${id}`)
+    DBAPI.get(`/project/${id}`)
       .then(res => {
         preprocess_incoming_project_data(res.data);
       })
@@ -68,7 +69,7 @@ export const ProjectProvider = ({ children }) => {
   }, []);
 
   const saveScene = (scene) => {
-    scene.childChoices = scene.childChoices.map((event, index) => {
+    scene.childScenes = scene.childScenes.map((event, index) => {
       if(event.event_characters){
         event.event_characters = event?.event_characters.map(character => {
           return { ...character};
@@ -80,7 +81,7 @@ export const ProjectProvider = ({ children }) => {
       return event;
     });
     // Save scene to database
-    axios.put(`http://alpha.hurast.com/scene/${scene.id}`, {scene, project})
+    DBAPI.put(`/scene/${scene.id}`, {scene, project})
     .then(res => {
       console.log(res);
       if(res.status === 200) {

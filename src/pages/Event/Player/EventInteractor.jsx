@@ -1,15 +1,18 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { BoxArrowRight, ChatDotsFill, HandIndexThumbFill } from 'react-bootstrap-icons';
+import { ArrowLeftCircleFill, ArrowRightCircleFill, ArrowUpCircleFill, BoxArrowRight, ChatDotsFill, HandIndexThumbFill, House, NodePlus, NodePlusFill, PlayBtn } from 'react-bootstrap-icons';
 import MugshotSelector from '../Editor/Mugshot/MugshotSelector';
 import DialogEditor from '../Editor/Dialog/DialogEditor';
 import TextEffectDropdown from '../Editor/Dialog/TextEffectDropdown';
 import DialogViewer from '../Editor/Dialog/DialogViewer';
 import MugshotViewer from '../Editor/Mugshot/MugshotViewer';
+import { Button, Card } from 'react-bootstrap';
+import DBAPI from '../../../services/db';
 
 function EventInteractor() {
 
     const [event, setEvent] = useState(null)
+    const [isProcessingAction, setIsProcessingAction] = useState(false)
 
     // Fetch the event by the url "/play-scene?project=${project.id}&scene=${scene.id}&event=${event.id}"
     useEffect(() => {
@@ -27,25 +30,34 @@ function EventInteractor() {
     }, []);
 
     function fetch_event_data(id) {
-        axios.get(`http://alpha.hurast.com/event/${id}`)
+        setIsProcessingAction(true);
+        DBAPI.get(`/event/${id}`)
             .then(res => {
+                setIsProcessingAction(false);
                 console.log(event);
                 // preprocess_incoming_project_data(res.data);
                 setEvent(res.data);
                 console.log(res.data);
             })
-        // .catch(err => {
-        //     console.error(err);
-        //     setError('Failed to fetch project');
-        // })
-        // .finally();
+    }
+
+    function let_AI_play_out() {
+        setIsProcessingAction(true);
+        DBAPI.get(`/event/${id}`)
+            .then(res => {
+                setIsProcessingAction(false);
+                console.log(event);
+                // preprocess_incoming_project_data(res.data);
+                setEvent(res.data);
+                console.log(res.data);
+            })
     }
 
     function clickTalk(character){
         const text = prompt("What do you want to say?");
         if (text) {
             
-            axios.post(`http://alpha.hurast.com/event/talkWithCharacter`, {text, char_id: character.id, leaf_event_id: event.id})
+            DBAPI.post(`/event/talkWithCharacter`, {text, char_id: character.id, leaf_event_id: event.id})
             .then(res => {
                 console.log(res.data);
                 // console.log(event);
@@ -60,6 +72,22 @@ function EventInteractor() {
 
             // alert(`You said: "${text}" with ${character.fullname}`);
         }
+    }
+
+    function clickContinueEvent(){
+        DBAPI.post(`/event/continueEvent`, {leaf_event_id: event.id})
+            .then(res => {
+                console.log(res.data);
+                // console.log(event);
+                // preprocess_incoming_project_data(res.data);
+                // setEvent(res.data.updated_event);
+                const currentUrl = new URL(window.location.href);                
+                currentUrl.searchParams.set('event', res.data.updated_event.nextEvents[0].id);
+                window.location.href = currentUrl.href;
+
+                
+            })
+
     }
 
     const bgRatioW = 960, bgRatioH = 536;
@@ -84,6 +112,7 @@ function EventInteractor() {
                 <div className="character-pivot">
                     {event?.event_characters && event?.event_characters
                         .sort((a, b) => a.EventCharacter.order - b.EventCharacter.order)
+                        .filter((character) => !character.is_protagonist)
                         .map((character, i) => (
                             <div key={character.id + "_" + i} className={"char-cell"}>
                                 <div className="char_options">
@@ -117,6 +146,93 @@ function EventInteractor() {
                     />
                     }
                 </div>
+            </div>
+            
+            <div className="container" style={{visibility: isProcessingAction ? 'hidden' : 'visible'}}>
+                <Card style={{ padding: '2px', textAlign: 'center', justifyContent: 'center', alignItems: 'center' }} className="page-controller d-flex" >
+                    <Card.Body className="w-100" style={{ display: "flex", padding: '2px', justifyContent: 'space-between', alignItems: 'center'}}>
+                        <Button 
+                            title="Let it play out"
+                            variant= {(event && event.nextEvents.length === 0) ? 'primary' : 'secondary'} 
+                            onClick={() => {
+                                clickContinueEvent();
+                            }}>
+                            <div>Make AI continue event</div>
+                            <PlayBtn size={32} color='white'/>
+                        </Button>
+
+                        <Button 
+                            title="Go to the previous event"
+                            variant= {(event && event.parentEvent) ? 'primary' : 'secondary'} 
+                            onClick={() => {
+                                if (event && event.parentEvent) {
+                                    const currentUrl = new URL(window.location.href);
+                                    
+                                    //override only the event id in the url
+                                    currentUrl.searchParams.set('event', event.parentEvent);
+                                    window.location.href = currentUrl.href;
+                                }
+                            }}>
+                            <div>Back</div>
+                            <ArrowUpCircleFill size={32} color='white'/>
+                        </Button>
+
+                        {/* A button to go to the scene page url at /scene?scene=3&project=2 instead of /play-scene?project=2&scene=3&event=1 */}
+                        <Button variant='primary' 
+                            title="Go to the scene page"
+                            onClick={() => {
+                                const currentUrl = new URL(window.location.href);
+                                const sceneId = currentUrl.searchParams.get('scene');
+                                const projectId = currentUrl.searchParams.get('project');
+                                window.location.href = `http://localhost:8000/scene?scene=${sceneId}&project=${projectId}`;
+                            }
+                        }>
+                            <div>Scene</div>
+                            <House size={32} color='white'/>
+                        </Button>
+
+                        <Button 
+                            variant='primary' 
+                            title="Spawn new Scene"
+                            onClick={() => { 
+                                // Go to url /contiue-scene?origin-scene=2
+                                const currentUrl = new URL(window.location.href);
+                                const sceneId = currentUrl.searchParams.get('scene');
+                                window.location.href = `http://localhost:8000/continue-scene?origin-scene=${sceneId}`;
+                            }}
+                        >
+                            <div>New Next Scene</div>
+                            <NodePlusFill size={32} color='white'/>
+                        </Button>
+
+                        <div>
+                            <div>Alternate Versions</div>
+                            <div>
+                                <Button variant={(event && event.event_brothers && event.event_brothers.length > 1) ? 'primary' : 'secondary'}>
+                                    <ArrowLeftCircleFill size={32} color='white' onClick={() => {
+                                        if (event && event.event_brothers && event.event_brothers.length > 1) {
+                                            const currentUrl = new URL(window.location.href);
+                                            //override only the event id in the url
+                                            currentUrl.searchParams.set('event', event.event_brothers[(event.event_brothers.findIndex(ev => ev.id === event.id) - 1 + event.event_brothers.length) % event.event_brothers.length].id);
+                                            window.location.href = currentUrl.href;
+                                        }
+                                    }}/>
+                                </Button>
+                                { (event && event.event_brothers && event.event_brothers.length > 1) ? `${event.event_brothers.findIndex(ev => ev.id === event.id) + 1}/${event.event_brothers.length}` : '-/-'}
+                                <Button variant={(event && event.event_brothers && event.event_brothers.length > 1) ? 'primary' : 'secondary'}>
+                                    <ArrowRightCircleFill size={32} color='white' onClick={() => {
+                                        if (event && event.event_brothers && event.event_brothers.length > 1) {
+                                            const currentUrl = new URL(window.location.href);
+                                            //override only the event id in the url
+                                            currentUrl.searchParams.set('event', event.event_brothers[(event.event_brothers.findIndex(ev => ev.id === event.id) + 1) % event.event_brothers.length].id);
+                                            window.location.href = currentUrl.href;
+                                        }
+                                    }}/>
+                                </Button>
+                            </div>
+                        </div>
+                    </Card.Body>
+                </Card>
             </div>
         </div>
     )

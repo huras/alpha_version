@@ -31,19 +31,18 @@ function DialogViewer({dialog, hasNextDialogArrow = false, onclick = () => {}}) 
     <pre className="text vn-window w-100 dialogsss" onClick={onclick} >
         {   dialog &&
             ( dialogText ? dialogText : []).map((word, index) => 
-                <>
+                <span key={`${word.word}_${index}_view`} >
                     <TextEffectDropdown 
-                        key={`${word.word}_${index}_view`} 
                         word={word} 
                         editMode={false}
                         setEffect={() => {}}
                     />
-                    {(['.', ':', '?']).includes(word.word[word.word.length - 1])  ? <br /> : ''}
-                </>
+                    {(['.', ':', '?']).includes(word.word[word.word.length - 1])  ? <br  /> : ''}
+                </span>
             )
         }
         {
-            hasNextDialogArrow && <CaretDownFill className="hasNextDialogArrow" size={18} color={'#fff'} />
+            hasNextDialogArrow && <CaretDownFill className="hasNextDialogArrow" size={32} color={'#fff'} />
         }
     </pre>
   )

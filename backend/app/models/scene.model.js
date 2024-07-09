@@ -18,6 +18,14 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.INTEGER,
       allowNull: false
     },
+    parentSceneId: {
+      type: Sequelize.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'Scenes',
+        key: 'id'
+      }
+    },
     parentProjectId: {
       type: Sequelize.INTEGER,
       allowNull: false,
@@ -39,7 +47,8 @@ module.exports = (sequelize, Sequelize) => {
     // ... add other fields as needed
 }, {});  
   Scene.associate = function (models) {
-    Scene.hasMany(models.Event, { as: 'childChoices', foreignKey: 'parentSceneId' });
+    Scene.hasMany(models.Event, { as: 'childScenes', foreignKey: 'parentSceneId' });
+    Scene.belongsTo(models.Scene, { as: 'parentScene', foreignKey: 'parentSceneId' });
     Scene.belongsTo(models.Project, { as: 'parentProject', foreignKey: 'parentProjectId' });
   };  
   return Scene;

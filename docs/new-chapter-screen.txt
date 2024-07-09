@@ -1,0 +1,19 @@
+Types:
+
+Character miniature list
+Places miniature list 
+
+- Show suggestions button
+- Text input: placeholder: Write a description or click the (suggest continuation button)
+
+
+- Empty shape
+
+
+- Suggestion A
+- Suggestion B
+- Suggestion C
+- New
+
+
+Purpose:

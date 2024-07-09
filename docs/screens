@@ -49,3 +49,31 @@ Move Story Forward
 	Event Promoter
 
 https://chat.openai.com/c/4fe1642c-dc98-4a99-a90c-73e534162215
+
+
+------------------------------
+
+
+
+My Profile
+Dashboard Page
+	Mini Profile Banner (Facebook User Page Top Part)
+	Projects List		
+
+Project Dashboard Page
+	Character List (Listing characters)
+	Locations List (Listing locations)
+	Artifact List (List special items)
+	Scenes List (Story tree where you can list scenes)
+
+Scene Page
+	List of events in formart of chat tree
+		Each slot allows to edit the event characters, mugshot, text, effect and music
+
+Scene Create-as-you-play page
+
+Battle Event Page
+	- Final Fantasy 6 like battle
+	- Fire Emblem Fates like battle
+
+Project Play Page

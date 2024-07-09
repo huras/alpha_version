@@ -11,6 +11,7 @@ import ProjectPage from "./pages/Project/ProjectPage";
 import { ProjectProvider } from "./context/ProjectContext";
 import StorySetupForm from "./pages/Project/Creation/StorySetupForm";
 import EventInteractor from "./pages/Event/Player/EventInteractor";
+import NewScenePage from "./pages/Scene/NewScenePage";
 
 const App = () => {
   return (
@@ -31,7 +32,8 @@ const App = () => {
             {/* <Route path="/projects/:id" element={<ProjectPage />} /> */}
             <Route path="/project/add" element={<StorySetupForm />} />
             <Route path="/project" element={<ProjectPage />} />
-
+            
+            <Route path="/continue-scene" element={<NewScenePage />} />
             <Route path="/scene" element={<ScenePage />} />
             <Route path="/edit/scene" element={<SceneEditor />} />
             <Route path="/edit/event" element={<SceneEditor />} />

@@ -12,6 +12,8 @@ module.exports = app => {
 // Retrieve all Scenes
   router.get("/", scene.findAll);
 
+  router.post("/continue-scene", scene.continueScene);
+
 
   // Retrieve all Events
   // router.get("/:id/events", scene.findAllEvents);

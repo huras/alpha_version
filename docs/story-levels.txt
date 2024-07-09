@@ -1,0 +1,182 @@
+Season Level (highest):
+	A Season is: A group of Chapters (6 to 24 (usually 12))
+	Seasons develop up to 3 Arcs at a time.
+	Arcs are narrative structure that revolves around a certain group of plot devices related to a common theme
+    Generate resumo to use on event generation context
+
+Chapter Level (higher):
+	Chapter (Scene group)
+	Chapter description
+		Chapter may have quests the chatGPT have to make effort to allow the player to fulfill.
+		Handling the conversation (by cleverly using interesting conversation to do reach the objectives).
+		Handling place navigaton
+    Generate resumo to use on event generation context
+
+Scene Level (medium):
+	Scene Level
+	Event Description
+	Chat GPT generates overall Scene path and then elaboraes it in dialog. The player can then play through it and interfere where he wants to.
+    Generate resumo to use on event generation context
+
+Event level (lowest):
+	Dialog Time: The user can chat and get information available in that scene, or trigger some offer or imposition of an NPC.
+    The AI can:
+        Start talk (with you or with NPCs in the scene),
+        Talk back,
+        Start Quest, (Make Offer, formal/informal quest)
+        Suggest travel (Change background),
+
+
+
+-------------------------------------
+
+Place Levels:
+
+Continent
+	Nation
+		Region
+			Area (City, Forest, Mountain, River)
+				Street
+					Building
+						Room
+			
+
+
+-------------------------------------
+
+World Base Information
+
+- Arc:
+	* An exerpt of plot that have begining, middle and conclusion.
+	* Like game expansions, its components are connected with the already existing content in the story.
+	The components of an arc are:
+		0 - Current State
+			* The current life state of the protagonist before living the Arc that will be generated.
+		1 - Spoil / Moral Lesson / Climax Event
+			* The purpose of that arc in the path of the character, what spoils may it give to him (or not).
+			* The AI will generate a moral meaning for the arc
+		2 - Motif (AI)
+			* Motif is generated according to spoil defined by the [Spoil / Moral Lesson / Climax Event] mix
+		3 - Character Organizations
+			- Prompts: 
+				- Define at least 5 greater organizations and destaque the biggest and second biggest ones.
+				- Define 3 much smaller but still important organizations
+				- Define 12 important families
+			* Political, religious and industrial organizaitons that will be used to tell the Arc
+		4 - Characters
+			- Prompts:
+				- Define the higher hierarchies of the organizatinons
+				- Define characters not in the organizations but affected by them (positive or negavively)
+				- Define characters not in the organizations but liked to it
+			* The Characters are created only with a backstory and current motivation related to it.
+			* Characters evolve from its initial state though the events.
+			* Events cause update and increment in the characters profiles.
+		5 - Locations (places, cities, countries, buildings, forests, rivers, cave, mountains, etc...)
+			* Locations are created 3rd because the locations will be generated form the characters backstory.
+			* Locations can change though events.
+			- Creation source:
+				- Organizations descriptions
+				- Characters backstories
+		6 - Events
+			* Events display:
+				- Text Dialog
+					* The story only evolves through description of events:
+						- Narration
+						- Encounter
+							- Observing other people interacting
+							- Conversation	
+						- Weather
+						- Surroundings
+						- Protagonist Inner thinking
+				- Location transition (In Scene context)
+				- Battles
+				- Item give/take
+
+- Base Arc: The story backbone and theme. The AI will generate or suggest sub arcs to compose the main arc.
+	* Based on a upcoming "world" crisis to which the current society is mostly oblivious.
+	- Examples
+		* Main arc of avatar: learn the 4 elements to defeat the fire lord to end the war and restore balance while.
+
+-------------------------------------
+
+Theme (Emotion the story should revolve around): Adventure (Romance, Action, Revenge, Sadness, Suspense)
+Anime Tags: Harem, Isekai, 
+Initial story bits 
+	* Maybe Containing:
+		Protagonist traits
+		Characters
+		Magic System
+		World description
+		Villain
+		Places
+		Events
+
+Then the GPT extracts and separates the things in the plot event.
+Using these already created story world parts GPT runs the process below:
+
+1 - Start defining Protagonist:
+	- Name
+	- Powers
+	- Backstory bits (not required)
+
+2 - Define either and make suggestion about the others based on the one provided:
+	- Spoil (Thing to be won by the character)
+		- Types:
+			Companion
+			Item (Tools, Equipments, Consumables, Key Items)
+			Skill
+			Land
+			Building
+	- Moral Lessons
+		- Some moral for the hero to learn along his path
+	- Climax events	
+
+3 - 
+
+Generate plot
+	* Suggest improvements (new items, changes)
+
+Define Biggest Organization that would be related to that [plot]
+	- Define side businesses of the organization
+
+Define capital city of [biggest organization] HQ
+
+Define the kingdom of that city
+
+Define King
+
+----------------------------
+
+Define Basic Plot
+	- Base Characters
+	- Base Locations
+	- Base Events
+
+
+
+
+
+
+
+----------------------------
+
+Arcs
+
+	Arc:
+		A exerpt of plot that have begining, middle and conclusion.
+		Like game expansions, its components are  by:
+			* 
+		Events display:
+			Text Dialog
+				Narration
+				Conversation	
+				Weather
+				Surroundings
+				Protagonist Inner thinking
+			Location transition
+			Battles
+			Item give/take
+
+
+	Base Arc: The story backbone and theme. The AI will generate or suggest sub arcs to compose the main arc.
+	Main arc of avatar: learn the 4 elements to defeat the fire lord to end the war and restore balance while.

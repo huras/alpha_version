@@ -1,6 +1,7 @@
 const db = require("../models/sqlite_db");
 const {Scene, Event, Character,EventChoice,Background, Project, EventBackground, EventCharacter } = db;
 const { Op } = require("sequelize");
+const event = require("../controllers/event.controller.js");
 
 exports.create = (req, res) => {
   console.log('13213=============');
@@ -43,6 +44,32 @@ exports.create = (req, res) => {
     });
 };
 
+exports.continueScene = async (req, res) => {
+  const { description, id } = req.body;
+  const scene = await Scene.findByPk(id);
+  if (!scene) {
+    return res.status(404).send({ message: "Scene not found" });
+  }
+
+  const prompt = `
+    Based on the information below, give 3 sugestions of scenes to continue the story on pushing to evolve.
+
+    Character list:
+      Name: -
+      Short description: -
+    Places list:
+      Name: -
+      Short description: -
+
+    Past Scenes:
+      - Scene Title
+      - Scene Description
+  `;
+  // const newScene = await Scene.create({ description: description });
+  // await scene.addScene(newScene);
+  res.send({ message: "Scene continued successfully!", description });
+}
+
 exports.findAll = (req, res) => {
   const title = req.query.title;
   var condition = title ? {
@@ -63,29 +90,24 @@ exports.findAll = (req, res) => {
     });
 };
 
+exports.BasicSceneInfo = [
+  {
+    model: Project, as: 'parentProject', include: [
+      { model: Background, as: 'backgrounds' },
+      { model: Character, as: 'characters' },
+    ]
+  },
+];
+
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
   Scene.findByPk(id, {
-    include: [
-      {
-        model: Event,
-        as: 'childChoices',
-        include: [
-          { model: Background, as: 'event_backgrounds'},
-          { model: Character, as: 'event_characters'},
-          { model: EventChoice, as: 'childChoices'},
-          { model: EventChoice, as: 'parentEvents'},
-          { model: Character, as: 'speaker'},
-          { model: Character, as: 'mugshot'},
-          { model: Scene, as: 'parentScene', include: [ { model: Project, as: 'parentProject'}]},
-        ],
-      },
-      { model: Project, as: 'parentProject', include: [ 
-        { model: Background, as: 'backgrounds' },
-        { model: Character, as: 'characters' },
-      ]},
-    ]
+    include: [...exports.BasicSceneInfo, {
+      model: Event,
+      as: 'childScenes',
+      include: event.EventBasicInfo,
+    }]
   })
     .then(data => {
       res.send(data);

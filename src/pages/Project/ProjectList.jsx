@@ -12,7 +12,7 @@ export default function ProjectList() {
     const [ currentSceneID, setCurrentSceneID ] = useState(null);
 
     useEffect(() => {
-        axios.get('http://alpha.hurast.com/project')
+        axios.get('http://localhost:8080/project')
           .then(res => setProjects(res.data))
           .catch(err => console.log(err));
     }, []);
