@@ -83,7 +83,7 @@ exports.findOne = (req, res) => {
           ...scenes.BasicSceneInfo,
           {
             model: Event,
-            as: 'childScenes',
+            as: 'childEvents',
             include: event.EventBasicInfo,
           }
         ]

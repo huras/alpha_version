@@ -99,15 +99,29 @@ exports.BasicSceneInfo = [
   },
 ];
 
+exports.EventBasicInfo = [
+  { model: Background, as: 'event_backgrounds' },
+  { model: Character, as: 'event_characters' },
+  { model: EventChoice, as: 'childChoices'},
+  { model: Event, as: 'nextEvents'},
+  { model: Event, as: 'prevEvents'},
+  { model: EventChoice, as: 'parentEvents'},
+  { model: Character, as: 'speaker' },
+  { model: Character, as: 'mugshot' },
+  { model: Scene, as: 'parentScene'},
+];
+
+exports.BasicSceneInfoEventsInfo = {
+  model: Event,
+  as: 'childEvents',
+  include: exports.EventBasicInfo,
+}
+
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
   Scene.findByPk(id, {
-    include: [...exports.BasicSceneInfo, {
-      model: Event,
-      as: 'childScenes',
-      include: event.EventBasicInfo,
-    }]
+    include: [...exports.BasicSceneInfo, exports.BasicSceneInfoEventsInfo]
   })
     .then(data => {
       res.send(data);

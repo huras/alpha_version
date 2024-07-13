@@ -14,6 +14,10 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: true,
       defaultValue: ''
     },
+    lod0_description: { type: Sequelize.TEXT, allowNull: true },
+    lod1_description: { type: Sequelize.TEXT, allowNull: true },
+    lod2_description: { type: Sequelize.TEXT, allowNull: true },
+    lod3_description: { type: Sequelize.TEXT, allowNull: true },
     order: {
       type: Sequelize.INTEGER,
       allowNull: false
@@ -25,6 +29,11 @@ module.exports = (sequelize, Sequelize) => {
         model: 'Scenes',
         key: 'id'
       }
+    },
+    objectives: {
+      type: Sequelize.TEXT,
+      allowNull: true,
+      defaultValue: ''
     },
     parentProjectId: {
       type: Sequelize.INTEGER,
@@ -47,7 +56,7 @@ module.exports = (sequelize, Sequelize) => {
     // ... add other fields as needed
 }, {});  
   Scene.associate = function (models) {
-    Scene.hasMany(models.Event, { as: 'childScenes', foreignKey: 'parentSceneId' });
+    Scene.hasMany(models.Event, { as: 'childEvents', foreignKey: 'parentSceneId' });
     Scene.belongsTo(models.Scene, { as: 'parentScene', foreignKey: 'parentSceneId' });
     Scene.belongsTo(models.Project, { as: 'parentProject', foreignKey: 'parentProjectId' });
   };  

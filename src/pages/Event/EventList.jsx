@@ -105,7 +105,7 @@ const EventList = ({ scene }) => {
       
 
       <ListGroup>
-        {scene.childScenes.map((event, index) => (
+        {scene.childEvents.map((event, index) => (
           <EventItemContentEdit
             key={event.id}
             event={event}

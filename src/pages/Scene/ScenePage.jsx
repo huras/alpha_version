@@ -40,7 +40,7 @@ export default function ScenePage() {
 
         //Check if index is out of bounds
         const currentIndex = branchSelection[eventId] || 0;
-        if (currentIndex + delta >= scene.childScenes.find(e => e.id === eventId).childChoices.length || currentIndex + delta < 0) {
+        if (currentIndex + delta >= scene.childEvents.find(e => e.id === eventId).childChoices.length || currentIndex + delta < 0) {
             return;
         }
 
@@ -51,7 +51,7 @@ export default function ScenePage() {
     };
 
     const getNextEventId = (eventId) => {
-        const event = scene.childScenes.find(e => e.id === eventId);
+        const event = scene.childEvents.find(e => e.id === eventId);
         if (!event) return null;
 
         if (event.childChoices.length > 0) {
@@ -59,7 +59,7 @@ export default function ScenePage() {
             return event.childChoices[branchIndex]?.RelatedEventId;
         } else {
             // Find the next event in the sequence
-            return scene.childScenes.find(e => e.parentEvent === eventId)?.id;
+            return scene.childEvents.find(e => e.parentEvent === eventId)?.id;
         }
     };
 
@@ -69,7 +69,7 @@ export default function ScenePage() {
     }
 
     const renderEvent = (eventId) => {
-        const event = scene.childScenes.find(e => e.id === eventId);
+        const event = scene.childEvents.find(e => e.id === eventId);
         if (!event) return null;
 
         const nextEventId = getNextEventId(eventId);

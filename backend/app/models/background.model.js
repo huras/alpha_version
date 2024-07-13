@@ -6,11 +6,10 @@ module.exports = (sequelize, Sequelize) => {
       autoIncrement: true
     },
     name: Sequelize.STRING,
-    description: {
-      type: Sequelize.TEXT,
-      allowNull: true,
-      defaultValue: null
-    },
+    lod0_description: { type: Sequelize.TEXT, allowNull: true },
+    lod1_description: { type: Sequelize.TEXT, allowNull: true },
+    lod2_description: { type: Sequelize.TEXT, allowNull: true },
+    lod3_description: { type: Sequelize.TEXT, allowNull: true },
     you_can_see: {
       type: Sequelize.TEXT,
       allowNull: true,

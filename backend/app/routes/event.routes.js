@@ -12,8 +12,10 @@ module.exports = app => {
   // Retrieve all Entregas
   router.get("/", event.findAll);
 
+  
   // Retrieve a single Entrega with id
   router.post("/talkWithCharacter", event.talkWithCharacter);
+  router.post("/protagonistThinkSomething", event.protagonistThinkSomething);
 
   // Retrieve a single Entrega with id
   router.post("/continueEvent", event.continueEvent);

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { ArrowLeftCircleFill, ArrowRightCircleFill, ArrowUpCircleFill, BoxArrowRight, ChatDotsFill, HandIndexThumbFill, House, NodePlus, NodePlusFill, PlayBtn } from 'react-bootstrap-icons';
+import { ArrowDownCircleFill, ArrowLeftCircleFill, ArrowRightCircleFill, ArrowUpCircleFill, BoxArrowRight, ChatDotsFill, Cloud, HandIndexThumbFill, House, NodePlus, NodePlusFill, PlayBtn } from 'react-bootstrap-icons';
 import MugshotSelector from '../Editor/Mugshot/MugshotSelector';
 import DialogEditor from '../Editor/Dialog/DialogEditor';
 import TextEffectDropdown from '../Editor/Dialog/TextEffectDropdown';
@@ -29,6 +29,10 @@ function EventInteractor() {
         fetch_event_data(idToUse);
     }, []);
 
+    function goToEventID(event_id) {
+        history.pushState({ event: "event" }, "", "page2.html");
+    }
+
     function fetch_event_data(id) {
         setIsProcessingAction(true);
         DBAPI.get(`/event/${id}`)
@@ -54,11 +58,13 @@ function EventInteractor() {
     }
 
     function clickTalk(character){
+        setIsProcessingAction(true);
         const text = prompt("What do you want to say?");
         if (text) {
             
             DBAPI.post(`/event/talkWithCharacter`, {text, char_id: character.id, leaf_event_id: event.id})
             .then(res => {
+                setIsProcessingAction(false);
                 console.log(res.data);
                 // console.log(event);
                 // preprocess_incoming_project_data(res.data);
@@ -69,14 +75,17 @@ function EventInteractor() {
 
                 
             })
-
-            // alert(`You said: "${text}" with ${character.fullname}`);
         }
     }
-
-    function clickContinueEvent(){
-        DBAPI.post(`/event/continueEvent`, {leaf_event_id: event.id})
+    
+    function thinkSomething(){
+        setIsProcessingAction(true);
+        const text = prompt("What do you want to think as the protagonist?");
+        if (text) {
+            
+            DBAPI.post(`/event/protagonistThinkSomething`, {text, leaf_event_id: event.id})
             .then(res => {
+                setIsProcessingAction(false);
                 console.log(res.data);
                 // console.log(event);
                 // preprocess_incoming_project_data(res.data);
@@ -86,6 +95,29 @@ function EventInteractor() {
                 window.location.href = currentUrl.href;
 
                 
+            })
+        }
+    }
+
+    function clickContinueEvent(){
+        setIsProcessingAction(true);
+        DBAPI.post(`/event/continueEvent`, {leaf_event_id: event.id})
+            .then(res => {
+                console.log(res.data);
+                // console.log(event);
+                // preprocess_incoming_project_data(res.data);
+                // setEvent(res.data.updated_event);
+                const currentUrl = new URL(window.location.href);                
+                currentUrl.searchParams.set('event', res.data.updated_event.nextEvents[0].id);
+                const next_event_id = res.data.updated_event.nextEvents[0].id;
+                DBAPI.get(`/event/${next_event_id}`)
+                    .then(res => {
+                        setIsProcessingAction(false);
+                        console.log(event);
+                        // preprocess_incoming_project_data(res.data);
+                        setEvent(res.data);
+                        console.log(res.data);
+                    })
             })
 
     }
@@ -136,10 +168,21 @@ function EventInteractor() {
                         onclick={() => {
                             // Go to the next event url
                             if (event.nextEvents && event.nextEvents.length > 0) {
+
+                                setIsProcessingAction(true);
+                                DBAPI.get(`/event/${event.nextEvents[0].id}`)
+                                    .then(res => {
+                                        setIsProcessingAction(false);
+                                        console.log(event);
+                                        // preprocess_incoming_project_data(res.data);
+                                        setEvent(res.data);
+                                        console.log(res.data);
+                                    })
+
                                 const currentUrl = new URL(window.location.href);
                                 //override only the event id in the url
                                 currentUrl.searchParams.set('event', event.nextEvents[0].id);
-                                window.location.href = currentUrl.href;
+                                // window.location.href = currentUrl.href;
                                 // window.location.href = `/play-scene?project=${project.id}&scene=${scene.id}&event=${event.nextEvents[0].id}`;
                             }
                         }}
@@ -150,19 +193,10 @@ function EventInteractor() {
             
             <div className="container" style={{visibility: isProcessingAction ? 'hidden' : 'visible'}}>
                 <Card style={{ padding: '2px', textAlign: 'center', justifyContent: 'center', alignItems: 'center' }} className="page-controller d-flex" >
-                    <Card.Body className="w-100" style={{ display: "flex", padding: '2px', justifyContent: 'space-between', alignItems: 'center'}}>
-                        <Button 
-                            title="Let it play out"
-                            variant= {(event && event.nextEvents.length === 0) ? 'primary' : 'secondary'} 
-                            onClick={() => {
-                                clickContinueEvent();
-                            }}>
-                            <div>Make AI continue event</div>
-                            <PlayBtn size={32} color='white'/>
-                        </Button>
-
+                    <Card.Body className="w-100" style={{ display: "flex", padding: '2px', justifyContent: 'flex-start', alignItems: 'center'}}>
                         <Button 
                             title="Go to the previous event"
+                            className="me-2"
                             variant= {(event && event.parentEvent) ? 'primary' : 'secondary'} 
                             onClick={() => {
                                 if (event && event.parentEvent) {
@@ -170,42 +204,49 @@ function EventInteractor() {
                                     
                                     //override only the event id in the url
                                     currentUrl.searchParams.set('event', event.parentEvent);
-                                    window.location.href = currentUrl.href;
+
+                                    setIsProcessingAction(true);
+                                    DBAPI.get(`/event/${event.parentEvent}`)
+                                        .then(res => {
+                                            setIsProcessingAction(false);
+                                            console.log(event);
+                                            // preprocess_incoming_project_data(res.data);
+                                            setEvent(res.data);
+                                            console.log(res.data);
+                                        })
                                 }
                             }}>
                             <div>Back</div>
                             <ArrowUpCircleFill size={32} color='white'/>
                         </Button>
 
-                        {/* A button to go to the scene page url at /scene?scene=3&project=2 instead of /play-scene?project=2&scene=3&event=1 */}
-                        <Button variant='primary' 
-                            title="Go to the scene page"
-                            onClick={() => {
-                                const currentUrl = new URL(window.location.href);
-                                const sceneId = currentUrl.searchParams.get('scene');
-                                const projectId = currentUrl.searchParams.get('project');
-                                window.location.href = `http://localhost:8000/scene?scene=${sceneId}&project=${projectId}`;
-                            }
-                        }>
-                            <div>Scene</div>
-                            <House size={32} color='white'/>
-                        </Button>
-
                         <Button 
-                            variant='primary' 
-                            title="Spawn new Scene"
-                            onClick={() => { 
-                                // Go to url /contiue-scene?origin-scene=2
-                                const currentUrl = new URL(window.location.href);
-                                const sceneId = currentUrl.searchParams.get('scene');
-                                window.location.href = `http://localhost:8000/continue-scene?origin-scene=${sceneId}`;
-                            }}
-                        >
-                            <div>New Next Scene</div>
-                            <NodePlusFill size={32} color='white'/>
+                            title="Go to the next event"
+                            className="me-2"
+                            variant= {(event && event.nextEvents && event.nextEvents.length > 0) ? 'primary' : 'secondary'} 
+                            onClick={() => {
+                                if (event && event.nextEvents && event.nextEvents.length > 0) {
+                                    const currentUrl = new URL(window.location.href);
+                                    
+                                    //override only the event id in the url
+                                    currentUrl.searchParams.set('event', event.nextEvents[0].id);
+
+                                    setIsProcessingAction(true);
+                                    DBAPI.get(`/event/${event.nextEvents[0].id}`)
+                                        .then(res => {
+                                            setIsProcessingAction(false);
+                                            console.log(event);
+                                            // preprocess_incoming_project_data(res.data);
+                                            setEvent(res.data);
+                                            console.log(res.data);
+                                        })
+                                }
+                            }}>
+                            <div>Next</div>
+                            <ArrowDownCircleFill size={32} color='white'/>
                         </Button>
 
-                        <div>
+                        {(event && event.nextEvents.length === 0) && <div className="mx-5">
                             <div>Alternate Versions</div>
                             <div>
                                 <Button variant={(event && event.event_brothers && event.event_brothers.length > 1) ? 'primary' : 'secondary'}>
@@ -230,7 +271,61 @@ function EventInteractor() {
                                     }}/>
                                 </Button>
                             </div>
+                        </div>}
+
+                        <div className="mx-5">
+                            <Button 
+                                title="Let it play out"
+                                className="me-2"
+                                variant= {(event) ? 'primary' : 'secondary'} 
+                                onClick={() => {
+                                    clickContinueEvent();
+                                }}>
+                                <div> AI continue...</div>
+                                <PlayBtn size={32} color='white'/>
+                            </Button>
+
+                            <Button 
+                                title="Think something"
+                                className="me-2"
+                                variant= {(!isProcessingAction) ? 'primary' : 'secondary'} 
+                                onClick={() => {
+                                    thinkSomething();
+                                }}>
+                                <div> Think something</div>
+                                <Cloud size={32} color='white'/>
+                            </Button>                        
+
+                            <Button 
+                                variant='primary' 
+                                title="Spawn new Scene"
+                                className="me-2"
+                                onClick={() => { 
+                                    // Go to url /contiue-scene?origin-scene=2
+                                    const currentUrl = new URL(window.location.href);
+                                    const sceneId = currentUrl.searchParams.get('scene');
+                                    window.location.href = `http://localhost:8000/continue-scene?origin-scene=${sceneId}`;
+                                }}
+                            >
+                                <div>New Next Scene</div>
+                                <NodePlusFill size={32} color='white'/>
+                            </Button>
                         </div>
+
+                        {/* A button to go to the scene page url at /scene?scene=3&project=2 instead of /play-scene?project=2&scene=3&event=1 */}
+                        <Button variant='primary' 
+                            className="mx-5"
+                            title="Go to the scene page"
+                            onClick={() => {
+                                const currentUrl = new URL(window.location.href);
+                                const sceneId = currentUrl.searchParams.get('scene');
+                                const projectId = currentUrl.searchParams.get('project');
+                                window.location.href = `http://localhost:8000/scene?scene=${sceneId}&project=${projectId}`;
+                            }
+                        }>
+                            <div>Scene</div>
+                            <House size={32} color='white'/>
+                        </Button>
                     </Card.Body>
                 </Card>
             </div>

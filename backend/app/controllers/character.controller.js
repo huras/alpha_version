@@ -13,7 +13,7 @@ exports.findAll = (req, res) => {
 exports.BasicCharacterInfo = [
   {
     model: Event,
-    as: 'childScenes',
+    as: 'childEvents',
     include: event.EventBasicInfo,
   },
   {

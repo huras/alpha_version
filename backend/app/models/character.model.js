@@ -15,7 +15,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.TEXT,
       allowNull: true,
     },
-    details: {
+    lod0_description: {
       type: Sequelize.TEXT,
       allowNull: true,
       /*
@@ -40,6 +40,10 @@ module.exports = (sequelize, Sequelize) => {
         quirks_habits: Sequelize.TEXT,
       */
     },
+    // https://chatgpt.com/c/1b38d69a-b1bc-4d49-b514-0d25b5202cf2
+    lod1_description: { type: Sequelize.TEXT, allowNull: true },
+    lod2_description: { type: Sequelize.TEXT, allowNull: true },
+    lod3_description: { type: Sequelize.TEXT, allowNull: true },
     fullname: Sequelize.STRING,
     character_type: {
       allowNull: true,

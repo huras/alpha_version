@@ -11,8 +11,8 @@ export const ProjectProvider = ({ children }) => {
     //iterate with key and value of data.scenes!!!!
     Object.keys(newProject?.scenes).forEach(key => {
       const scene = newProject?.scenes[key];
-      Object.keys(scene.childScenes).forEach(key => {
-        const event = scene.childScenes[key];
+      Object.keys(scene.childEvents).forEach(key => {
+        const event = scene.childEvents[key];
         Object.keys(event.event_characters).forEach(key => {
 
           
@@ -69,7 +69,7 @@ export const ProjectProvider = ({ children }) => {
   }, []);
 
   const saveScene = (scene) => {
-    scene.childScenes = scene.childScenes.map((event, index) => {
+    scene.childEvents = scene.childEvents.map((event, index) => {
       if(event.event_characters){
         event.event_characters = event?.event_characters.map(character => {
           return { ...character};
