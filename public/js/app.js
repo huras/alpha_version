@@ -11953,6 +11953,43 @@ var BackgroundDrawer = function BackgroundDrawer(_ref) {
 
 /***/ }),
 
+/***/ "./pages/Event/Editor/DialogMugshotEditor.jsx":
+/*!****************************************************!*\
+  !*** ./pages/Event/Editor/DialogMugshotEditor.jsx ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../context/AppContext */ "./context/AppContext.jsx");
+/* harmony import */ var _Mugshot_MugshotSelector__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Mugshot/MugshotSelector */ "./pages/Event/Editor/Mugshot/MugshotSelector.jsx");
+
+
+
+
+ // Adjust the path according to your file structure
+
+var DialogMugshotEditor = function DialogMugshotEditor(_ref) {
+  var event = _ref.event,
+    setEvent = _ref.setEvent,
+    project = _ref.project;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "speaker vn-window"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Mugshot_MugshotSelector__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    event: event,
+    setEvent: setEvent,
+    project: project
+  })));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DialogMugshotEditor);
+
+/***/ }),
+
 /***/ "./pages/Event/Editor/Dialog/DialogEditor.jsx":
 /*!****************************************************!*\
   !*** ./pages/Event/Editor/Dialog/DialogEditor.jsx ***!
@@ -12266,43 +12303,6 @@ function TextEffectDropdown(_ref) {
   }, "Impacting"))) : wordContent);
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TextEffectDropdown);
-
-/***/ }),
-
-/***/ "./pages/Event/Editor/DialogMugshotEditor.jsx":
-/*!****************************************************!*\
-  !*** ./pages/Event/Editor/DialogMugshotEditor.jsx ***!
-  \****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../context/AppContext */ "./context/AppContext.jsx");
-/* harmony import */ var _Mugshot_MugshotSelector__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Mugshot/MugshotSelector */ "./pages/Event/Editor/Mugshot/MugshotSelector.jsx");
-
-
-
-
- // Adjust the path according to your file structure
-
-var DialogMugshotEditor = function DialogMugshotEditor(_ref) {
-  var event = _ref.event,
-    setEvent = _ref.setEvent,
-    project = _ref.project;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "speaker vn-window"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Mugshot_MugshotSelector__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    event: event,
-    setEvent: setEvent,
-    project: project
-  })));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (DialogMugshotEditor);
 
 /***/ }),
 
@@ -14778,6 +14778,310 @@ var ProjectPage = function ProjectPage() {
 
 /***/ }),
 
+/***/ "./pages/SceneEditorNavbar.jsx":
+/*!*************************************!*\
+  !*** ./pages/SceneEditorNavbar.jsx ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Navbar.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/list-ul.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/images.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/people-fill.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/chat-fill.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/music-note-beamed.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/caret-left-square.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/caret-right-square.js");
+/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/AppContext */ "./context/AppContext.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+ // Update the path as per your project structure
+
+var SceneEditorNavbar = function SceneEditorNavbar(_ref) {
+  var toggleEventListDrawer = _ref.toggleEventListDrawer,
+    toggleBackgroundDrawer = _ref.toggleBackgroundDrawer,
+    toggleEventCharactersDrawer = _ref.toggleEventCharactersDrawer;
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_AppContext__WEBPACK_IMPORTED_MODULE_1__["default"]),
+    scenes = _useContext.scenes,
+    currentSceneID = _useContext.currentSceneID,
+    currentEventID = _useContext.currentEventID,
+    setCurrentEventID = _useContext.setCurrentEventID;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState2 = _slicedToArray(_useState, 2),
+    currentPage = _useState2[0],
+    setCurrentPage = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState4 = _slicedToArray(_useState3, 2),
+    totalPages = _useState4[0],
+    setTotalPages = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    _useState6 = _slicedToArray(_useState5, 2),
+    branchSelection = _useState6[0],
+    setBranchSelection = _useState6[1];
+
+  // Function to get the next event ID
+  var getNextEventId = function getNextEventId(eventId) {
+    var _event$childChoices;
+    var event = scenes.find(function (e) {
+      return e.id === eventId;
+    });
+    if (!event) return null;
+    if (((_event$childChoices = event.childChoices) === null || _event$childChoices === void 0 ? void 0 : _event$childChoices.length) > 0) {
+      var _event$childChoices$b;
+      var branchIndex = branchSelection[eventId] || 0;
+      return (_event$childChoices$b = event.childChoices[branchIndex]) === null || _event$childChoices$b === void 0 ? void 0 : _event$childChoices$b.RelatedEventId;
+    } else {
+      var _scenes;
+      //finds current event id and gets next in the list if present
+      var index = scenes.findIndex(function (e) {
+        return e.id === eventId;
+      });
+      return (_scenes = scenes[index + 1]) === null || _scenes === void 0 ? void 0 : _scenes.id;
+    }
+  };
+
+  // Update the total pages and current page when the current event ID changes
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var count = 0;
+    var currentId = currentEventID;
+    while (currentId != null) {
+      count++;
+      currentId = getNextEventId(currentId);
+    }
+    setTotalPages(count);
+    setCurrentPage(scenes.findIndex(function (event) {
+      return event.id === currentEventID;
+    }) + 1);
+  }, [currentEventID, scenes]);
+  var navigateEvent = function navigateEvent(direction) {
+    var _events$newIndex;
+    var newIndex = events.findIndex(function (event) {
+      return event.id === currentEventID;
+    }) + direction;
+    newIndex = Math.max(0, Math.min(newIndex, events.length - 1));
+    setCurrentEventID(Number.parseInt((_events$newIndex = events[newIndex]) === null || _events$newIndex === void 0 ? void 0 : _events$newIndex.id));
+  };
+  var toggleDialog = function toggleDialog() {
+    // if (currentEvent) {
+    //   // Clone the current event to avoid direct state mutation
+    //   const updatedEvent = { ...currentEvent };
+
+    //   // Logic to toggle dialog visibility and content
+    //   if (!updatedEvent.dialog || !updatedEvent.dialog.text || updatedEvent.dialog.show === false) {
+    //     updatedEvent.dialog = {
+    //       ...updatedEvent.dialog,
+    //       show: true,
+    //       text: updatedEvent.dialog && updatedEvent.dialog.text ? updatedEvent.dialog.text : 'Text here',
+    //       speaker: updatedEvent.dialog && updatedEvent.dialog.speaker ? updatedEvent.dialog.speaker : false
+    //     };
+    //   } else {
+    //     updatedEvent.dialog.show = false;
+    //   }
+
+    //   // Update the event in the scenes array
+    //   const updatedEvents = events.map(evt => evt.id === currentEventID ? updatedEvent : evt);
+    //   const updatedScene = { ...scene, events: updatedEvents };
+    //   const updatedScenes = scenes.map(scn => scn.id === currentSceneID ? updatedScene : scn);
+
+    //   setScenes(updatedScenes);
+    // }
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    expand: "lg",
+    variant: "dark",
+    bg: "dark",
+    className: "my-navbar"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    fluid: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    variant: "outline-secondary",
+    onClick: toggleEventListDrawer
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    color: "white"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "d-flex"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
+    to: "/scenes/".concat(currentSceneID),
+    className: "btn btn-outline-secondary mx-2"
+  }, "Back to Scene"), currentEventID != null && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mx-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    variant: "outline-secondary",
+    className: "mx-1",
+    onClick: toggleBackgroundDrawer
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    color: "white"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    variant: "outline-secondary",
+    className: "mx-1",
+    onClick: toggleEventCharactersDrawer
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_8__["default"], {
+    color: "white"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    variant: "outline-secondary",
+    className: "mx-1",
+    onClick: toggleDialog
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_9__["default"], {
+    color: "white"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    variant: "outline-secondary",
+    className: "mx-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    color: "white"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mx-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    variant: "outline-secondary",
+    className: "mx-1",
+    onClick: function onClick() {
+      return navigateEvent(-1);
+    },
+    disabled: currentPage <= 1
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_11__["default"], {
+    color: "white"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "mx-1",
+    style: {
+      color: 'white'
+    }
+  }, currentPage, " / ", totalPages), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    variant: "outline-secondary",
+    className: "mx-1",
+    onClick: function onClick() {
+      return navigateEvent(1);
+    },
+    disabled: currentPage >= totalPages
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_12__["default"], {
+    color: "white"
+  }))))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SceneEditorNavbar);
+
+/***/ }),
+
+/***/ "./pages/SceneParts/SceneCharacter.jsx":
+/*!*********************************************!*\
+  !*** ./pages/SceneParts/SceneCharacter.jsx ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Modal.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
+/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
+/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/chat-dots-fill.js");
+/* harmony import */ var _gpt_CharacterDialogerGPT__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../gpt/CharacterDialogerGPT */ "./gpt/CharacterDialogerGPT.js");
+/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/AppContext */ "./context/AppContext.jsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+ // Update the path as per your project structure
+
+var dialoger = undefined;
+var SceneCharacter = function SceneCharacter(_ref) {
+  var character = _ref.character;
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_AppContext__WEBPACK_IMPORTED_MODULE_2__["default"]),
+    scenes = _useContext.scenes,
+    setScenes = _useContext.setScenes,
+    currentScene = _useContext.currentScene,
+    currentEvent = _useContext.currentEvent,
+    characters = _useContext.characters;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    showModal = _useState2[0],
+    setShowModal = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+    _useState4 = _slicedToArray(_useState3, 2),
+    textInput = _useState4[0],
+    setTextInput = _useState4[1];
+  if (!dialoger && character) {
+    dialoger = new _gpt_CharacterDialogerGPT__WEBPACK_IMPORTED_MODULE_1__["default"]({
+      character: character,
+      dialog: [{
+        "role": "assistant",
+        "content": "{\n                        speaker: ".concat(character.fullname, ",\n                        text: [\"Voc\xEA parece perdido.\"]\n                    }")
+      }],
+      setting: "".concat(character.fullname, " found the protagonist in the middle of the deep woods. She is acompanie by two of ther female guards.")
+    });
+  }
+  var handleCharacterClick = function handleCharacterClick() {
+    setShowModal(true);
+  };
+  var handleTextChange = function handleTextChange(e) {
+    setTextInput(e.target.value);
+  };
+  var handleSend = function handleSend() {
+    dialoger.talk(textInput);
+    setShowModal(false);
+    setTextInput('');
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "character-div"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    key: character.id,
+    src: character.image,
+    alt: "Character"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    className: "chat-btn",
+    size: 32,
+    color: "white",
+    onClick: handleCharacterClick
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    show: showModal,
+    onHide: function onHide() {
+      return setShowModal(false);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Header, {
+    closeButton: true
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Title, null, "Talk to ", character.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Group, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Label, null, "Enter your message"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Control, {
+    as: "textarea",
+    rows: 3,
+    value: textInput,
+    onChange: handleTextChange
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Footer, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    variant: "secondary",
+    onClick: function onClick() {
+      return setShowModal(false);
+    }
+  }, "Close"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    variant: "primary",
+    onClick: handleSend
+  }, "Send"))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SceneCharacter);
+
+/***/ }),
+
 /***/ "./pages/Scene/NewScenePage.jsx":
 /*!**************************************!*\
   !*** ./pages/Scene/NewScenePage.jsx ***!
@@ -15323,310 +15627,6 @@ function ScenePage() {
     scene: scene
   }), currentEventID && renderEvent(currentEventID));
 }
-
-/***/ }),
-
-/***/ "./pages/SceneEditorNavbar.jsx":
-/*!*************************************!*\
-  !*** ./pages/SceneEditorNavbar.jsx ***!
-  \*************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Navbar.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Container.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
-/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/list-ul.js");
-/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/images.js");
-/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/people-fill.js");
-/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/chat-fill.js");
-/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/music-note-beamed.js");
-/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/caret-left-square.js");
-/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/caret-right-square.js");
-/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../context/AppContext */ "./context/AppContext.jsx");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
- // Update the path as per your project structure
-
-var SceneEditorNavbar = function SceneEditorNavbar(_ref) {
-  var toggleEventListDrawer = _ref.toggleEventListDrawer,
-    toggleBackgroundDrawer = _ref.toggleBackgroundDrawer,
-    toggleEventCharactersDrawer = _ref.toggleEventCharactersDrawer;
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_AppContext__WEBPACK_IMPORTED_MODULE_1__["default"]),
-    scenes = _useContext.scenes,
-    currentSceneID = _useContext.currentSceneID,
-    currentEventID = _useContext.currentEventID,
-    setCurrentEventID = _useContext.setCurrentEventID;
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
-    _useState2 = _slicedToArray(_useState, 2),
-    currentPage = _useState2[0],
-    setCurrentPage = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
-    _useState4 = _slicedToArray(_useState3, 2),
-    totalPages = _useState4[0],
-    setTotalPages = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
-    _useState6 = _slicedToArray(_useState5, 2),
-    branchSelection = _useState6[0],
-    setBranchSelection = _useState6[1];
-
-  // Function to get the next event ID
-  var getNextEventId = function getNextEventId(eventId) {
-    var _event$childChoices;
-    var event = scenes.find(function (e) {
-      return e.id === eventId;
-    });
-    if (!event) return null;
-    if (((_event$childChoices = event.childChoices) === null || _event$childChoices === void 0 ? void 0 : _event$childChoices.length) > 0) {
-      var _event$childChoices$b;
-      var branchIndex = branchSelection[eventId] || 0;
-      return (_event$childChoices$b = event.childChoices[branchIndex]) === null || _event$childChoices$b === void 0 ? void 0 : _event$childChoices$b.RelatedEventId;
-    } else {
-      var _scenes;
-      //finds current event id and gets next in the list if present
-      var index = scenes.findIndex(function (e) {
-        return e.id === eventId;
-      });
-      return (_scenes = scenes[index + 1]) === null || _scenes === void 0 ? void 0 : _scenes.id;
-    }
-  };
-
-  // Update the total pages and current page when the current event ID changes
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var count = 0;
-    var currentId = currentEventID;
-    while (currentId != null) {
-      count++;
-      currentId = getNextEventId(currentId);
-    }
-    setTotalPages(count);
-    setCurrentPage(scenes.findIndex(function (event) {
-      return event.id === currentEventID;
-    }) + 1);
-  }, [currentEventID, scenes]);
-  var navigateEvent = function navigateEvent(direction) {
-    var _events$newIndex;
-    var newIndex = events.findIndex(function (event) {
-      return event.id === currentEventID;
-    }) + direction;
-    newIndex = Math.max(0, Math.min(newIndex, events.length - 1));
-    setCurrentEventID(Number.parseInt((_events$newIndex = events[newIndex]) === null || _events$newIndex === void 0 ? void 0 : _events$newIndex.id));
-  };
-  var toggleDialog = function toggleDialog() {
-    // if (currentEvent) {
-    //   // Clone the current event to avoid direct state mutation
-    //   const updatedEvent = { ...currentEvent };
-
-    //   // Logic to toggle dialog visibility and content
-    //   if (!updatedEvent.dialog || !updatedEvent.dialog.text || updatedEvent.dialog.show === false) {
-    //     updatedEvent.dialog = {
-    //       ...updatedEvent.dialog,
-    //       show: true,
-    //       text: updatedEvent.dialog && updatedEvent.dialog.text ? updatedEvent.dialog.text : 'Text here',
-    //       speaker: updatedEvent.dialog && updatedEvent.dialog.speaker ? updatedEvent.dialog.speaker : false
-    //     };
-    //   } else {
-    //     updatedEvent.dialog.show = false;
-    //   }
-
-    //   // Update the event in the scenes array
-    //   const updatedEvents = events.map(evt => evt.id === currentEventID ? updatedEvent : evt);
-    //   const updatedScene = { ...scene, events: updatedEvents };
-    //   const updatedScenes = scenes.map(scn => scn.id === currentSceneID ? updatedScene : scn);
-
-    //   setScenes(updatedScenes);
-    // }
-  };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_2__["default"], {
-    expand: "lg",
-    variant: "dark",
-    bg: "dark",
-    className: "my-navbar"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    fluid: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    variant: "outline-secondary",
-    onClick: toggleEventListDrawer
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_5__["default"], {
-    color: "white"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "d-flex"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, {
-    to: "/scenes/".concat(currentSceneID),
-    className: "btn btn-outline-secondary mx-2"
-  }, "Back to Scene"), currentEventID != null && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "mx-2"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    variant: "outline-secondary",
-    className: "mx-1",
-    onClick: toggleBackgroundDrawer
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    color: "white"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    variant: "outline-secondary",
-    className: "mx-1",
-    onClick: toggleEventCharactersDrawer
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_8__["default"], {
-    color: "white"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    variant: "outline-secondary",
-    className: "mx-1",
-    onClick: toggleDialog
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_9__["default"], {
-    color: "white"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    variant: "outline-secondary",
-    className: "mx-1"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_10__["default"], {
-    color: "white"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "mx-2"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    variant: "outline-secondary",
-    className: "mx-1",
-    onClick: function onClick() {
-      return navigateEvent(-1);
-    },
-    disabled: currentPage <= 1
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_11__["default"], {
-    color: "white"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
-    className: "mx-1",
-    style: {
-      color: 'white'
-    }
-  }, currentPage, " / ", totalPages), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    variant: "outline-secondary",
-    className: "mx-1",
-    onClick: function onClick() {
-      return navigateEvent(1);
-    },
-    disabled: currentPage >= totalPages
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_12__["default"], {
-    color: "white"
-  }))))));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SceneEditorNavbar);
-
-/***/ }),
-
-/***/ "./pages/SceneParts/SceneCharacter.jsx":
-/*!*********************************************!*\
-  !*** ./pages/SceneParts/SceneCharacter.jsx ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Modal.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Form.js");
-/* harmony import */ var react_bootstrap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-bootstrap */ "./node_modules/react-bootstrap/esm/Button.js");
-/* harmony import */ var react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-bootstrap-icons */ "./node_modules/react-bootstrap-icons/dist/icons/chat-dots-fill.js");
-/* harmony import */ var _gpt_CharacterDialogerGPT__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../gpt/CharacterDialogerGPT */ "./gpt/CharacterDialogerGPT.js");
-/* harmony import */ var _context_AppContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../context/AppContext */ "./context/AppContext.jsx");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
- // Update the path as per your project structure
-
-var dialoger = undefined;
-var SceneCharacter = function SceneCharacter(_ref) {
-  var character = _ref.character;
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_0__.useContext)(_context_AppContext__WEBPACK_IMPORTED_MODULE_2__["default"]),
-    scenes = _useContext.scenes,
-    setScenes = _useContext.setScenes,
-    currentScene = _useContext.currentScene,
-    currentEvent = _useContext.currentEvent,
-    characters = _useContext.characters;
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    showModal = _useState2[0],
-    setShowModal = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
-    _useState4 = _slicedToArray(_useState3, 2),
-    textInput = _useState4[0],
-    setTextInput = _useState4[1];
-  if (!dialoger && character) {
-    dialoger = new _gpt_CharacterDialogerGPT__WEBPACK_IMPORTED_MODULE_1__["default"]({
-      character: character,
-      dialog: [{
-        "role": "assistant",
-        "content": "{\n                        speaker: ".concat(character.fullname, ",\n                        text: [\"Voc\xEA parece perdido.\"]\n                    }")
-      }],
-      setting: "".concat(character.fullname, " found the protagonist in the middle of the deep woods. She is acompanie by two of ther female guards.")
-    });
-  }
-  var handleCharacterClick = function handleCharacterClick() {
-    setShowModal(true);
-  };
-  var handleTextChange = function handleTextChange(e) {
-    setTextInput(e.target.value);
-  };
-  var handleSend = function handleSend() {
-    dialoger.talk(textInput);
-    setShowModal(false);
-    setTextInput('');
-  };
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "character-div"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    key: character.id,
-    src: character.image,
-    alt: "Character"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap_icons__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    className: "chat-btn",
-    size: 32,
-    color: "white",
-    onClick: handleCharacterClick
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"], {
-    show: showModal,
-    onHide: function onHide() {
-      return setShowModal(false);
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Header, {
-    closeButton: true
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Title, null, "Talk to ", character.name)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Body, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Group, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Label, null, "Enter your message"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_5__["default"].Control, {
-    as: "textarea",
-    rows: 3,
-    value: textInput,
-    onChange: handleTextChange
-  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_4__["default"].Footer, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    variant: "secondary",
-    onClick: function onClick() {
-      return setShowModal(false);
-    }
-  }, "Close"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react_bootstrap__WEBPACK_IMPORTED_MODULE_6__["default"], {
-    variant: "primary",
-    onClick: handleSend
-  }, "Send"))));
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SceneCharacter);
 
 /***/ }),
 

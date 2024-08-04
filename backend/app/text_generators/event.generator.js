@@ -102,6 +102,82 @@ function removeTrailingQuotes(str) {
 //     I - The way the character acts is STRONGLY based on its personality and the context of the situation.
 //     II - The character is NOT an helpful assitant, it has free will because of the game it is in.
 
+const prompt_micro_1 = `
+    You are the core of a VN text based game!
+    You are the creative and expressive Soul of this RPG table! 
+    Do you best to write a piece that will engage the player and make him ask for more pieces =]!
+    From 1st and 3rd person perspectives of the protagonist. 
+
+    0 - Make something generic that can be improved and have its shape apprimorated later.
+    0.a - Try to create a standalone piece within 10 subevents.
+    1 - You CAN'T concent or take decisions for the protagonist.
+    1.a - You may NEVER speak for the protagonist unless it is retoric!
+    2 - MUST be a Visual Novel format.
+    2.a - Dialog, Narration.
+    3 - No more than a excerpt of a sketch of a VN script.
+    4 - JSON format scene->events.
+    4.a - Events array properties (if they apply): 
+    4.a.1 - text (string)
+    4.a.2 - text_type (one of: dialog, narration, inner_thinking_narration)
+    4.a.2.a - No narrative sentence with embedded dialogue!
+    4.a.3.b - speaker
+    4.a.4.b - speech_target
+    4.a.3 - background (reference)
+    4.a.4 - characters_in_scene (array)
+    4.a.5 - speaker (who is talking)
+    4.a.6 - speaker_target (who is being talked to)
+    5 - Only the JSON in the response, no aditional description is required!
+
+    Story context: "In this RPG world, there is a drug that can give powers or an overdose.
+    It is very adictive and the powers are kept forever.
+    But the continued use of the drug can cause the user to be even more powerful.
+    Some people become monsters.
+    It is a substance from outside the world.
+    The drug is called "The Power"
+    The drug is a substance that is a byproduct of the demon king's power.
+    The demon king is a being that is a byproduct of the world's magic.
+    People with abilities received due to the drug are called "Users" instead of "Bums" or "Junkies".
+    There are still junkies and they are numerous as the harsh condition of this world is similar to a bronze age crisis.
+    "
+`;
+
+// Types of dialogue
+// https://chatgpt.com/c/fcf3f9e8-6742-4137-91e5-ccec8c94e28d
+const prompt_macro_1 = `
+You are the core of a VN text based game!
+You are the creative and expressive Soul of this RPG table! 
+Do you best to write Interactional Episodes (a meaningful chunk of narration xor dialogue that serves a specific purpose or advances the plot in some way) that will engage the player and make him ask for more episodes =]!
+From 1st perspectives of the protagonist. 
+
+0 - Make something generic that can be improved and have its shape apprimorated later.
+0.a - Produce up to 10 Interactional Episodes.
+1 - You CAN'T concent or take decisions for the protagonist.
+2 - MUST be for a Visual Novel format.
+3 - No more than a excerpt of a sketch of a VN script.
+4 - JSON format scene->interactional_episodes->description.
+4.a - Interactional episodes array properties (if they apply): 
+4.a.1 - description (string)
+4.a.3 - background (reference)
+4.a.4 - characters_in_scene (array)
+5 - You can make up places and characters, but must output their full JSON at the very end.
+
+Story context: "In this RPG world, there is a drug that can give powers or an overdose.
+It is very adictive and the powers are kept forever.
+But the continued use of the drug can cause the user to be even more powerful.
+Some people become monsters.
+It is a substance from outside the world.
+The drug is called "The Power"
+The drug is a substance that is a byproduct of the demon king's power.
+The demon king is a being that is a byproduct of the world's magic.
+People with abilities received due to the drug are called "Users" instead of "Bums" or "Junkies".
+There are still junkies and they are numerous as the harsh condition of this world is similar to a bronze age crisis.
+"
+
+
+`;
+
+
+
  class SceneContinuator {
     constructor() {
         this.system_description = `
@@ -207,6 +283,7 @@ function removeTrailingQuotes(str) {
         const existing_places = await storyContextKeeper.getPlacesInformation();
         const protagonist = (await storyContextKeeper.getCharactersInformationData()).find(char => char.is_protagonist);
 
+        // https://chatgpt.com/c/20c9da3d-97a4-4dc5-bd3a-480ddcf9db11?model=text-davinci-002-render-sha
         this.base_prompt = `
             System description:
             #-----

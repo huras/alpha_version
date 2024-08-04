@@ -156,12 +156,6 @@ Define Basic Plot
 
 
 
-----------------------------
-
-Arc
-	Scenes
-		Story Bits
-			Events
 
 
 
@@ -189,28 +183,77 @@ Arcs
 	Main arc of avatar: learn the 4 elements to defeat the fire lord to end the war and restore balance while.
 
 
---------------------------------
 
-Play Game
-	Choose existing game and have fun!
-		Start Game
-		Load Game
-New Game
-	Generate Fresh World
-	Use Predefined World
+------------------------------------
 
---------------------------------
+To create a good story
+- Living characters reacting to event triggers (A "Puzzle player")
+- Objective manager laying down the path ahead (A "Puzzle maker")
 
-Two sides fighting (Humans x Machines)
-One side is more powerful (Machines)
-One side gets stronger because of a weapon they have in a character in their team (Machines)
-Part of the weak side becomes religious
-The weak side gets a member that is stronger than all weapons the strong side have
-The sides fight and the weak side fing out more about them and their weapon
-The weapon of the strong side gets out of control and the weak side hero is the only one that can stop it
-The weak side hero makes a deal with the strong side to get peace
+Meaning the visual novel should be able to run a story where the protagonist does not even exist
 
 
 
--------------------------------
+------------------------------------
 
+Project
+	New Character
+		Char attributes:
+			Name
+			Details
+				lod0
+					physical_appearance
+						race
+						age
+						skin_color
+						eye_color
+						hair_color
+						distinctive_features
+					personality
+						neutral_traits
+						negative_traits
+						positive_traits
+						fears_vulnerabilities
+						core_memories
+						quirks_habits
+						beliefs_values
+					skills
+						unique_abilities_powers
+						hobbies_interests
+					story
+						short_term_goals
+						long_term_goals
+					
+					format = {
+						'physical_appearance': {
+							'race': '',
+							'age': '',
+							'skin_color': '',
+							'eye_color': '',
+							'hair_color': '',
+							'distinctive_features': '',
+						},
+						'personality': {
+							'neutral_traits': '',
+							'negative_traits': '',
+							'positive_traits': '',
+							'fears_vulnerabilities': '',
+							'core_memories': '',
+							'quirks_habits': '',
+							'beliefs_values': '',
+						},
+						'skills': {
+							'unique_abilities_powers': '',
+							'hobbies_interests': '',
+						},
+						'story': {
+							'short_term_goals': '',
+							'long_term_goals': '',
+						},
+					},
+				lod1 - Auto generated / Editable
+				lod2 - Auto generated / Editable
+				lod3 - Auto generated
+			Back
+
+		Random btn - Chatgpt suggests alone an character given the unlocked char fields

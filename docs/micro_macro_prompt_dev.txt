@@ -1,0 +1,120 @@
+https://chatgpt.com/c/2756b32b-d90b-4655-a0c4-0e0e854fadd9
+
+{
+    "series": [
+        "title": "In Another World with My Smartphone (異世界はスマートフォンとともに, Isekai wa Sumātofon to Tomo ni)"
+        "arcs": [
+            { "title": "Introduction Arc",                
+                "id": 1,
+                "parent_arc": null,
+                "description": "This is where Touya is introduced to the new world. He learns about the basic functions of this world, meets the first of the nine eventual female companions, and starts to learn about his magical abilities. He helps solve local problems and gains favor with the local royalty.",
+                "episodes": [
+                    { "title": "A New World and a Smartphone",
+                        id: 1,
+                        "description": "The protagonist, a teenage boy, finds himself in a fantastical world after an unexpected turn of events. He learns that he can keep his smartphone, which miraculously works in this new world thanks to divine intervention. The episode focuses on his initial exploration and basic understanding of the world's mechanics, including the use of magic."
+                        "scenes": [
+                            { "title": "Opening Scene",
+                                id: 1,
+                            }
+                        ]
+                    },
+                    { "title": "First Encounters",
+                        id: 2,
+                        "description": "The protagonist meets a helpful older male adventurer who becomes his first guide in the new world. Together, they travel to a nearby town where the protagonist uses his unique skills to solve small problems for the locals, gaining popularity."
+                    },
+                    { "title": "Royal Summon",
+                        id: 3,
+                        "description": "Word of the protagonist's unique abilities reaches a royal palace. He is invited by a kind king and his wise advisors to the capital. During his visit, he helps solve a technological issue by ingeniously using his smartphone."
+                    },
+                    { "title": "Magic and Learning",
+                        id: 4,
+                        "description": "Intrigued by the magic of this world, the protagonist begins learning how to use magic under the guidance of a skilled female mage. This episode showcases his rapid learning abilities and how he adapts technology to enhance magic."
+                    },
+                    { "title": "Companion Quest",
+                        id: 5,
+                        "description": "The protagonist helps a struggling female merchant and her caravan, which leads to his first quest outside the safety of the town. His problem-solving skills and smartphone come in handy, further establishing his reputation."
+                    },
+                    { "title": "New Alliances",
+                        id: 6,
+                        "description": "The protagonist forms alliances with various people he helps along the way, including a young craftsman and a knowledgeable librarian. This network starts to set the foundation for his future endeavors in this world."
+                    },
+                    { "title": "A Place to Call Home",
+                        id: 7,
+                        "description": "Deciding to establish a base of operations, the protagonist works with his new friends to secure a location where they can all benefit from each other's skills. This episode lays the groundwork for the protagonist's long-term presence in the world."
+                    },
+                    { "title": "Unexpected Challenges",
+                        id: 8,
+                        "description": "As the protagonist settles into his new life, he faces unexpected challenges that test his moral and ethical values. He must navigate complex social dynamics without relying solely on his technological advantage."
+                    },
+                ]
+            },
+            { "title": "Duchy of Brunhild Ar",
+                "id": 2,
+                "parent_arc": 1,
+                "description": "After establishing himself in this new world, Touya forms his own nation, the Duchy of Brunhild. He becomes the duke and starts to gather talented individuals and adventurers to populate his new country. This arc focuses on nation-building and the administrative challenges that come with it.",
+                "episodes": [
+
+                ]
+            },
+            { "title": "Babylon Arc",
+                "id": 3,
+                "parent_arc": 2,
+                "description": "Throughout his adventures, Touya discovers ancient ruins called Babylons, which are filled with advanced technology and magical artifacts. Each discovery provides new abilities or conveniences, further increasing his influence and power. This arc delves into the mysteries of the past civilization that created these ruins.",
+                "episodes": [
+
+                ]
+            },
+            { "title": "Fraze Appearance Ar",
+                "id": 4,
+                "parent_arc": 3,
+                "description": "The world faces threats from a mysterious and destructive creature type known as the Fraze. Touya and his companions must fend off these attacks, which become increasingly difficult, pushing them to develop new strategies and alliances with other nations.",
+                "episodes": [
+
+                ]
+            },
+            { "title": "Daily Life Arc",
+                "id": 5,
+                "parent_arc": 4,
+                "description": "Between major conflicts and discoveries, several episodes focus on Touya's everyday life, including managing his growing harem, interacting with different characters, and exploring the world's cultural festivities. This lighter arc helps develop character relationships and world-building details.",
+                "episodes": [
+
+                ]
+            }
+        ]
+    ]
+}
+
+
+1 - Series: In Another World with My Smartphone (異世界はスマートフォンとともに, Isekai wa Sumātofon to Tomo ni)
+2 - Arcs:
+    
+
+    
+
+    2.1 - Gods and Contracts Arc: As the series progresses, the involvement of gods and divine beings becomes more apparent. Touya makes pacts with different gods, gaining even more abilities and drawing the attention of powerful divine entities. This arc explores the cosmology of the world and Touya's place within it.
+
+    2.1 - World Crisis Arc: The ultimate challenge emerges in the form of a world-threatening crisis involving all the nations and major characters introduced so far. Touya's leadership, relationships, and collected powers are put to the test as he works to save the world from destruction.
+
+Macro
+	1 - Series: In Another World with My Smartphone (異世界はスマートフォンとともに, Isekai wa Sumātofon to Tomo ni)
+	2 - Season(s) (Arc): Introduction Arc
+	3 - Episodes: 
+
+
+Micro
+	4 - Scene:
+	5 - Events
+		5.1 - Dialogue
+		5.2 - Narration
+		5.3 - Monologue
+
+
+
+
+
+
+Best Quality, Masterpiece, different colors,
+(red) nation, protagonist woman, (greek culture),
+europe,
+bronze age, random ethinic,
+Random NPC,

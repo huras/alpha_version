@@ -399,3 +399,202 @@ Only two people decide to follow you, they are not able to change the others min
 - In the game progress: Eventualy you gain the entire kingdom back and expell a secret church sect that was manipulating the kingdom and made an alliance with the fake hero just to secretly fullfill their deal with the demon king, so that they can control the kingdom while the demon king gets the rest of the world to conquer.
 - At the game end you got half the population following you already and the you have a clash with the sect.
 - In the post game you have half the population to convince and maintain and protect against randomized threats
+
+
+-------------
+
+3 strong protagonists (Kinda like one for each virtue with asociated failures)
+	- The brute force / strong but simple minded
+	- The brains / clever but because did something very dumb (a thing which he is ashamed of) in the past
+	- The pure one / naive but pure, don't know many things about the world
+
+-------------
+
+King Dungeon
+	A dungeon filled with a magic power.
+	In each level the amount of magic in the atmosphere increases.
+	The body of living things and certain chunks of minerals change form according to the strengh of magic in the atmosphere.
+	Humans gain powers like in a game when there is magic in the air.
+
+	The tower is know for having 100 levels.
+	But currently there is no one that can go above the level 91.
+	The strongest humans live in the level 81.
+	Magic gives individuals many advantage like any tool or tech does. And stronger magic allows to yield bigger profit and resources.
+	
+---------------------------
+
+The King Hero
+
+
+Vou dar poder a uma pessoa que tinha tudo pra querer se vingar mas não o faz.
+A história vai se desenvolver explicando o porque ele não fez a pior coisa que poderia fazer apesar de ter tido a oportunidade de justamente usar seu poder pra se defender eliminando seus inimigos.
+
+The Legend of the King Hero
+	- The demon king killed the last hero king's entire bloodline 300 years ago.
+	- Legend tells that one day a hero king will be born again.
+	- Poor people belive that anyone can be born as the hero king.
+	- The rich people belive that the hero king will be born in noble blood. They consider preposterous that a poor person could be the hero king. It is not known to have happened before.
+
+King hero
+	Powers:
+		- Crystal Magic Absorption
+			* The [king hero] has the ability to draw power from magic cristals into himself.
+			* Everyone need heat/ice/thunder crystals to use magic or depend on some kind of spirit contract to use magic.
+		- Infinite Spirit Contracts
+			* The [king hero] can make any amount of spirit contracts.
+			* [normal people] can make spirit contracts only up to 3 spirits. More than that and your body gets posessed in a spiritual conflict and you go crazy.
+			* Is is hard for [normal people] to know exactly how much contracts they can make, but at least 1 everyone can.
+
+--------------
+
+2024-07-15
+In this RPG world, there is a drug that can give powers or an overdose.
+It is very adictive and the powers are kept forever.
+But the continued use of the drug can cause the user to be even more powerful.
+Some people become monsters.
+It is a substance from outside the world.
+The drug is called "The Power"
+The drug is a substance that is a byproduct of the demon king's power.
+The demon king is a being that is a byproduct of the world's magic.
+People with abilities received due to the drug are called "Users" instead of "Bums" or "Junkies".
+There are still junkies and they are numerous as the harsh condition of this world is similar to a bronze age crisis.
+
+
+--------------
+
+2024-07-16
+Floating islands with invisible bridges that can only be seen by beings that can see spirit.
+The protagonist has time to learn things there, but he can see from the begining that there are other floating islands in the horizon.
+He can't see the connection with them at the start.
+
+-------------------------------
+
+2D ero fantasy
+
+Based on my 2D folder:
+	Beastkin Continent
+	A hidden "village" of Ninja Girls
+	A kingdom of magical element users
+
+Final protagonist form:
+	Portal Power:
+		Level 1 - Can open a open a portal to dimension X, and toggle the portal on/off.
+			On/Off command: Can enable / disable the portal from a range of maximum 500m
+			Set Portal command: Can set a circle shaped portal of radius of up to 3m anywhere the user is touching with its skin
+			If portal is off, can change open a new portal. but will take to the same place in the oposite world. (can only change portal places in the current world the person is in)
+		Level 2 - 2 Portals
+		Level 3 - Don't need to put hand on places to create portals anymore, can do it in a range of up to 300m with trianing and mastery of the skill (min: 0.5m).
+		Level 4 - 3 Portals
+		Level 5 - 5 Portals
+
+	Duplication Power:
+		Can copy any object being thouched.
+		Must hold object for 1 hour before being able to replicate it.
+		If other people touches the copy it disapears after 3 minutes.
+		Level 1 - 1 slot of copy
+		Level 2 - 3 slots of copy
+		Level 3 - 1 day long durability copies, 5 min hold copies
+		Level 4 - 5 slots copies
+		Level 5 - 7 slots
+
+	Magic Rune Programming
+		Can write programs that run very efficiently and for very long with magic energy.
+		Heat API - Can code heat, reading, adding, moving, ehausting temperature
+		Eletricity API - Can code eletricity, reading and writing current, voltage, resistance, and power
+		Cinetic API - Can code force, and read position and speed of objects
+		Loop API - Can code loops, and read and write memory
+		LocalStorage API - Can code local storage, and read and write memory
+		
+
+	Homunculus Creation
+		Can create a copy of a person the user interacted with.
+		The person must be alive.
+		The copy is a perfect copy of the person, but the copy is a slave to the user.
+		The copies can use the duplicated items of the user for 20x longer time.
+		Level 1 - 1~2 copies, 1 slot of memory, 100m range
+		Level 2 - 3~4 copies max, 2 slots, 150m range
+		Level 3 - 7~9 copies, 3 slots and from now on can mix the with himself, 180m range
+		Level 4 - 10~15 copies, from now on can mix the homunculus between themselves, 200m range
+		Level 5 - 16~100 copies, 1500m range
+
+	All elemental afinities:
+		- Fire (Heat energy repulsion)
+		- Ice (Heat energy attraction)
+		- Thunder (Electricity afinity both atraction and repulsion)
+			There are some skills like Eat-Lightining that require only the Thunder atraction affinity, 
+			and others like Thunder-Strike that require both atraction and repulsion affinities.
+			and others like Thunder-Storm (with Spark Emeralds holding) or Lighting-Repel that require only the Thunder repulsion affinity.		
+		- Light
+		- Dark
+
+Plot
+	Sent to a part of the world where everybody is beast-kin.
+	There is only one other human in the whole beast-kin island.
+
+World
+	Races
+		Beastkins
+			People with animal features of some animal notably:
+				* Feline people
+					* Cat
+					* Cougar
+					* Jaguar
+					* Tiger
+					* Lion
+				* Canine people
+					* Fox people
+					* Hyena people
+					* Wolf people
+					* Panda
+					* Polar Bears
+				* Rodent people
+					* Bunny people
+					* Mouse
+					* Hedgehog
+					* Bat
+				* Quadrupede herbivore people
+					* Cow
+					* Horse
+					* Zebra
+					* Antilope
+					* Elephant
+
+
+------------------------------
+
+1/Ago/2024
+When I was summoned to another world I was going to work by subway, then I heard a little noisy but very loud sonicboom.
+It got darker imediatly.
+I was disoriented and could not see anything.
+I could see the colors of twilight in the dust.
+But the dust of the sonicboom never completely settled down.
+I saw myself in the middle of a big fight.
+5 girls attacked each other, in what seemed to be a free-for-all war.
+There as:
+- an elvish girl, 
+- a girl with cat ears and lioness tail, and 3 whiskers in each cheeck 
+- a red skinned girl with 3 small horns in her forehead, bat wings in her back, and a pointy tail
+- green skinned girl that had a slimy body and with 60% opacity only
+- a light blue skinned girl with ears remembering mermaids tails 
+Did not knew yet, but they were fighting to claim me.
+I hid behind a piece of rock that belonged to the walls in ruins around.
+Then one of the girls notice me...
+
+--------------------
+
+New World
+	Protagonist
+	Characters
+	Character Groups
+	Places
+
+-------------------
+
+04/08/2024
+Sempre foi uma rainha no reino de Romia
+Mas sempre a rainha acaba se corrompendo e fazendo m aldades
+A historia conta a jornada de 1 jovem e 12 garotas que queriam fazer o bem.
+As doze garotas tem contandas entre si.
+O garoto derrota a força maligna feminina que assombrava o reino mas escolhe não deixar as meninas serem rainhas por ver o desequilibrio.
+Ele então se torna um rei com 12 rainhas numa quest pra apasigura as 12 rainhas (essa é a hjist´roai do jogo)
+As doze lutam pra se tornar rainhas, mas existem outras centenas de candidatas
